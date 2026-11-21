@@ -1,0 +1,428 @@
+\documentclass[11pt]{article}
+\usepackage[hmargin=.88in,vmargin=.82in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,pdfauthor={Lennart Lopin},
+ pdftitle={Smooth integers in multiplicative cosets at a squared-logarithmic cutoff}]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newcommand{\cstar}{c_*}
+\newcommand{\re}{\operatorname{Re}}
+\title{Smooth integers in multiplicative cosets\\at a squared-logarithmic cutoff}
+\author{Lennart Lopin}
+\date{November 21, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Let \(\chi\) be a nonprincipal character modulo a prime \(p\) and assume
+the Riemann hypothesis for \(L(s,\chi)\). Fix \(0<a<1\) and put
+\(y=\eta(\log p)^2\), with \(\eta>\mathcal C(1)^{-2}\) in the
+Fourier normalization of Carneiro, Milinovich, Quesada-Herrera and Ramos.
+The character sum over \(y\)-smooth integers up to \(x\) is
+\(O_{a,\eta}(\Psi(x,y)e^{-bu})\), uniformly in \(\chi\) and
+\(p^a\le x\le p\), where \(u=\log x/\log y\) and \(b=b(a,\eta)>0\).
+Under Dirichlet GRH, every coset of every subgroup of index
+\(m\le e^{bu/2}\) therefore has its expected share with relative error
+\(O_{a,\eta}(e^{-bu/2})\). In particular \(\eta=0.77\) is admissible.
+The ordinary character sum satisfies the same bound for every fixed
+\(\eta>2/e^2\) under RH for \(L(s,\chi)\).
+\end{abstract}
+
+\section{Character sums and coset counts}
+Write \(P^+(n)\) for the greatest prime factor of \(n>1\), set \(P^+(1)=1\),
+and let \(\Psi(x,y)\) count the \(n\le x\) with \(P^+(n)\le y\).
+We write \(S(x,\chi)=\sum_{n\le x}\chi(n)\) and
+\(S_y(x,\chi)=\sum_{n\le x,\,P^+(n)\le y}\chi(n)\).
+All logarithms are natural. Write \(\mathrm{RH}(\chi)\) for the assertion
+that every nontrivial zero of \(L(s,\chi)\) has real part \(1/2\). Put
+\(\cstar=\mathcal C(1)^{-2}\) as in \cite[(1.1)]{cmqr}.
+
+\begin{theorem}\label{th:main}
+Fix \(0<a<1\) and \(\eta>\cstar\). There are positive constants \(b,K\)
+and \(p_0\), depending only on \(a,\eta\), such that, for every prime
+\(p\ge p_0\), every nonprincipal \(\chi\bmod p\) satisfying
+\(\mathrm{RH}(\chi)\), and every real
+\(p^a\le x\le p\),
+\begin{equation}\label{eq:main}
+ |S_y(x,\chi)|+|S(x,\chi)|\le K\Psi(x,y)e^{-bu},
+ \qquad y=\eta(\log p)^2,\quad u=\frac{\log x}{\log y}.
+\end{equation}
+\end{theorem}
+In particular the difference of the two sums satisfies the same bound.
+The published bounds \(0.7596<\cstar<0.7615\) allow the cutoff \(0.77\)
+\cite[Theorems 1 and 5]{cmqr}.
+
+\begin{corollary}\label{cor:cosets}
+Let \(B\le\mathbb F_p^\times\) have index \(m\) and suppose
+\(\mathrm{RH}(\chi)\) holds for every nonprincipal character trivial
+on \(B\). For every coset \(gB\), in the range of Theorem~\ref{th:main},
+\[
+ \#\{n\le x:P^+(n)\le y,\ n\bmod p\in gB\}
+ =\frac{\Psi(x,y)}{m}+O_{a,\eta}(\Psi(x,y)e^{-bu}).
+\]
+The relative error is \(O_{a,\eta}(m e^{-bu})\), hence
+\(O_{a,\eta}(e^{-bu/2})\) for \(m\le e^{bu/2}\). Under Dirichlet
+GRH these estimates hold simultaneously for all such subgroups.
+\end{corollary}
+Indeed \(p>y\) for large \(p\), so all smooth \(n\) are units. The
+indicator of \(gB\) on units equals
+\(m^{-1}\sum_{\chi\in B^\perp}\overline{\chi(g)}\chi(n)\), where
+\(B^\perp\) consists of the \(m\) characters trivial on \(B\).
+The principal character contributes \(\Psi(x,y)/m\), and the other
+\(m-1\) bounds are divided by the same \(m\).
+
+For example, if \(p\equiv1\bmod3\), take a character \(\xi\) of order
+three. The hypothesis \(\mathrm{RH}(\xi)\) suffices since
+\(L(s,\bar\xi)=\overline{L(\bar s,\xi)}\). Write
+\(\omega=e^{2\pi i/3}\). For \(j=0,1,2\), the number with
+\(\xi(n)=\omega^j\) is exactly
+\[
+ \frac{\Psi(x,y)+2\re(\omega^{-j}S_y(x,\xi))}{3}
+ =\frac{\Psi(x,y)}3+O_{a,\eta}(\Psi(x,y)e^{-bu}).
+\]
+This includes the cubic residues (\(j=0\)) and distinguishes the two
+other cosets, including at \(x=\sqrt p\) with \(a=1/2\).
+
+\paragraph{Relation to prior estimates.}
+Granville and Soundararajan conjectured a uniform approximation to
+ordinary character sums by their smooth restrictions. Their Theorem~2
+proves \(S(x,\chi)-S_y(x,\chi)\ll\Psi(x,y)/(\log\log q)^2\) under
+RH for \(L(s,\chi)\) when \(1\le x\le q\) and
+\(y\ge(\log q)^2(\log x)^2(\log\log q)^{12}\)
+\cite[Conjecture 1 and Theorem 2]{gs}.
+
+Dong--Zhao--Zhou \cite[Theorem 1.4, v1]{dzz} assume RH for
+\(L(s,\chi)\) and cover all nonprincipal characters of arbitrary
+modulus \(q\), including imprimitive characters. They bound both
+sums relative to the principal smooth count over \(q^a\le x\le q\).
+Their cutoff is \((\log q+(\log x)^2)(\log\log q)^C\) with \(C>6\).
+Their error factor is
+\(\exp(-\gamma(\log x)\log_3 q/\log_2 q)\) for \(0<\gamma<(C-6)/4\),
+where \(\log_k\) denotes the \(k\)-fold iterated logarithm. At
+\(q=p,\ x=p^\theta\) the ratio of their cutoff to ours is
+\((\theta^2+1/\log p)(\log\log p)^C/\eta\), tending uniformly to
+infinity on \([a,1]\). Their decay exponent includes a further factor
+of order \(\log_3 p\). At prime modulus their bound also gives
+equidistribution for growing subgroup indices by the orthogonality
+argument above, at their cutoff and under the corresponding character
+hypotheses. Our estimate gives this conclusion at a fixed multiple
+of \((\log p)^2\). Decreasing the cutoff removes a signed subsum
+whose size is not controlled by a bound for the original sum.
+
+Croot--Granville--Pemantle--Tetali already study smooth squares and
+compare the two sums under GRH \cite[\S7.3, Lemma 7]{cgpt}. At our
+cutoff their error factor \((\log p)^3/\sqrt y\) equals
+\((\log p)^2/\sqrt\eta\). Soundararajan uses a saddle-point weighted
+distance to \(\ell^{it}\) for smooth Euler products in a range of moduli
+bounded by a fixed power of \(y\) \cite[\S4]{sound}.
+Lagarias and Soundararajan use the explicit formula for
+\(\sum_{n\le v}\Lambda(n)\chi(n)n^{-it}\) to bound the truncated Euler
+product \(L(s,\chi;y)\). Their Proposition~5.1 gives
+\(|L(s,\chi;y)|\ll_\varepsilon(q|s|)^\varepsilon\) under GRH for
+nonprincipal primitive \(\chi\bmod q\) and
+\(\re s\ge1/2+\varepsilon\), with \(\varepsilon>0\) fixed
+\cite[\S5]{ls}. Here the saddle satisfies
+\(\alpha-1/2\asymp_{a,\eta}1/\log y\) by \eqref{eq:saddle}.
+We need a saving relative to the positive Euler product on that line,
+which the translated Fourier estimate gives in \eqref{eq:Us}.
+Harper's individual
+bounds impose conductor \(r\le y^{b_0}\) or \(r\le x^{d_0}\) for small
+absolute constants \(b_0,d_0>0\) \cite[Theorem 3 and Proposition 1]{harper}.
+Here \(r=p\ge x\).
+
+\section{The translated explicit formula}
+Put \(L=\log p,\ H=\log y,\ X=\log x\), so \(u=X/H\). Throughout,
+\(\ell\) denotes a prime. Use the Fourier transform with kernel
+\(e^{-2\pi i z v}\).
+
+\begin{lemma}\label{lem:distance}
+For every fixed \(\eta>\cstar\) there exist \(0<d<1\) and \(\delta>0\),
+depending only on \(\eta\), such that for every sufficiently large
+prime \(p\), every nonprincipal \(\chi\bmod p\) satisfying
+\(\mathrm{RH}(\chi)\), and every
+\(|t|\le\exp(L/H)\),
+\begin{equation}\label{eq:distance}
+ \sum_{dy<\ell\le y}\bigl(1-\re(\chi(\ell)\ell^{-it})\bigr)
+ \ge \delta\,y/H .
+\end{equation}
+\end{lemma}
+\emph{Proof.}
+Choose a test \(F\) with real \(\widehat F\in C_c^\infty([-N,N])\) and
+\[
+ D(F)=\int_{-\infty}^0\widehat F(v)e^{\pi v}\,dv
+      -\int_0^\infty |\widehat F(v)|e^{\pi v}\,dv,\qquad
+ \mu_\eta=\sqrt\eta\,D(F)-\|F\|_1/(2\pi)>0.
+\]
+Such a choice follows from \cite[Theorem 4(i), (4.13) and \S4.4]{cmqr}.
+Set \(d=e^{-2\pi N}\), \(\Delta=H/(2\pi)>N\), and form their test
+\[
+ \widehat h_0(v)=\tfrac12\{\widehat F(v-\Delta)+\widehat F(-v-\Delta)\},
+ \qquad h_t(z)=h_0(z-t).
+\]
+On the real axis \(h_0(z)=\re(e^{2\pi i\Delta z}F(z))\), since
+\(\widehat F\) is real. Thus \(|h_t(z)|\le |F(z-t)|\) and
+\(\widehat h_t(v)=e^{-2\pi itv}\widehat h_0(v)\).
+The analytic continuation required in \cite[(3.1)]{cmqr} exists for each
+test by Fourier inversion on compact support. We now track the dependence
+on the translation on the real axis.
+
+For ordinates of \(L(s,\chi)\), counted with multiplicity, we claim
+\begin{equation}\label{eq:zeros}
+ \sum_{\gamma_\chi}|F(\gamma_\chi-t)|
+ =\frac{L}{2\pi}\|F\|_1+
+ O_F\!\left(\frac{L}{\log L}+\log(3+|t|)\right).
+\end{equation}
+To verify this for complex characters, take the signed cumulative count
+\(N(v,\chi)\) for \(v>0\) and \(-N(-v,\bar\chi)\) for \(v<0\),
+with the endpoint convention of \cite[(3.3)]{cmqr}. The negative
+ordinates of \(\chi\) reflect to the positive ordinates of \(\bar\chi\), and
+the two halves at zero give the entire central multiplicity. The
+distributional derivative of this count is the zero-counting measure.
+By \cite[(3.3)--(3.4)]{cmqr}, subtracting
+\(M(v)=v\log(p|v|/(2\pi e))/(2\pi)\), \(M(0)=0\), leaves a remainder
+\[
+ R_\chi(v)\ll L/\log L+\log(3+|v|)
+\]
+on both half-lines, with an absolute implied constant. The bound on the
+argument in (3.4) holds under RH for the individual primitive character
+\cite[Theorem 5 and Example 8]{ccm}. Conjugation supplies the same
+hypothesis for \(\bar\chi\). Half values at
+jumps have no effect on integration by parts. Integrate
+\(|F(v-t)|\) against \(dM+dR_\chi\).
+In \(dM\) the \(L/(2\pi)\) density gives the main term.
+The part \(\log(|v|/(2\pi))\) costs \(O_F(\log(3+|t|))\), using the
+integrability of \(|\log|v||\) near \(0\) and the decay of \(F\).
+For \(dR_\chi\), use absolute continuity of \(|F|\),
+\(|(|F|)'|\le |F'|\) almost everywhere, and
+\(\log(3+|v|)\le\log(3+|t|)+\log(3+|v-t|)\).
+This proves \eqref{eq:zeros} without differentiating the modulation
+\(e^{2\pi i\Delta z}\).
+
+Every nonprincipal character modulo \(p\) is primitive. In (3.1) the
+conductor term vanishes since \(\widehat h_t(0)=0\). The gamma integral
+is \(O_F(\log(3+|t|))\) by Stirling's formula for either parity and
+\(|h_t(v)|\le |F(v-t)|\). At \(v=\log n/(2\pi)>0\), the two prime
+terms contain \(\chi(n)n^{-it}\) and its conjugate. Using
+\(\widehat h_0(v)=\widehat F(v-\Delta)/2\) there gives
+\begin{align}
+ W_\chi(t)&=\frac1{2\pi}\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}
+    \widehat F\!\left(\frac{\log(n/y)}{2\pi}\right)
+    \re(\chi(n)n^{-it}),\nonumber\\
+ |W_\chi(t)|&\le\frac{L}{2\pi}\|F\|_1+
+ O_F\!\left(L/\log L+\log(3+|t|)\right).\label{eq:W}
+\end{align}
+In particular the error is \(o_\eta(L)\) up to \(\exp(L/H)\), uniformly
+over character order. The factor \(1/(2\pi)\) includes both prime
+terms and the half in the definition of \(\widehat h_0\).
+
+Write \(w_\ell=(\log\ell)\widehat F(\log(\ell/y)/(2\pi))/
+(2\pi\sqrt\ell)\). Prime powers of degree at least two in
+\eqref{eq:W} cost \(O_F(H^2)\), by counting them in \([dy,y/d]\).
+Since \(w_\ell=0\) at the support endpoints, a lower bound for \(W_\chi(t)\)
+is
+\[
+ \sum_{dy<\ell\le y} w_\ell-\sum_{y<\ell\le y/d}|w_\ell|
+ - C_F\frac{H}{\sqrt y}
+       \sum_{dy<\ell\le y}(1-\re(\chi(\ell)\ell^{-it}))-O_F(H^2).
+\]
+Indeed \(w_\ell r\ge w_\ell-|w_\ell|(1-r)\) for \(-1\le r\le1\).
+The first two sums together equal \(\sqrt y\,D(F)+o_F(\sqrt y)\) by
+the unconditional prime number theorem and the substitution \(\ell=ye^{2\pi v}\).
+Compared with \eqref{eq:W} this leaves \(\mu_\eta L+o_\eta(L)\) for
+the loss term. Thus \eqref{eq:distance} holds, for example with
+\(\delta=\mu_\eta/(2C_F\sqrt\eta)\) for large enough \(p\).
+\hfill\(\square\)
+
+\section{The saddle point and the sharp smooth sum}
+For \(f=1,\chi\) let \(Z_f(s)=\prod_{\ell\le y}(1-f(\ell)\ell^{-s})^{-1}\).
+Let \(\alpha>0\) be the unique solution of
+\(\sum_{\ell\le y}\log\ell/(\ell^\alpha-1)=X\), and put
+\(Z=Z_1(\alpha)\), \(\theta=X/L\). Uniformly for \(a\le\theta\le1\),
+\begin{align}
+ \alpha&=\tfrac12+
+      \{\log(2\sqrt\eta/\theta)+o_{a,\eta}(1)\}/H,
+ & y^{-\alpha}&\sim X/(2y),\label{eq:saddle}\\
+ \frac{x^\alpha Z}{\Psi(x,y)}&\asymp_{a,\eta}\sqrt{XH},
+ &\log\Psi(x,y)&=\tfrac12 X+
+   \{1+\log(2\sqrt\eta/\theta)+o_{a,\eta}(1)\}u.\label{eq:psi}
+\end{align}
+Indeed at \(\sigma=1/2+v/H\) the saddle sum is
+\((2e^{-v}+o(1))\sqrt y\) by the prime number theorem, uniformly on
+compact \(v\)-intervals. Higher powers in the sum cost \(O(H)\) since
+\(\ell^{-2\sigma}\ll1/\ell\). Bracket \([a,1]\) by two fixed values
+of \(2\sqrt\eta e^{-v}\), then invert by monotonicity.
+Partial summation at this saddle gives
+\(\log Z\sim y^{1-\alpha}/((1-\alpha)H)\sim u\) and
+\((\log Z_1)''(\alpha)\sim XH\). In these two estimates the higher
+powers cost \(O(\log H)\) and \(O(H^2)\), respectively.
+The Hildebrand--Tenenbaum saddle-point formula gives \eqref{eq:psi}
+\cite[Theorem 1.6]{ht}.
+
+Put \(U_f(t)=|Z_f(\alpha+it)|/Z\). For the complex character the
+logarithm of the product gives
+\[
+ -\log U_\chi(t)=
+ \sum_{\ell\le y}\sum_{k\ge1}
+ \frac{1-\re((\chi(\ell)\ell^{-it})^k)}{k\ell^{k\alpha}}.
+\]
+All summands are nonnegative. Restricting to \(k=1\) and \((dy,y]\)
+in Lemma~\ref{lem:distance} gives, for some \(k_1>0\),
+\begin{equation}\label{eq:Us}
+ U_\chi(t)\le e^{-k_1u}\qquad (|t|\le e^{L/H}),
+\end{equation}
+since \((y/H)y^{-\alpha}\sim u/2\).
+
+For \(0<\kappa<1\) fixed put \(T=e^{\kappa u}\), so
+\(2\le T\le e^{L/H}\) for all sufficiently large \(p\).
+Gorodetsky's proof of Lemma 3.5 \cite[(3.10)--(3.16)]{gor} gives
+\begin{equation}\label{eq:perron}
+ S_y(x,\chi)=\frac1{2\pi i}\int_{\alpha-iT}^{\alpha+iT}
+ Z_\chi(s)\frac{x^s}{s}\,ds+
+ O\!\left(\frac{x^\alpha Z}{T}
+       +\frac{\Psi(x,y)\log T}{T^\alpha}+1\right).
+\end{equation}
+Indeed the error in truncated Perron is majorized, up to an absolute
+constant, by
+\[
+ x^\alpha\sum_{P^+(n)\le y}
+ \frac{|\chi(n)|}{n^\alpha(1+T|\log(x/n)|)}.
+\]
+Dropping \(|\chi(n)|\le1\) gives exactly the positive sum bounded in
+the proof of that lemma. The \(O(1)\) also allows the full weight at
+an integer endpoint. The lemma is unconditional and requires
+\(x\ge y\ge C,\ T\ge2,\ 0<\alpha\le1\), which hold uniformly here by
+\eqref{eq:saddle}. By \eqref{eq:Us} the integral in \eqref{eq:perron}
+is \(O(x^\alpha Z e^{-k_1u}\log(2T))\). On dividing by \(\Psi(x,y)\),
+\eqref{eq:psi} therefore bounds the absolute ratio by
+\[
+ \ll_{a,\eta}\sqrt{XH}\bigl(e^{-k_1u}\log(2T)+T^{-1}\bigr)
+       +T^{-\alpha}\log T+\Psi(x,y)^{-1}.
+\]
+Here \(\alpha\to1/2\), \(\log\Psi(x,y)\sim X/2\), and
+\(\log L=o(u)\) uniformly since \(u\ge aL/H\). Each term is thus
+\(O_{a,\eta}(e^{-b_1u})\) for some \(b_1>0\), also at \(x=p^a,p\).
+This proves the smooth-sum estimate.
+
+\section{The ordinary character sum}
+\begin{proposition}\label{prop:ordinary}
+Fix \(0<a<1\) and \(\eta>2/e^2\). For every sufficiently large prime
+\(p\), every nonprincipal \(\chi\bmod p\) satisfying \(\mathrm{RH}(\chi)\),
+and \(p^a\le x\le p\), one has
+\[
+ |S(x,\chi)|\ll_{a,\eta}\Psi(x,y)e^{-b_2u},
+ \qquad y=\eta(\log p)^2,\quad u=\log x/\log y ,
+\]
+with \(b_2=b_2(a,\eta)>0\) and the threshold for \(p\) depending only
+on \(a,\eta\).
+\end{proposition}
+\emph{Proof.}
+Let \(J=\log L\), \(V=\sqrt{x}\log x\), and
+\(\sigma=1/2+\lambda/(2J)\) with \(\lambda\) in a fixed compact
+subinterval of \((0,\infty)\). For \(|t|\le V\) the degree-one analytic
+conductor \(Q(t)=p(3+|it+\mu|)\), \(\mu\in\{0,1\}\), satisfies
+\[
+ L\le\log Q(t)\le (1+\theta/2)L+O(J),\qquad
+ \log\log Q(t)=J+O(1).
+\]
+Chirre's Theorem 1(i) under \(\mathrm{RH}(\chi)\) gives
+\begin{equation}\label{eq:chirre}
+ \log|L(\sigma+it,\chi)|
+ \le\frac{(1+\theta/2)L}{2J}\log(1+e^{-\lambda})+O(L/J^2).
+\end{equation}
+Indeed his first term is
+\(\log Q(t)\log(1+(\log Q(t))^{1-2\sigma})/(2\log\log Q(t))\).
+His term involving \((2\sigma-1)/(\sigma(1-\sigma))\) and his upper
+error are \(O(L/J^2)\) uniformly on the chosen compact interval.
+The hypothesis \((1-\sigma)^2\log\log Q(t)\ge1\) holds for large \(p\)
+\cite[Theorem 1(i)]{chirre}.
+
+Average \(S(xe^{hW},\chi)\) over a standard normal \(W\), with
+\(h=x^{-1/2}\). Its distance from \(S(x,\chi)\) is
+\(O(1+x\,\mathbb E|e^{hW}-1|)=O(\sqrt x)\).
+Averaging Perron's kernel on \(\re s=2\) inserts \(e^{s^2/(2x)}\).
+Shift the integral to \(\re s=\sigma\). Partial summation from the
+periodic bound \(|S(z,\chi)|\le p\) gives
+\(|L(s,\chi)/s|\le p/\re s\) throughout this strip, justifying the
+shift. The two tails \(|t|>V\) on the new line cost
+\[
+ \ll p x^\sigma \frac{x}{V}e^{-V^2/(2x)}
+ \ll_{a,A}x^{-A}\qquad(A>0)
+\]
+since \(V^2/x=(\log x)^2\) and \(p\le x^{1/a}\). On \([-V,V]\) the
+absolute kernel after removing \(x^\sigma\) has integral \(O(\log(2V))\).
+Using \eqref{eq:chirre} and \(H=2J+\log\eta\), we obtain
+\[
+ |S(x,\chi)|\ll\sqrt x+
+ \sqrt x\exp\!\left\{\left(
+ \lambda+(1/\theta+1/2)\log(1+e^{-\lambda})+o(1)\right)u\right\}.
+\]
+
+Take \(\lambda=\log(1/\theta)+s_0\) for a fixed \(s_0>0\).
+Then the exponent coefficient is at most
+\(\log(1/\theta)+s_0+g(\theta)+o(1)\), where
+\(g(\theta)=(1/\theta+1/2)\log(1+\theta)\).
+This function attains its maximum on \([a,1]\) at \(1\). In fact
+\[
+ \theta^2 g'(\theta)=\frac{w-w^{-1}}2-\log w,\qquad w=1+\theta .
+\]
+The right side vanishes at \(w=1\) and has derivative
+\((w-1)^2/(2w^2)\ge0\). Hence \(g(\theta)\le(3/2)\log2\).
+By \eqref{eq:psi} the margin in the exponent is at least
+\[
+ 1+\log(2\sqrt\eta)-\tfrac32\log2-s_0+o_{a,\eta,s_0}(1).
+\]
+For \(\eta>2/e^2\) choose \(0<s_0<
+(1+\log(2\sqrt\eta)-\tfrac32\log2)/2\).
+Now \(\lambda\in[s_0,\log(1/a)+s_0]\) and the saving is uniform.
+The \(O(\sqrt x)\) error is absorbed by the same margin. \hfill\(\square\)
+
+Since \(2/e^2<0.7596<\cstar\), Proposition~\ref{prop:ordinary} and
+the smooth-sum estimate give Theorem~\ref{th:main} with
+\(b=\min(b_1,b_2)\). The smooth sum still requires \(\eta>\cstar\)
+in Lemma~\ref{lem:distance}, leaving the growth-rate question for the
+least quadratic nonresidue open.
+
+\small
+\begin{thebibliography}{99}
+\raggedright
+\setlength{\itemsep}{2pt}
+\setlength{\parskip}{0pt}
+\bibitem{ccm} E.~Carneiro, V.~Chandee and M.~B.~Milinovich,
+\emph{A note on the zeros of zeta and \(L\)-functions}.
+\href{https://arxiv.org/pdf/1503.00955}{arXiv:1503.00955}.
+\bibitem{cmqr} E.~Carneiro, M.~B.~Milinovich, E.~Quesada-Herrera and
+A.~P.~Ramos, \emph{Fourier optimization, the least quadratic non-residue,
+and the least prime in an arithmetic progression}.
+\href{https://arxiv.org/pdf/2404.08380v2}{arXiv:2404.08380v2}.
+\bibitem{chirre} A.~Chirre, \emph{A note on entire \(L\)-functions}.
+\href{https://arxiv.org/pdf/1805.01119}{arXiv:1805.01119}.
+\bibitem{cgpt} E.~Croot, A.~Granville, R.~Pemantle and P.~Tetali,
+\emph{Running time predictions for factoring algorithms}, ANTS VIII
+(2008). \href{https://www2.math.upenn.edu/~pemantle/papers/square-algorithms.pdf}{Authors' version}.
+\bibitem{dzz} Z.~Dong, S.~Zhao and G.-L.~Zhou,
+\emph{Smooth approximations to character sums and zeta sums}.
+\href{https://arxiv.org/pdf/2611.11389v1}{arXiv:2611.11389v1}.
+\bibitem{gor} O.~Gorodetsky, \emph{Smooth integers and de Bruijn's
+approximation \(\Lambda\)}, Proc.\ Roy.\ Soc.\ Edinburgh Sect.~A
+\textbf{155} (2025), 792--820.
+\href{https://doi.org/10.1017/prm.2023.115}{doi:10.1017/prm.2023.115}.
+\bibitem{gs} A.~Granville and K.~Soundararajan, \emph{Large character
+sums}, J.~Amer.\ Math.\ Soc.\ \textbf{14} (2001), 365--397.
+\href{https://dms.umontreal.ca/~andrew/PDF/ChiSums.pdf}{Authors' version}.
+\bibitem{harper} A.~J.~Harper, \emph{Bombieri--Vinogradov and
+Barban--Davenport--Halberstam type theorems for smooth numbers}.
+\href{https://arxiv.org/pdf/1208.5992}{arXiv:1208.5992}.
+\bibitem{ht} A.~Hildebrand and G.~Tenenbaum, \emph{Integers without
+large prime factors}, J.~Th\'eor.\ Nombres Bordeaux \textbf{5} (1993),
+411--484. \href{https://doi.org/10.5802/jtnb.101}{doi:10.5802/jtnb.101}.
+\bibitem{ls} J.~C.~Lagarias and K.~Soundararajan, \emph{Counting smooth
+solutions to the equation \(A+B=C\)}, Proc.\ London Math.\ Soc.\ (3)
+\textbf{104} (2012), 770--798.
+\href{https://arxiv.org/pdf/1102.4911v2}{arXiv:1102.4911v2}.
+\bibitem{sound} K.~Soundararajan, \emph{The distribution of smooth
+numbers in arithmetic progressions}.
+\href{https://arxiv.org/pdf/0707.0299}{arXiv:0707.0299}.
+\end{thebibliography}
+\end{document}

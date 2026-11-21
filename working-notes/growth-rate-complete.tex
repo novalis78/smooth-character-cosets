@@ -1,0 +1,306 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=.86in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\hypersetup{hidelinks,pdftitle={The complete zero sum at the quadratic nonresidue scale}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\e}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\ind}{\mathbf1}
+\newtheorem{proposition}{Proposition}
+\title{The complete zero sum at the quadratic nonresidue scale}
+\author{Research notes}
+\date{}
+\begin{document}
+\maketitle
+Assume Dirichlet GRH, including RH for $\zeta$. Let $p$ be an odd prime,
+$\chi=(\cdot/p)$, $L=\log p$, $y=cL^2$ and $U=\sqrt L$, with $c>0$
+fixed. The goal is $n_p=o(L^2)$. Ordinates of the nontrivial zeros
+of $L(s,\chi)$ are counted with multiplicity. Use the two statistics
+\begin{align*}
+ F^+(y,U)&=\int_{\R}\left|\sum_{0\le\gamma\le U}
+               \e^{\ii(\log y+v)\gamma}\right|^2\e^{-2|v|}\dd v,\\
+ Z(t)&=\sum_{\gamma}\frac{2y^{\ii\gamma}}{1+(t-\gamma)^2},\qquad
+ Q_p(c)=\frac{1}{\pi y}\int_0^U|Z(t)|^2\dd t .
+\end{align*}
+These normalizations differ. We prove $F^+(y,U)\ll_c L^2$ and the
+exceptional lower coefficient $1/12$ for $F^+/y$. For the complete
+statistic, $Q_p(c)\le 4/3+o_c(1)$ for every prime. On an exceptional
+sequence the portion of its norm forced by the primes below $y$ is
+$1/3+o_c(1)$. The cross term with the unknown tail tends to zero.
+
+\section{The negative-shift test for the sharp pair sum}
+In this paragraph only, $U=U(p)$ can be any height tending to infinity.
+Let $g$ be real and smooth with compact support in $(-\infty,0)$ and
+put $\Phi(t)=\int g(v)\e^{\ii tv}\dd v$. The explicit formula for
+a primitive real character \cite[Section 3]{cmqr} gives, if $n_p>y$,
+\[
+ \frac{1}{\sqrt y}\sum_\gamma y^{\ii\gamma}\Phi(\gamma)
+ =-\frac{1}{\sqrt y}\sum_n \frac{\Lambda(n)}{\sqrt n}
+                 g(\log(n/y))+o_g(1)
+ \longrightarrow-\int_{-\infty}^0 g(v)\e^{v/2}\dd v .
+\]
+The conductor and reflected prime terms vanish for large $p$, the
+gamma integral is $O_g(1)$ before normalization, and the prime number
+theorem gives the limit. The tail past $|\gamma|>U$ before normalization
+is $O_{g,N}((L+\log(2+U))(1+U)^{-N})$ by the unit-interval zero count.
+The central multiplicity is $O(L/\log L)$ by (3.3)--(3.4) of \cite{cmqr},
+using the limit of the half-weight count at zero. Adding the positive
+sum to its conjugate counts those central entries twice, an $o_c(\sqrt y)$
+correction. Weighted Cauchy--Schwarz now gives
+\[
+ \liminf_{\rm exc}\frac{F^+(y,U)}y\ \ge\
+ \frac14\sup_{g\ne0}
+ \frac{|\int g(v)\e^{v/2}\dd v|^2}{\int |g(v)|^2\e^{2|v|}\dd v}
+ =\frac14\int_{-\infty}^0\e^{3v}\dd v=\frac1{12}.
+ \tag{1}
+\]
+The supremum follows by smooth compact approximation of
+$\e^{5v/2}\ind_{v<0}$ in the denominator norm. Hence a uniform upper
+coefficient $0.08$ for $F^+/y$ at each fixed dyadic $c$ would suffice.
+
+\section{Grouping the prime powers at the chosen height}
+For $n\ge2$ put $s_n=\log(n/y)$ and
+\[
+ b_n=\begin{cases}\Lambda(n)\sqrt n/y,&n\le y,\\
+                    \Lambda(n)y/n^{3/2},&n>y.\end{cases}
+ \qquad
+ \mu_\chi=y^{-1/2}\sum_n b_n\chi(n)\delta_{s_n}.
+\]
+Write $\mu_1$ for the all-positive comparison, and use the angular
+Fourier transform $\widehat\mu(t)=\int\e^{-\ii ts}\dd\mu(s)$.
+Then $-\sqrt y\,\widehat\mu_\chi(t)$ is the prime term in (28) of
+Kandhil, Languasco and Moree \cite{klm}. Its series converges absolutely.
+Their identities (14)--(16), (24)--(25) bound the norm of the remaining
+terms on $[0,U]$ by
+$O(\sqrt U(L+\log(2+U))/y+1)$. Any half-weight convention at $n=y$
+costs $O(\sqrt U\log(2y)/\sqrt y)$ in the same norm. Both errors
+are $o_c(\sqrt y)$. The identities are valid here without a
+pair-correlation hypothesis; the asymptotic theorem in \cite{klm}
+with $T\ge x$ is not used.
+
+Here is a logarithmic grouping argument that retains the leading
+coefficient. Use a sliding interval
+$k_h(s)=h^{-1}\ind_{[-h/2,h/2]}(s)$. With
+$\operatorname{sinc}(t)=\sin(t)/t$, its Fourier multiplier is
+$\operatorname{sinc}(th/2)$. The limiting unsigned density in
+logarithmic position is
+\[
+ f(s)=\begin{cases}\e^{3s/2},&s\le0,\\ \e^{-s/2},&s>0.\end{cases}
+ \qquad \|f\|_2^2=1/3+1=4/3 .
+\]
+For either $h=1/U$ or $h=1/(U\log y)$ one has
+\[
+ \|\mu_1*k_h-f\|_2=o_c(1),\qquad
+ |\mu_\chi*k_h|\le \mu_1*k_h .
+ \tag{2}
+\]
+To check the first claim, put $x=y\e^s$. For $x\ge y^{3/4}$ the
+window is $[x\e^{-h/2},x\e^{h/2}]$. The estimate
+$\psi(x)=x+O(\sqrt x\log^2(2x))$ gives mass $hx$ with relative error
+$O(h+\log^2(2x)/(h\sqrt x))=o_c(1)$ uniformly in this range.
+The factor $b_n/\Lambda(n)$ on this window varies relatively by
+$O(h)$, including across $y$. Hence the density is $f(s)(1+o_c(1))$.
+For the remaining $s$, the total normalized mass of indices that can
+occur is $O(y^{-3/8})$ by Chebyshev. Young's inequality bounds their
+smoothed $L^2$ norm by $O(y^{-3/8}h^{-1/2})=o(1)$, and $f$ has
+vanishing $L^2$ norm there as well. The same proof applies to the
+unsigned measure restricted to $s_n\le d$ or $s_n>d$, for any fixed
+$d$. The boundary strip of width $h$ has vanishing squared norm.
+
+With $h=1/U$, the multiplier is bounded away from zero for $|t|\le U$.
+Plancherel and (2) therefore give $\int_0^U|\widehat\mu_\chi|^2=O_c(1)$.
+This proves the stated order bound for the complete sum using precisely
+windows of width $1/U$. For the coefficient choose $h=1/(U\log y)$, so
+$Uh=o_c(1)$. The multiplier is then $1+o_c(1)$ throughout the band.
+All the measures are real, so the two half-bands have equal energy.
+If $\Pi_U$ denotes orthogonal Fourier projection onto $[-U,U]$, then
+\[
+ Q_p(c)=\|\Pi_U(\mu_\chi*k_h)\|_2^2+o_c(1)
+ \ \le\ 4/3+o_c(1).
+ \tag{3}
+\]
+The $o_c(1)$ is uniform in the prime. Applying the multiplier and
+projection calculation to $\mu_1$ gives
+$\pi^{-1}\int_0^U|\widehat\mu_1|^2\dd t\to4/3$ by (2).
+This comparison uses only the prime coefficients.
+
+\paragraph{The endpoints for the sharp statistic.}
+Let $Z_I$ denote the sum defining $Z$ restricted to $\gamma\in I=[0,U]$.
+The elementary convolution of the two Cauchy kernels gives
+$\|Z_I\|_{L^2(\R)}^2=2\pi F^+(y,U)$. The unit-interval zero count gives
+\[
+ \|Z_I-\ind_I Z\|_{L^2(\R)}\ll L+\log(2+U).
+ \tag{4}
+\]
+Inside $I$, bound the two omitted tails in absolute value by a constant
+times $(L+\log(2+U))((1+t)^{-1}+(1+U-t)^{-1})$. For instance a
+tail at distance $d$ is bounded by summing
+$(L+\log(2+U+j))/(1+(d+j)^2)$ over integers $j\ge0$; on $I$ one
+has $d\le U$. Outside $I$ the included ordinates contribute at most
+$O((L+\log(2+U))/(1+\operatorname{dist}(t,I)))$. All these profiles
+have bounded squared integrals. The triangle inequality at the norm
+level followed by (3) gives $F^+(y,\sqrt L)\ll(\sqrt y+L+\log(2+U))^2
+\ll_c L^2$. The endpoint error in (4) is not used in (3) or below.
+
+\section{Separating the determined and undetermined signs}
+Allow a fixed $A\ge1$ and suppose $n_p>Ay$. Split the measure
+$\mu_\chi=\mu_<+\mu_>$ at $s=d=\log A$, assigning the boundary to
+the lower part. Let
+\[
+ B_{\chi,A}=\frac1\pi\int_0^U|\widehat{\mu_>}(t)|^2\dd t .
+\]
+On any such exceptional sequence,
+\[
+ \boxed{\quad Q_p(c)=\frac43-\frac1A+B_{\chi,A}+o_{c,A}(1),
+ \qquad 0\le B_{\chi,A}\le\frac1A+o_{c,A}(1).\quad}
+ \tag{5}
+\]
+Indeed $\mu_<$ is unsigned, so $\Pi_U(\mu_<*k_h)\to
+f\ind_{s\le d}$ strongly in $L^2$ by (2) and $U\to\infty$. The tail
+$\mu_>*k_h$ has bounded norm, is supported in $[d-h/2,\infty)$,
+and is dominated by the unsigned smoothed tail. Its inner product
+with $f\ind_{s\le d}$ tends to zero. Self-adjointness and idempotence
+of $\Pi_U$ thus make the real cross term of the two band-limited
+parts $o_{c,A}(1)$. The upper tail norm squared is at most
+$\int_d^\infty f^2+o(1)=1/A+o(1)$.
+The lower norm squared tends to $\int_{-\infty}^d f^2=4/3-1/A$.
+This proves (5) directly for the complete statistic in (16) of \cite{klm}.
+In particular $A=1$ forces $\liminf_{\rm exc}Q_p(c)\ge1/3$.
+For the raw integral the lower coefficient is $\pi/3$ times $y$.
+
+\paragraph{The signed sum being bounded.}
+Let $D_U(s)=\sin(Us)/s$ with $D_U(0)=U$. The exact prime-side energy is
+\[
+ \frac{1}{\pi y}\sum_{m,n} b_m b_n\chi(mn)D_U(\log(m/n)).
+ \tag{6}
+\]
+This is the square in (3) before grouping and up to its $o_c(1)$
+zero-formula error. The ordering is over every pair. Relative to
+the all-positive comparison a pair of nonzero signs changes its
+contribution precisely when one is negative and the other positive.
+Under $n_p>y$ a negative prime-power sign requires an odd power of
+a nonresidue prime exceeding $y$. Two such negative signs multiply
+to $+1$. Terms with an index divisible by $p$ have zero sign.
+Ramified prime powers have negligible mass, as does the prime $p$
+itself since $p>y$. More generally, all proper prime powers together
+have $\sum b_n=O(1)$, by the bound
+$\sum_{\ell^k\le X,\,k\ge2}\log\ell=O(\sqrt X)$ and dyadic summation
+above $y$. Dropping them changes the normalized band norm by
+$O(\sqrt{U/y})=o(1)$. This justifies the prime-only sums that follow.
+
+For the full range, let $S$ be the sum of $b_m b_nD_U(\log(m/n))$
+over primes $m,n$ with $\chi(m)=+1$ and $\chi(n)=-1$, each opposite
+pair in this order only. Then (3) and (6) give
+\[
+ Q_p(c)=\frac43-\frac{4S}{\pi y}+o_c(1).
+ \tag{7}
+\]
+The factor four includes the sign flip and the reversed ordered pair.
+A uniform upper coefficient $1/3-\epsilon_c$ therefore asks for
+$4S/(\pi y)\ge1+\epsilon_c+o_c(1)$. The kernel in this sum changes
+sign. On an exceptional sequence the part with $m\le y<n$ is $o_c(y)$:
+the negative-prime measure above $y$ is half the difference of the
+unsigned and signed tails, up to the negligible prime powers and
+ramification, and the orthogonality argument proving (5) applies to both.
+Writing $S_{>>}$ for the remaining sum with both primes above $y$, we have
+\[
+ \frac{4S_{>>}}{\pi y}=1-B_{\chi,1}+o_c(1),
+ \qquad -o_c(1)\ \le\frac{4S_{>>}}{\pi y}\le1+o_c(1).
+ \tag{8}
+\]
+Indeed the all-positive tail energy tends to $1$. Its difference
+from $B_{\chi,1}$ changes exactly the opposite pairs in that tail.
+Thus even complete cancellation of the high-prime energy leaves
+the low-prime contribution $1/3$.
+
+Both ends of the tail energy range are possible if only the magnitude
+of each prime sign is used. All positive signs above $y$ give the
+upper end. Independently assigned fair prime signs give expected
+tail energy $U\sum_{\ell>y} b_\ell^2/(\pi y)\ll U\log y/y=o(1)$,
+by Chebyshev on dyadic intervals. Proper powers cost $o(1)$ in norm
+under any completely multiplicative extension. These examples test
+the estimates; their signs are not asserted to come from primes $p$
+of the required size.
+
+\section{A smaller saving would suffice across the dyadic scales}
+Suppose there is a fixed $\eta>0$ and infinitely many $p$ with
+$n_p>\eta L^2$. For every fixed dyadic $c\le\eta$, apply (5) to the
+same primes with $A=\eta/c$. Then
+\[
+ \liminf_{\rm exc} Q_p(c)\ \ge\ \frac43-\frac c\eta.
+ \tag{9}
+\]
+Hence it suffices to prove, at each of a sequence of dyadic $c$ tending
+to zero, an all-prime upper coefficient $4/3-\delta(c)$ with
+$\delta(c)/c$ unbounded along that sequence. Even a fixed positive
+gap along arbitrarily small dyadic scales would suffice. Each
+limit in $p$ is taken first, so this uses no uniform error in $c$.
+
+There is also a version with nonnegative pair weights. With the fine
+width $h=1/(U\log y)$ put $J_h(s)=h^{-1}(1-|s|/h)_+$. The unsigned
+smoothed density has squared norm $4/3+o_c(1)$. Subtracting the
+squared norm of the signed smoothed density and using $k_h*k_h=J_h$
+gives, by (3),
+\[
+ Q_p(c)\le\frac43-
+  \frac4y\sum_{\substack{m,n\ {\rm primes}\\\chi(m)=1,\ \chi(n)=-1}}
+       b_m b_n J_h(\log(m/n))+o_c(1).
+ \tag{10}
+\]
+For this full-frequency density calculation, discarding proper powers
+costs $O((hy)^{-1/2})$ in norm by Young's inequality. The prime $p$
+also gives $o(1)$. Thus a weighted supply of nearby opposite-sign
+primes could give the saving in (9).
+
+\paragraph{How much mixing can GRH actually force this way?}
+There is a positive contribution to (10) that can be proved for
+the individual character. Fix a smooth $0\le g\le1$, nonzero and
+supported in $(-1/2,1/2)$. The explicit formula gives, for $x>2$
+and the above shrinking $h$,
+\[
+ \left|\sum_n\frac{\Lambda(n)\chi(n)}{\sqrt n}
+              g\!\left(\frac{\log(n/x)}{h}\right)\right|
+ \ll_g L+\log(2+1/h).
+ \tag{11}
+\]
+In fact the zero test has absolute value
+$O_g(h(1+h|\gamma|)^{-2})$, which sums to the right side by the
+unit-interval count. The gamma integral is $O_g(\log(2+1/h))$;
+the conductor and reflected prime terms vanish by support. The
+unsigned prime sum with the same weights is
+$h\sqrt x\int g(u)\e^{hu/2}\dd u+O_g(\log^2(2x))$ by RH and
+partial summation. Proper powers remove $O_g(1)$ for $x$ in a
+dyadic range. Take $X=D_g L^2/h^2$ with $D_g$ sufficiently large.
+Uniformly for $X\le x\le2X$ the positive and negative primes each
+contribute $\gg_g h\sqrt x$ in these weights, since
+$\log^2(2X)=o(L)$ and $2X\e^h<p$ for large $p$.
+
+Let $\mu_+,\mu_-$ be the normalized positive measures of the primes
+of the respective signs, using $b_n/\sqrt y$ for both. For $x=y\e^s$
+in that range the last estimates imply
+$(\mu_\pm*k_h)(s)\gg_g\sqrt{y/x}$ since $b_n=y\Lambda(n)/n^{3/2}$
+there. The whole subtraction in (10) is
+$4\int(\mu_+*k_h)(\mu_-*k_h)\dd s$. Its portion on this dyadic
+range is therefore $\gg_g y/X$; the unsigned prime estimate bounds
+that same portion by $O_g(y/X)$. In particular it is of order
+$c h^2=c/(U^2\log^2 y)$, which vanishes as $p$ grows at fixed $c$.
+The factor $\log y$ in the fine width can be replaced throughout by
+any more slowly diverging positive factor. The resulting contribution
+from this range still vanishes.
+This proves actual opposite signs on the log intervals, but at
+scales carrying too little energy to yield the required coefficient.
+Equations (8)--(11) give no fixed positive gap of the size in (9).
+The bound for $n_p$ remains unchanged.
+
+\begin{thebibliography}{9}
+\bibitem{cmqr} E.~Carneiro, M.~Milinovich, E.~Quesada-Herrera and
+A.~Ramos, \emph{Fourier optimization, the least quadratic non-residue,
+and the least prime in an arithmetic progression},
+\href{https://arxiv.org/html/2404.08380v2#S3}{Section 3}.
+\bibitem{klm} N.~Kandhil, A.~Languasco and P.~Moree,
+\emph{Beyond the Riemann Hypothesis bounds: A pair-correlation approach
+to the least prime in arithmetic progression and the smallest quadratic
+non-residue}, \href{https://arxiv.org/html/2607.14515v1#S3}{Sections 2--3}.
+\end{thebibliography}
+\end{document}

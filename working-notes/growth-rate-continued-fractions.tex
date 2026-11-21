@@ -1,0 +1,235 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.42em}
+\setlength{\emergencystretch}{2em}
+\newcommand{\ch}{\chi_p}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\F}{\mathbf F_2}
+\newcommand{\mollin}{\href{https://www.maths.tcd.ie/EMIS/journals/AMUC/_vol-74/_no_2/_mollin/mollinrea.pdf}{Mollin, \emph{Norm form equations and continued fractions}, (3), (7)--(10)}}
+\newcommand{\lls}{\href{https://arxiv.org/pdf/1309.3595}{Lamzouri--Li--Soundararajan, Corollary 1.1}}
+\begin{document}
+{\Large\bfseries Finding a quadratic nonresidue in a continued-fraction period}\\[3pt]
+{\large Individual-prime bounds for \(p\equiv23\pmod{24}\)}
+
+Let \(n_p\) be the least quadratic nonresidue modulo \(p\), \(\ch=(\cdot/p)\),
+\(B=\eta(\log p)^2\) with fixed \(\eta>0\), and \(1\le m\le M\ll_\eta(\log\log p)^2\).
+We take \(p\) large enough that \(2\sqrt{Mp}<p\) and \(M<B\). Every calculation
+of periods below keeps \(p\) fixed. Only the choice of a local multiplier and the
+endpoint comparison use Dirichlet GRH.
+
+\section*{1. What occurs in every period}
+Write \(D=mp\), let \(a_i/b_i\) be the convergents to \(\sqrt D\) starting at
+\(i=0\), and let \(Q_k\) be the positive denominator of the \(k\)th complete
+quotient \((P_k+\sqrt D)/Q_k\). For \(1\le k\le\ell_m\), a full period gives
+\begin{equation}
+ a_{k-1}^2-Db_{k-1}^2=(-1)^k Q_k,\qquad
+ 0<Q_k<2\sqrt D,\qquad Q_{\ell_m}=1.
+\end{equation}
+The size bound follows from \(P_k<\sqrt D\) and the complete quotient being
+greater than one. Reduction modulo \(p\) gives
+\(\ch(Q_k)=(-1)^k\), since \(Q_k<p\) and \(\ch(-1)=-1\). Thus \(\ell_m\)
+is even. Each of its \(\ell_m/2\) odd indices has a nonresidue prime factor
+to odd exponent. Two is a residue. If any prime divisor of \(m\) is already a
+nonresidue, then \(n_p\le M\). For the period witness we can restrict to
+multipliers whose prime divisors are all residues, including \(1,2\).
+For each such multiplier every negative prime factor above is coprime to \(2mp\).
+\mollin.
+
+There is one uniformly small norm in the middle. For \(h=\ell_m/2\),
+the symmetry \(P_h=P_{h+1}\) gives \(Q_h\mid2P_h\), and
+\(Q_h\mid D-P_h^2\). Hence \(Q_h\mid2D\). As \(Q_h<p\), in fact \(Q_h\mid2m\).
+This norm contains only ramified or excluded primes. If all primes dividing
+\(m\) are residues, \(\ch(Q_h)=1\) and \(4\mid\ell_m\).
+In particular an exceptional prime forces this divisibility for \emph{every}
+multiplier in the stated range. \mollin.
+
+For an odd \(q\nmid mp\) dividing \(Q_k\), primitivity of the convergent
+gives \(q\nmid b_{k-1}\), hence \((mp/q)=1\). Reciprocity gives
+\begin{equation}
+ \ch(q)=(-1/q)(p/q)=(-m/q).
+\end{equation}
+If two multipliers have a common unramified factor \(q\) in their norms, their
+predictions agree because \((m_1m_2/q)=1\). Repeated occurrences can still
+cancel \(q\) from a product of norms.
+
+Given a prime \(q\le B\) \emph{already satisfying} \(\ch(q)=-1\), choose
+\(m=1\) for \(q\equiv3\pmod4\), or \(m=2\) for \(q\equiv5\pmod8\). For
+\(q\equiv1\pmod8\), take \(m=2r\) where \(r\) is the least nonresidue mod \(q\).
+It is an odd prime and \(r<(\log q)^2\) on GRH. In every case
+\((-m/q)=-1\) and \((mp/q)=1\). Taking \(M\ge\max(2,2(\log B)^2)\)
+suffices and has the proposed order. The construction starts with \(q\).
+Its conclusion is splitting in the auxiliary real quadratic field. \lls.
+
+\newpage
+\section*{2. A lower bound that can be evaluated without a candidate}
+Choose a nonempty set of multipliers as in section 1 for which every prime
+dividing \(m\) is a residue. Take one row \(i=(m,k)\) per period entry
+and set \(Q_i=Q_k(mp)\), \(e_i=k\bmod2\). Form the binary matrix
+\[
+ V_{i,q}=v_q(Q_i)\bmod2 \qquad(q>B\text{ prime dividing some }Q_i).
+\]
+Let \(W_p(B)\) count distinct primes \(q\le B\) certified by (2) in these
+periods, including factors of even multiplicity. Then
+\begin{equation}
+ W_p(B)\ \ge\
+ \operatorname{rank}_{\F}[V\mid e]-\operatorname{rank}_{\F}V .
+\end{equation}
+This uses only the large factors and the parity of each row index. If the
+rank increases, there is a vector \(u\) with \(u^tV=0\) and \(u^te=1\).
+The product \(\prod_{u_i=1}Q_i\) has negative character and all prime factors
+above \(B\) occur to even exponent. At least one prime \(q\le B\) of odd
+exponent in this product has negative character. It divides a selected row
+and is coprime to its \(2mp\). Conversely, these two equations are necessary
+for a certificate obtained by making the entire large part square and using
+the index parities. If the rank increases and there are \(s\) rows, the
+number of such subsets is \(2^{s-\operatorname{rank}V-1}\). They can all
+certify the same prime. Combining congruences with binary exponent vectors
+is classical in continued-fraction factoring.
+\href{https://math.dartmouth.edu/~carlp/PDF/paper52.pdf}{Pomerance, \emph{The quadratic sieve factoring algorithm}, section 2}.
+
+Let \(\operatorname{sf}(n)\) be the product of primes occurring to odd
+exponent in \(n\), and \(P^+(n)\) its largest prime factor. Then
+\begin{equation}
+ n_p\ \le\ \min_{\substack{u\in\F^s\\ u^te=1}}
+       P^+\!\left(\operatorname{sf}\left(\prod_{u_i=1}Q_i\right)\right).
+\end{equation}
+The argument of \(P^+\) exceeds one by its character. The right side is the
+smallest cutoff giving a rank increase in (3). A long period supplies many
+rows. Even if the nullspace of \(V^t\) is large, \(e\) can be orthogonal to
+all of it. In fact exceptionality supplies the explicit column relation
+\begin{equation}
+ n_p>B\quad\Longrightarrow\quad
+ e=\sum_{\substack{q>B\\ \ch(q)=-1}} V_{\cdot,q}\quad\text{in }\F^s .
+\end{equation}
+Here the sum only needs the primes indexing \(V\). Thus using the number
+of relations alone drops exactly the parity information needed to exclude
+an exceptional prime. A sufficient unproved estimate is a rank increase of
+one at \(B=\eta(\log p)^2\) for every sufficiently large \(p\) on the
+progression, for each fixed \(\eta>0\). For a single odd row (1) only
+puts a factor below \(2\sqrt{mp}\).
+
+At \(p=1{,}478{,}231\), the two periods give
+\[
+ Q_{15}(p)=235=5\cdot47,\qquad Q_{50}(2p)=1363=29\cdot47.
+\]
+Their product has character \(-1\) and squarefree part \(145=5\cdot29\).
+Since \(p\equiv1\bmod5\), \(5\) is a residue and \(29\) is a nonresidue.
+At \(B=(\log p)^2/5=40.3641\ldots\), each individual matrix has rank
+difference zero. Stacking them gives rank difference one.
+
+\newpage
+\section*{3. Which split primes reach a convergent?}
+The local choices \(m=1,2,2r\) from section 1 have squarefree \(D\equiv2,3\bmod4\),
+so \(O=\mathbb Z[\sqrt D]\) is the full ring of integers. Take an odd split
+prime \(q\nmid D\), choose one ideal \(\mathfrak q\) over \(q\), and define
+\[
+ b(\mathfrak q)=\min\{N\mathfrak b:\ \mathfrak b\subseteq O
+ \text{ a nonzero integral ideal},\
+ \mathfrak q\mathfrak b\text{ principal and primitive}\}.
+\]
+Primitive means the product is not contained in \(tO\) for any integer \(t>1\).
+Conjugation gives the same minimum for either prime over \(q\). If \(d_q\)
+is the order of \([\mathfrak q]\) in the ordinary class group, \(\mathfrak
+q^{d_q}\) is principal and primitive since it lacks the conjugate ideal
+factor. In particular \(b(\mathfrak q)\le q^{d_q-1}\). The following two
+implications bound the occurrence of \(q\) in this \emph{individual} period.
+\begin{equation}
+ qb(\mathfrak q)<\sqrt D\quad\Longrightarrow\quad
+ q\mid Q_k\text{ for some }k\quad\Longrightarrow\quad
+ qb(\mathfrak q)<2\sqrt D .
+\end{equation}
+For the right implication, the primitive element \(a_{k-1}+b_{k-1}\sqrt D\)
+has absolute norm \(Q_k\); its ideal or its conjugate is divisible by
+\(\mathfrak q\). For the left one let \(\alpha\) generate the minimizing
+product and \(K=|N\alpha|=qb(\mathfrak q)\). Choose its sign so that
+\(\alpha>0\) in the positive embedding. Multiply by increasing powers of a
+positive Pell unit of norm \(+1\), writing the results \(x+y\sqrt D\).
+Primitivity persists, \(x,y>0\) eventually, \(y\to\infty\),
+and \(x/y\to\sqrt D\). Thus for \(K<\sqrt D\),
+\[
+ y^2|x/y-\sqrt D|=\frac{K}{x/y+\sqrt D}<\tfrac12
+ \quad\text{eventually}.
+\]
+Legendre's convergent criterion and periodicity now give \(Q_k=K\)
+in the period. In particular \(q^{d_q}<\sqrt D\) suffices for occurrence.
+For \(q\asymp B\) this last test asks for
+\(d_q<\log D/(2\log q)\sim\log p/(4\log\log p)\). Even a proof of this
+order bound for each chosen split prime would still require the existence
+of a \(q\le B\) with negative sign. Equation (3) avoids that assumption.
+
+A finite failure of the local inference occurs at \(p=5711\),
+\(B=0.26(\log p)^2=19.45\ldots\), \(M=\lfloor(\log\log p)^2\rfloor=4\).
+The least nonresidue is \(19\); of \(1\le m\le4\), precisely \(1,4\) pass
+the local sign test at \(19\). Their complete denominator lists are
+\[
+\begin{split}
+ &(86,65,43,2,43,65,86,1),\\
+ &(43,8,191,109,172,65,235,4,235,65,172,109,191,8,43,1).
+\end{split}
+\]
+Neither contains a multiple of \(19\). There is no period witness at this
+cutoff for these four multipliers. This finite example separates splitting
+from occurrence. The asymptotic question allows any fixed implied multiplier
+constant and a threshold depending on \(\eta\).
+
+\newpage
+\section*{4. Finite checks and the endpoint implication}
+For \(100{,}000\le p\le2{,}000{,}000\), \(p\equiv23\bmod24\), \(n_p\ge23\),
+there are 260 primes. For \(B=(\log p)^2/5\), independent enumeration gives
+the following counts. Each successful test counts a prime \(p\) once.
+\begin{center}
+\begin{tabular}{lr}
+Test & Primes\\ \hline
+Some \(q\le B\) has \(\ch(q)=-1\), by direct modular exponentiation & 241\\
+Some \(q\le B\) certified by (2), \(m=1\) & 198\\
+Some \(q\le B\) certified by (2), \(m=1\) or \(2\) & 241\\
+Rank increase in (3), \(m=1\) & 197\\
+Rank increase in (3), \(m=2\) & 239\\
+Rank increase in at least one of the two separate matrices & 240\\
+Rank increase in the matrix of both periods together & 241
+\end{tabular}
+\end{center}
+The accompanying \texttt{check\_convergent\_periods.py} generates each period
+by the complete-quotient recurrence, checks (1)'s predicted Legendre sign
+for every entry, factors the norms, and performs binary elimination. The
+rank computation receives neither the direct candidate list nor the signs
+of its small prime factors. The unique additional prime obtained by pooling
+the two matrices is \(1{,}478{,}231\). The other 19 primes in the cohort
+have no nonresidue in the tested range by direct evaluation.
+
+\textbf{The endpoint deficit.} For either parity, put \(Y=(\log p)^2\),
+\(E=e^{-\gamma}L(1,\ch)\), and \(A_p=\log Y-E\). The previous endpoint
+note's equation (3) gives, on Dirichlet GRH,
+\[
+ E=\log Y\prod_{\substack{q\le Y\\ \ch(q)=-1}}\frac{q-1}{q+1}+O(1).
+\]
+The analytic comparison holds for both parities, with \(E\) defined by the
+\(L\)-value. All products here run over primes. Set \(n=n_p\); GRH gives
+\(n\le Y\) for \(p\ge5\). Inserting every factor from \(n\) to \(Y\) only
+decreases the product. Since \((q-1)/(q+1)\ge(1-1/q)^2\), Mertens'
+product with the prime number theorem remainder gives
+\[
+ E+O(1)\ \ge\ \log Y\prod_{n\le q\le Y}(1-1/q)^2
+ \ \ge\ \frac{(\log n)^2}{\log Y}-O(1).
+\]
+For the last inequality use \(\prod_{q<t}(1-1/q)^{-1}
+=e^\gamma(\log t+O(1))\), also valid with \(q\le t\).
+The lower endpoint error after squaring is \(O(\log n/\log Y)=O(1)\).
+Taking square roots and the arithmetic--geometric mean inequality gives
+\[
+ \log n_p\le\sqrt{\log Y\,(E+O(1))}
+ \le \tfrac12(\log Y+E)+O(1),\qquad n_p\ll Y e^{-A_p/2}.
+\]
+Thus a growing endpoint deficit would suffice, independently of the period
+test. \lls. See also Lemmas 2.3 and 2.5 there for the short-product input.
+
+\textbf{Consequence for the growth rate.} Equation (4) is unconditional
+on \(23\bmod24\). This pass gives no uniform \(o((\log p)^2)\) bound for
+its right side. The \(7\bmod24\) primes have the explicit witness \(3\).
+The desired result for all primes, including the \(1\bmod8\) branch,
+remains open in this work. The deductions are hand proofs and the interval
+check is an integer computation in Python.
+\end{document}

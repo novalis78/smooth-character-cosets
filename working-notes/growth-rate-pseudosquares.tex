@@ -1,0 +1,264 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=.88in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\setlength{\emergencystretch}{2em}
+\hypersetup{hidelinks,pdftitle={A sign-sensitive count for exceptional primes}}
+\newcommand{\sfk}{\operatorname{sf}}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\e}{\mathrm e}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+\newtheorem{proposition}{Proposition}
+\title{A sign-sensitive count for exceptional primes}
+\author{Research notes}
+\date{}
+\begin{document}
+\maketitle
+Let $n_p$ be the least quadratic nonresidue at an odd prime $p$. Fix
+$c>0$, let $H=\log P$ and $Y=cH^2$, and put
+$E(P,Y)=\#\{P<p\le2P:n_p>Y\}$. Under Dirichlet GRH the bound obtained
+here is $E(P,Y)\ll_c\sqrt P$. We also test a quadratic large sieve
+estimate on a signed sum of characters. These bounds allow a single
+exception in arbitrarily large intervals.
+
+\section{The identity across scales and its sign symmetry}
+Use the complete statistic $Q_p(c)$ of the preceding note, with
+$L=\log p$ and the same height $U=\sqrt L$ at every scale.
+Suppose all prime signs up to $\eta L^2$ are positive, and fix
+$0<c\le\eta$. Above $n>\eta L^2$ the normalized prime-power weight
+at scale $c$ is $\sqrt{cL^2}\,\Lambda(n)\chi_p(n)n^{-3/2}$ and the
+Fourier phase is $(cL^2/n)^{it}$. Thus the whole tail Fourier sum is
+exactly $\sqrt{c/\eta}(c/\eta)^{it}$ times the tail at $\eta$.
+In the notation of (5) of the preceding note, this gives
+$B_{\chi,\eta/c}(c)=(c/\eta)B_{\chi,1}(\eta)$. Substitution yields
+\[
+ \frac{4/3-Q_p(c)}{c}=\frac{4/3-Q_p(\eta)}{\eta}+o_{c,\eta}(1).
+ \tag{1}
+\]
+If all primes up to $\eta L^2$ instead have sign $-1$, the low-prime
+amplitude changes sign, its squared norm has the same limit, and it
+is still asymptotically orthogonal to the tail. Proper powers cost
+$O(\sqrt{U/(cL^2)})=o_c(1)$ in the normalized band norm by the
+prime-power estimate of the preceding note. Hence (1) and
+$Q_p(c)\ge4/3-c/\eta-o_{c,\eta}(1)$ hold in that case as well.
+An eventual all-prime gap $Q_p(c)\le4/3-\delta(c)+o_c(1)$, with
+$\delta(c)/c$ unbounded along dyadic $c\downarrow0$, would therefore
+prove the little-$o$ statements for both $n_p$ and the least prime
+$\ell$ with $(\ell/p)=1$. The count below singles out positive signs.
+
+\section{The exact character expansion}
+For large $P$ we have $2\le Y<P$. The least nonresidue is prime by
+multiplicativity. Write $M=\prod_{\ell\le Y}\ell$, $r=\pi(Y)$, and
+$\Pi=\pi(2P)-\pi(P)$. All products over $\ell$ in this note are over primes.
+Then
+\[
+ E(P,Y)=\sum_{P<p\le2P}\prod_{\ell\le Y}\frac{1+(\ell/p)}2
+ =2^{-r}\left(\Pi+\sum_{\substack{d\mid M\\d>1}}S_d\right),
+ \qquad S_d=\sum_{P<p\le2P}\leg d p .
+ \tag{2}
+\]
+For squarefree $d>1$ the fundamental discriminant $D_d$ is $d$ if
+$d\equiv1\bmod4$, and $4d$ otherwise. At these odd primes the
+symbol in (2) equals the primitive quadratic character of conductor
+$q_d=D_d$ evaluated at $p$. Thus every nonconstant term is a
+nonprincipal Dirichlet character in the prime being counted.
+The principal contribution $\Pi/2^r$ tends to zero faster than any
+fixed negative power of $P$, since $r\sim cH^2/(2\log H)$.
+
+In particular $E(P,Y)=0$ holds exactly when
+\[
+ 2^{-r}\sum_{d\mid M,\,d>1} S_d < 1-\Pi/2^r .
+ \tag{3}
+\]
+An all-positive prime adds $1-2^{-r}$ to the normalized nonprincipal
+sum. This is a one-sided test at the scale of a single prime.
+Eventual vanishing for each $c=2^{-j}$ yields $n_p=o(\log^2 p)$
+by taking $P$ to be successive powers of two and then letting $j$
+increase. Conversely, little-$o$ implies the vanishing since
+$\log(2P)/\log P\to1$.
+
+\paragraph{The two pseudosquare problems.}
+The test at $2$ forces $p\equiv1$ or $7\bmod 8$. For every odd
+$\ell\le Y$ reciprocity gives
+\[
+ \leg{\ell}{p}=\begin{cases}
+ (p/\ell),&p\equiv1\bmod8,\\
+ (-p/\ell),&p\equiv7\bmod8 .
+ \end{cases}
+\]
+The first class consists of positive prime $Y$-pseudosquares. In
+the second, $-p\equiv1\bmod8$ is locally square at the odd primes.
+For the expansion by residue class put $s_1=1$ and $s_7=-1$.
+The contribution of a single class $a=1,7$ is
+\[
+ E_a=2^{1-r}\sum_{d\mid M/2}(s_a/d)
+             \sum_{\substack{P<p\le2P\\p\equiv a\ (8)}}(p/d),
+ \tag{3a}
+\]
+with Jacobi symbols and value one at $d=1$. For example in class 7
+pairing $d$ with $3d$ for $3\nmid d$ produces the factor $1-(p/3)$
+inside the prime sum. This exactly retains primes $p\equiv2\bmod3$
+with weight two. The alternating coefficients encode a local test;
+their signs alone give no additional estimate for its survivors.
+These two sets are precisely the prime solutions of Problems I and II of
+Lehmer, Lehmer and Shanks \cite{lls}. They have separate tables of
+least prime solutions. For example at cutoff $11$ the least positive
+solution is $2641=19\cdot139$, the least positive prime solution is
+$2689$, and the least prime in the negative test has absolute value
+$479$ \cite[Tables 6.23 and 6.25]{lukes}.
+
+Equivalently, let $m(Y)$ be the smaller of the two least prime absolute
+values. The goal is $\log m(Y)/\sqrt Y\to\infty$. Indeed each candidate
+has $p>Y$ and $n_p>Y$, and a counterexample sequence provides candidates
+at $Y=\eta\log^2 p$. Each fixed set of local tests admits prime solutions
+by the Chinese remainder theorem and Dirichlet's theorem.
+For the least positive pseudosquare among all nonsquares,
+Pomerance and Shparlinski report Weinberger's Dirichlet-GRH lower bound
+$\exp(a\sqrt Y)$ with a fixed $a>0$. Their Theorem 1 on distribution
+in intervals of length $N$ assumes $N\ge\exp(3Y/\log\log Y)$.
+Here $N=P=\exp(\sqrt{Y/c})$ is eventually smaller, and that theorem
+concerns positive pseudosquares including composites \cite{ps}.
+
+\section{What termwise GRH gives}
+For a fixed nonnegative smooth weight $w$ supported in $(1/2,3)$,
+equal to one on $[1,2]$, set
+\[
+ S_w(f)=\frac1H\sum_{p\ {\rm prime}}(\log p)w(p/P)(f/p)
+\]
+for positive squarefree $f$. The explicit formula under GRH gives
+\[
+ S_w(1)\asymp_w P/H,\qquad |S_w(f)|\ll_w
+ \frac{\sqrt P}{H}\log(2q_f)\quad (f>1).
+ \tag{4}
+\]
+For completeness, the Mellin transform of $w$ at $1/2+it$ decreases
+as $(1+|t|)^{-2}$ or faster. Each nontrivial zero contributes at most
+$O_w(\sqrt P(1+|t|)^{-2})$ to the von Mangoldt sum. The unit-interval
+zero count gives $O_w(\sqrt P\log(2q_f))$ after summation. The
+gamma and trivial-zero terms obey the same bound, for instance by
+the compact prime-side explicit formula in \cite[Section 3]{cmqr}.
+Removing powers of exponent at least two costs $O_w(\sqrt P)$ by
+Chebyshev's bound; division by $H$ gives (4). The principal estimate
+uses the ordinary prime number theorem.
+
+For the sharp unweighted interval a usual version is
+$S_f\ll\sqrt P(H+\log(2q_f))$ for $f>1$. One can get it by smoothing
+the dyadic indicator on relative width $P^{-1/2}$, including the
+factor $H/\log n$ to remove the prime weight. The two edge errors
+in the von Mangoldt sum are $O(\sqrt P H)$. On the critical line the
+Mellin transform of the smoothed weight is
+$O((1+|t|)^{-1}(1+|t|/\sqrt P)^{-2})$ by integration by parts.
+The zero sum is then $O(\sqrt P H(\log(2q_f)+H))$ before division by
+$H$. Since the mean of $\log d$ over $d\mid M$ is $\tfrac12\log M$,
+(2) becomes
+\[
+ E(P,Y)=\Pi/2^r+O\!\left(\sqrt P(H+Y)\right).
+ \tag{5}
+\]
+For an upper bound only, majorize the count before expanding by the
+smooth prime weight $\log(p)w(p/P)/H$. Every prime in its support
+exceeds $Y$ for large $P$. Equation (4) gives the sharper termwise
+full-product bound
+\[
+ E(P,Y)\ll_w \frac{P}{2^rH}+\frac{\sqrt P(1+Y)}{H}.
+ \tag{6}
+\]
+The error here has order $\sqrt P\log P$ at fixed $c$.
+
+\section{Keeping the signs together}
+Let $X=P^a$ with $a>0$ fixed. Use the $m$ primes in $(Y/2,Y]$;
+$m\sim Y/(2\log Y)$. Take $k=\lfloor\log X/\log Y\rfloor-1$ and
+let $\mathcal D_j$ be the products of $j$ distinct primes in this block,
+$j=k,k+1$. All are odd squarefree and at most $X$. Assign weight
+$a_d=1/(2|\mathcal D_j|)$ on each of the two disjoint levels and
+zero elsewhere. For $A(p)=\sum_d a_d(d/p)$, precisely the property
+needed for a majorant is $A(p)=1$ at every candidate. If the entire
+block has negative signs, the adjacent degrees give $A(p)=0$. For both
+levels, $\log\binom mj=j\log(m/j)+O(j)=(a/2+o_c(1))H$ at fixed $a$,
+so $\sum a_d=1$ and
+\[
+ D_2:=\sum_d a_d^2=P^{-a/2+o_{a,c}(1)}.
+ \tag{7}
+\]
+
+First apply Heath-Brown's quadratic large sieve \cite[Theorem 1]{hb}
+to the signed inner sum as a whole. With $X=P$ it gives
+\[
+ E(P,Y)\le\sum_{m'\le2P}^{*}
+      \left|\sum_{d\le P}^{*}a_d(d/m')\right|^2
+ \ll_\ep P^{1+\ep}D_2 \ll_{\ep,c} P^{1/2+\ep}.
+ \tag{8}
+\]
+The stars restrict both indices to odd squarefree integers; the first
+sum includes each prime that needs to be excluded. This is a joint
+estimate retaining cancellation between the divisor characters, valid
+unconditionally. The loss $P^\ep$ prevents it from improving (6) at
+fixed $\ep$. Its square-root exponent is consistent with the exceptional-set
+estimates discussed in \cite[Introduction]{lw}.
+
+For the sharper conditional estimate take $X=P^3$. Keep the same signed
+amplifier, square it and sum over primes with the majorant $w$ above.
+On this support every prime factor of a coefficient index is $<p$.
+Writing $\sfk(de)=de/\gcd(d,e)^2$ for squarefree $d,e$, this gives
+\[
+ E(P,Y)\ \le\ D_2 S_w(1)+
+    \underbrace{\sum_{d\ne e}a_d a_e S_w(\sfk(de))}_{\mathcal R}.
+ \tag{9}
+\]
+The diagonal is $o(1)$ by (7). For $d\ne e$ the conductor is at most
+$4X^2$. Hence (4) and $\sum a_d=1$ give
+\[
+ |\mathcal R|\ll_w\sqrt P,\qquad E(P,c\log^2 P)\ll_c\sqrt P .
+ \tag{10}
+\]
+This improves the direct smoothed bound (6) by a logarithm. The gain
+comes from lowering the conductors in the majorant; (10) uses no
+extra cancellation in the off-diagonal sum. A bound
+$\mathcal R\le1-\delta_c$ for some $\delta_c>0$ would suffice, since
+the diagonal tends to zero. Equation (8) tests actual joint cancellation
+and does not provide such a bound. One can also choose a nonnegative
+majorant in (9) with extra local tests inserted, but those tests
+must then be accounted for in the conductors.
+
+\paragraph{A limitation of this termwise estimate.}
+Even optimizing the nonnegative weights of such a divisor amplifier
+cannot make its termwise majorant smaller than order $\sqrt P$.
+Indeed, consider any probability weights $a_d$ on squarefree
+divisors of $M$ and the numerical expression
+\[
+ \frac{P}{H}D_2+\frac{\sqrt P}{H}
+   \sum_{d\ne e}a_d a_e\log(2q_{\sfk(de)}).
+ \tag{11}
+\]
+If $D_2\ge H/\sqrt P$, the first term is at least $\sqrt P$. Otherwise
+choose independently $d,e$ with these weights. For fixed $d$ the map
+$e\mapsto\sfk(de)$ is injective, since it toggles membership of each
+prime divisor of $d$. Thus
+\[
+ \Pr(\sfk(de)\le P^{1/4}\mid d)
+ \le \sqrt{P^{1/4}D_2}\le P^{-1/8}\sqrt H .
+\]
+With probability $1-o(1)$ the nonprincipal conductor exceeds $P^{1/4}$,
+so the second term of (11) is at least $(1/4-o(1))\sqrt P$.
+This is a lower bound on the expression used to majorize the signed
+sum, not on the count of primes. The unresolved step is control of
+the signed average at unit scale in (3), or a comparably strong
+one-sided estimate in (9). No bound for the growth of $n_p$ improves here.
+
+\begin{thebibliography}{9}\small
+\bibitem{lls} D.~H.~Lehmer, E.~Lehmer and D.~Shanks,
+\emph{Integer sequences having prescribed quadratic character},
+\href{https://oeis.org/A002189/a002189.pdf}{Problems I and II}.
+\bibitem{lukes} R.~F.~Lukes, \emph{A Very Fast Electronic Number Sieve},
+\href{https://mspace.lib.umanitoba.ca/server/api/core/bitstreams/611cd835-b7d9-4b12-bc2a-aaf3f0576c04/content}{Chapter 6}.
+\bibitem{ps} C.~Pomerance and I.~Shparlinski,
+\emph{On pseudosquares and pseudopowers},
+\href{https://math.dartmouth.edu/~carlp/PDF/pseudo3.pdf}{Section 1.1 and Theorem 1}.
+\bibitem{cmqr} E.~Carneiro, M.~Milinovich, E.~Quesada-Herrera and A.~Ramos,
+\emph{Fourier optimization, the least quadratic non-residue, and the least
+prime in an arithmetic progression}, \href{https://arxiv.org/html/2404.08380v2#S3}{Section 3}.
+\bibitem{hb} D.~R.~Heath-Brown, \emph{A mean value estimate for real
+character sums}, \href{https://doi.org/10.4064/aa-72-3-235-275}{Acta Arith. 72 (1995), 235--275}.
+\bibitem{lw} Y.-K.~Lau and J.~Wu, \emph{On the least quadratic non-residue},
+\href{https://hkumath.hku.hk/~yklau/p/34.pdf}{Introduction}.
+\end{thebibliography}
+\end{document}

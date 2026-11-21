@@ -1,0 +1,331 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\hypersetup{hidelinks,pdftitle={Necessary conditions for a large least quadratic nonresidue}}
+\newtheorem{proposition}{Proposition}
+\newcommand{\LL}{\mathcal L}
+\newcommand{\e}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\R}{\mathbb R}
+\title{Necessary conditions for a large least quadratic nonresidue}
+\author{Research notes}
+\date{}
+\begin{document}
+\maketitle
+Assume Dirichlet GRH throughout. Let $p$ run over odd primes,
+$\chi=(\cdot/p)$, $n_p=\min\{n\ge1:\chi(n)=-1\}$, and $\LL=\log p$.
+The question is whether $n_p=o(\LL^2)$. Failure would give a fixed
+$c>0$ and infinitely many primes with $n_p>c\LL^2$. The estimates here
+describe what would have to occur at those primes. The argument leaves
+their existence open.
+
+\section{A test at the real point $s=1$}
+Write $\gamma_E$ for Euler's constant and put
+\[
+ V=\e^{-\gamma_E}L(1,\chi),\qquad D=-L'(1,\chi)/L(1,\chi).
+\]
+The Euler product and nonvanishing give $V>0$. All implicit constants
+below are absolute unless subscripted.
+
+\begin{proposition}
+If $\e\le x<n_p$ and $x<p$, put $H=\log x$ and $u=\LL/\sqrt x$. Then
+\begin{align}
+ D&=H+O(1+u),\label{d}\\
+ \log(V/H)&=-1+(D+\gamma_E)/H+O((1+u)/H^2).\label{joint}
+\end{align}
+In particular $V\ge H-O(1+u)$.
+\end{proposition}
+
+\begin{proof}
+Use Lemmas 2.3--2.6 of Lamzouri, Li and Soundararajan \cite{lls}.
+Write $B=|\Re B(\chi)|$ for their zero sum, $Q=\tfrac12\log(p/\pi)$,
+and $a=(1-\chi(-1))/2$. Lemma 2.3 at $x=4$ gives $B\ll\LL$.
+The completed functional equation gives
+$D=Q+\tfrac12\psi_0((1+a)/2)-B$, with $\psi_0=\Gamma'/\Gamma$.
+At general $x$, the same lemma gives
+\[
+ (1+O(1/\sqrt x))B=(1-1/x)Q
+ -\sum_{n\le x}\frac{\Lambda(n)}{n}(1-n/x)+O(1).
+\]
+Here $\chi(n)=1$ throughout the sum and their parity terms $E_a(x)$
+are bounded for $x\ge\e$. By Lemma 2.4 the sum is
+$H-(1+\gamma_E)+O(x^{-1/2})$. These identities give \eqref{d}.
+The integrated identity in the proof of Lemma 2.5 gives
+\[
+ \log L(1,\chi)=
+ \sum_{2\le n\le x}\frac{\Lambda(n)}{n\log n}\frac{\log(x/n)}{H}
+ +\frac D H+O\!\left(\frac{B}{\sqrt x\,H^2}+\frac{1}{xH^2}\right).
+\]
+By Lemma 2.6 the sum is $\log H+\gamma_E-1+\gamma_E/H
++O(1/(\sqrt x\,H^2))$. Substitution gives \eqref{joint}. Applying
+$\exp z\ge1+z$ to \eqref{joint} and using \eqref{d} proves the lower bound.
+\end{proof}
+
+For fixed $c>0$, substituting $x=c\LL^2<n_p$ and expanding the
+exponential in \eqref{joint} gives
+\[
+ V=2\log\LL+O_c(1),\qquad
+ V-D=\gamma_E+O_c(1/\log\LL).
+\]
+There is also a quantitative implication. Suppose for all sufficiently
+large primes that $V\le 2\log\LL-h(p)$, where $h(p)\to\infty$.
+Take $x=n_p-1$. For $x\ge\e$ the lower bound in Proposition 1 yields
+$h(p)\le 2\log u+O(1+u)$, since $H=2\log\LL-2\log u$.
+Consequently $u\gg h(p)$ and $n_p\ll\LL^2/h(p)^2$. The bounded
+cases also satisfy this estimate because $V>0$ implies $h(p)<2\log\LL$.
+Theorem 1.5 of \cite{lls} supplies only a bounded additive saving in $V$.
+
+\paragraph{Test with multiple truncation lengths.}
+At the precision of \eqref{d}--\eqref{joint}, all lengths
+$\e\le x\le Y=c\LL^2$ can be compatible at once. To see this for
+$0<c\le1$, try the scalar values $V_*=\log Y$, $D_*=\log Y-\gamma_E$.
+Put $v=\log(Y/x)\ge0$, so $u=\e^{v/2}/\sqrt c$.
+The error in \eqref{d} is $v-\gamma_E=O(1+u)$. The absolute error
+in \eqref{joint} is at most
+\[
+ v/H-\log(1+v/H)\le v^2/(2H^2)\le (8/\e^2)\e^{v/2}/H^2 .
+\]
+Thus repeating these two order estimates cannot force a contradiction.
+The scalar values are a consistency test. Realizing them by an actual
+quadratic character would require arithmetic information.
+
+\section{A count of residues at a longer length}
+Set $z=\LL^2$ and $X=z^2$. Granville and Soundararajan give
+$1-\log 2=\rho(2)$ as the GRH upper limit for the normalized short
+character sum at this length, even allowing all fundamental discriminants
+\cite[Theorem 2 and the discussion of $\alpha(B)$]{gs}. For the proposed
+counterexamples one can control the distance from this limit.
+
+\begin{proposition}
+For fixed $c>0$, at every sufficiently large prime with $n_p>cz$,
+\[
+ \frac{1}{X}\sum_{n\le X}\chi(n)
+ =1-\log 2+O_c(1/\log z).
+\]
+In particular a uniform upper bound $1-\log 2-h(p)/\log\log p$ on
+the left, for any $h(p)\to\infty$, implies $n_p=o(\LL^2)$.
+\end{proposition}
+
+\begin{proof}
+First, for every $t\ge\e$, without any restriction on $n_p$, the same
+two formulas used for Proposition 1 give
+\[
+ \log L(1,\chi)
+ =\sum_{2\le n\le t}\frac{\Lambda(n)\chi(n)}{n\log n}
+ +O\!\left(\frac{1+\LL/\sqrt t}{\log t}\right).
+\]
+Indeed Lemma 2.3 retains $\chi(n)$ in the prime sum, giving
+$D-\sum_{n\le t}\Lambda(n)\chi(n)/n=O(1+\LL/\sqrt t)$.
+Removing the weight $1-n/t$ here costs at most
+$t^{-1}\sum_{n\le t}\Lambda(n)=O(1)$. In the integrated formula from
+Lemma 2.5 this difference is precisely the correction from removing
+the logarithmic weight, after division by $\log t$. Subtract the
+approximations at $t=z$ and $t=X$. Higher prime powers exceeding $z$
+contribute $O(z^{-1/2})$ in absolute value. This follows by summing the
+geometric tails separately for primes below and above $\sqrt z$. Hence
+\[
+ \sum_{z<\ell\le X,\ \ell\ {\rm prime}}\frac{\chi(\ell)}{\ell}
+ =O(1/\log z).
+\]
+
+Temporarily replace $\chi(\ell)$ by $+1$ for primes $\ell\le z$ and
+extend completely multiplicatively to obtain $f$. Since $\chi(\ell)=1$
+below $cz$ and $X<p$, this changes the sum over $n\le X$ by at most
+$2X\sum_{cz<\ell\le z}1/\ell=O_c(X/\log z)$, with the sum over primes.
+Each integer up to $X=z^2$ has at most one prime factor exceeding $z$,
+counting multiplicity. It follows exactly that
+\[
+ \sum_{n\le X} f(n)=\lfloor X\rfloor-
+ \sum_{z<\ell\le X,\ \ell\ {\rm prime}}(1-\chi(\ell))\lfloor X/\ell\rfloor .
+\]
+The total floor error is $O(\pi(X))=O(X/\log z)$. By Mertens' estimate
+the prime reciprocal sum from $z$ to $z^2$ is $\log 2+O(1/\log z)$.
+This proves the formula. Failure of the little-$o$ claim supplies a
+fixed $c$ and an infinite subsequence, contradicting the proposed upper bound.
+\end{proof}
+
+In ordinary counts the proportion of residues would therefore be
+$1-\tfrac12\log 2+O_c(1/\log\log p)$, about $65.34\%$.
+For comparison, the error in the smooth-number cutoff in Theorem 2
+of \cite{gs} permits the limiting endpoint. Its conclusion alone gives
+no uniform downward saving at the scale in Proposition 2.
+
+\subsection*{The same prime at several lengths}
+Write $P^+(n)$ for the largest prime factor of $n$, with $P^+(1)=1$,
+and $\Psi(X,z)=\#\{n\le X:P^+(n)\le z\}$. One can keep the same
+error uniformly over all lengths. The error below is additive and
+can exceed the main term when $X$ is large.
+
+\begin{proposition}
+With $z=(\log p)^2$, uniformly for sufficiently large $p$ and $X\ge z$,
+\[
+ \sum_{n\le X}\chi(n)
+ =\sum_{\substack{n\le X\\ P^+(n)\le z}}\chi(n)+O(X/\log z).
+\]
+If $n_p>cz$ for fixed $c>0$, the right side equals
+$\Psi(X,z)+O_c(X/\log z)$.
+\end{proposition}
+
+\begin{proof}
+Put $S(t)=\sum_{n\le t}\Lambda(n)\chi(n)\log(t/n)$.
+Lemma 2.2 of \cite{lls} and $|\Re B(\chi)|\ll\log p$ give
+$S(t)\ll\sqrt t\log p$ for $t\ge 2$. For $t\ge z$ take
+$\eta=(z/t)^{1/4}\le1$. The difference
+$(S(t\e^\eta)-S(t))/\eta$ equals
+$\sum_{n\le t}\Lambda(n)\chi(n)$ up to an error at most
+$\psi(t\e^\eta)-\psi(t)$, where $\psi$ is the untwisted Chebyshev
+function. The RH estimate $\psi(t)=t+O(\sqrt t\log^2(2t))$ gives
+an error $O(t\eta)$ since $\eta\ge t^{-1/4}$. The difference itself
+is $O(\sqrt t\log p/\eta)=O(t\eta)$. Thus
+\[
+ \left|\sum_{n\le t}\Lambda(n)\chi(n)\right|\ll z^{1/4}t^{3/4}.
+\]
+For $2\le t<z$ the trivial Chebyshev bound implies the same inequality.
+Removing the proper prime powers costs $O(\sqrt t\log^2(2t))$.
+Partial summation now gives, for $t\ge z$,
+\[
+ \left|\sum_{\ell\le t,\ \ell\ {\rm prime}}\chi(\ell)\right|
+ \ll z^{1/4}t^{3/4}/\log t .
+\]
+
+For every $n\le X$ with $P^+(n)>z$, write $n=m\ell$ with
+$\ell=P^+(n)$. For fixed $m\le X/z$ the admissible primes satisfy
+$z<\ell\le X/m$ and $\ell\ge P^+(m)$. The last bound at the two
+ends of this interval gives $O(z^{1/4}(X/m)^{3/4}/\log z)$ for
+their signed sum, including a possible lower endpoint. Summing over
+$m$ uses $\sum_{m\le X/z}m^{-3/4}\ll(X/z)^{1/4}$ and proves the
+first assertion. Under $n_p>cz$, every $z$-smooth integer with negative
+sign has a prime factor in $(cz,z]$. A union bound over multiples and
+the prime reciprocal estimate from Proposition 2 prove the second.
+\end{proof}
+
+In particular, if there were an exceptional sequence of primes, then
+for every fixed $u\ge1$ the residue fraction through $z^u$ on that
+same sequence would tend to $(1+\rho(u))/2$. Here $\rho$ is the
+Dickman function, the limiting density of $X^{1/u}$-smooth integers
+\cite[Introduction]{gs}. For $1\le u\le2$ the explicit fraction is
+$1-\tfrac12\log u+O_c(1/\log z)$, uniformly in $u$, by counting
+multiples of primes in $(z,z^u]$ and applying Mertens' estimate.
+At $u=3$ the limiting fraction is about $52.43\%$. An upper bound
+strictly below one such limit for every sufficiently large prime
+would rule out the sequence.
+
+\paragraph{Can multiplicativity rule out these counts jointly?}
+Fix any finite set of lengths $X_j\ge z$. Set $f(\ell)=1$ for primes
+$\ell\le z$ and choose independent fair signs for the remaining primes,
+extending $f$ completely multiplicatively. Write $S_f(X)=\sum_{n\le X}f(n)$.
+The expectation of $f(n)$ vanishes unless every prime exceeding $z$
+occurs in $n$ to even order. Beyond the smooth integers this requires
+$\ell^2\mid n$ for some prime $\ell>z$. Consequently
+\[
+ 0\le \mathbb E S_f(X)-\Psi(X,z)
+ \le X\sum_{\ell>z}\ell^{-2}\ll X/z ,
+\]
+where the sum is over primes. Changing one sign changes $S_f(X)$ by
+at most $2X/\ell$. Exposing the independent signs one at a time and
+adding the variances of the martingale differences therefore gives
+$\operatorname{Var} S_f(X)\ll X^2/z$. Chebyshev's inequality and a
+union bound give a single choice of signs with
+$S_f(X_j)=\Psi(X_j,z)+O_k(X_j/\sqrt z)$ at all $k$ prescribed lengths.
+Thus complete multiplicativity alone can reproduce all these counts
+to smaller error than Proposition 3 requires.
+
+In fact any fixed such sign pattern through $\max_j X_j$ occurs
+for infinitely many prime moduli. Choose $p\equiv1\pmod8$ and, for
+each odd prime $\ell$ in range, prescribe a nonzero class for $p$
+modulo $\ell$ with the desired Legendre symbol. This handles $2$
+since $z\ge2$ and $f(2)=1$. The Chinese remainder theorem, Dirichlet's
+theorem, and quadratic reciprocity then give the claim. The missing
+constraint is the size of the modulus. A prime obtained this way may
+have $(\log p)^2$ much larger than the cutoff $z$ used to design the signs.
+
+\section{A test on a bounded interval of zero heights}
+For the zeros $\tfrac12+\ii t_j$ of $L(s,\chi)$, with multiplicity,
+define a nonnegative mean square
+\[
+ F_p(y,T)=\int_{\R}\left|\sum_{|t_j|\le T}\exp(\ii t_j(\log y+v))\right|^2
+                  \e^{-2|v|}\,dv .
+\]
+This uses both signs of the ordinates. Kandhil, Languasco and Moree
+use a corresponding positive-ordinate sum \cite[Section 4]{klm}.
+
+\begin{proposition}
+For each $c>0$ there are fixed $T_c$ and $b_c>0$ such that, at all
+sufficiently large primes with $n_p>y=c\LL^2$,
+\[
+ F_p(y,T_c)\ge b_c\LL^2 .
+\]
+In particular, $F_p(c\LL^2,T)=o_{c,T}(\LL^2)$ for each fixed $c,T>0$
+would imply the desired growth rate.
+\end{proposition}
+
+\begin{proof}
+Fix a real, nonnegative, nonzero $g\in C_c^\infty((-1,0))$ and put
+$\Phi(t)=\int g(v)\e^{\ii tv}\,dv$ and $A=\int g(v)\e^{v/2}\,dv>0$.
+The smooth explicit formula for a primitive nonprincipal character gives
+\[
+ \sum_{n\ge2}\frac{\Lambda(n)\chi(n)}{\sqrt n}g(\log(n/y))
+ =-\sum_j\e^{\ii t_j\log y}\Phi(t_j)+O_g(y^{-1/2}).
+\]
+Indeed, apply Mellin inversion to $-L'/L$ with transform
+$y^{s-1/2}\int g(v)\e^{(s-1/2)v}\,dv$ and shift left past its zeros.
+The trivial zeros at $-a-2k$ contribute $O_g(y^{-1/2})$ by compact
+support. The prime sum equals $\sqrt y(A+o_g(1))$ by the prime number
+theorem, since all its arguments are below $y$.
+
+The standard unit-interval zero count is $O(\log(p(|t|+2)))$
+uniformly in $p,t$ by \cite[Section 3]{fourier}. Rapid decay of $\Phi$
+therefore makes the absolute sum over $|t_j|>T$ at most
+$A\sqrt c\,\LL/4$ for suitable fixed $T=T_c$ and large $p$.
+The remaining sum has magnitude at least $A\sqrt c\,\LL/2$.
+It is the integral against $g(v)$ of the finite exponential sum defining
+$F_p(y,T)$. Weighted Cauchy--Schwarz bounds its square by
+$F_p(y,T)\int |g(v)|^2\e^{2|v|}\,dv$, as required.
+\end{proof}
+
+\paragraph{Test of zero counts at this frequency.}
+The size of the error in the count of ordinates matters. For example,
+fix $0<c<1/16$, set $\lambda=\log(c\LL^2)$ and consider the even,
+positive model density on $\R$
+\[
+ d\nu(t)=\frac{\LL}{2\pi}\left(1+2\Re(a(t)\e^{-\ii\lambda t})\right)dt,
+ \qquad a(t)=\frac{-\sqrt c}{1/2-\ii t}.
+\]
+Positivity follows from $2|a|\le4\sqrt c<1$. Integration by parts,
+using $\|a'\|_1<\infty$, bounds its discrepancy from
+$\LL\,dt/(2\pi)$ on every interval by $O_c(\LL/\lambda)$. This has the
+same order as Selberg's fixed-height bound for the actual count discrepancy.
+Yet for every $g\in C_c^\infty((-1,0))$ as above the
+Riemann--Lebesgue lemma and Fourier inversion give
+\[
+ \frac1{\LL}\int \e^{\ii\lambda t}\Phi(t)\,d\nu(t)
+ \longrightarrow \frac1{2\pi}\int \Phi(t)a(t)\,dt
+ =-\sqrt c\int g(v)\e^{v/2}\,dv .
+\]
+The last equality uses the Fourier transform of
+$\mathbf 1_{v<0}\e^{v/2}$. One can replace the density on the positive
+axis by a point at each half-integer quantile of its cumulative mass and
+reflect these points about zero. This changes interval counts by $O(1)$.
+By integration by parts it changes the last normalized integral by
+$O_g((1+\lambda)/\LL)=o(1)$. Thus even simple, symmetric model ordinates
+can meet both the fixed-height count bound and the smoothed prime-side
+constraint at this scale. The model imposes neither an Euler product
+nor the full explicit formula at other scales. Ruling out the phase
+alignment for actual characters remains the substantive missing estimate.
+
+\begin{thebibliography}{9}\small
+\bibitem{lls} Y.~Lamzouri, X.~Li and K.~Soundararajan,
+\emph{Conditional bounds for the least quadratic non-residue and related problems},
+\href{https://arxiv.org/abs/1309.3595}{arXiv:1309.3595}, version 3.
+\bibitem{gs} A.~Granville and K.~Soundararajan, \emph{Large character sums},
+\href{https://arxiv.org/abs/math/9903196}{arXiv:math/9903196}.
+\bibitem{fourier} E.~Carneiro, M.~Milinovich, E.~Quesada-Herrera and
+A.~Ramos, \emph{Fourier optimization, the least quadratic non-residue,
+and the least prime in an arithmetic progression},
+\href{https://arxiv.org/abs/2404.08380}{arXiv:2404.08380}.
+\bibitem{klm} N.~Kandhil, A.~Languasco and P.~Moree,
+\emph{Beyond the Riemann Hypothesis bounds: A pair-correlation approach to
+the least prime in arithmetic progression and the smallest quadratic non-residue},
+\href{https://arxiv.org/abs/2607.14515}{arXiv:2607.14515}.
+\end{thebibliography}
+\end{document}

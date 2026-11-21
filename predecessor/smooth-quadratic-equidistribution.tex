@@ -1,0 +1,286 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newcommand{\ch}{\chi_p}
+\newcommand{\cstar}{c_*}
+\newcommand{\ep}{\varepsilon}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\title{Quadratic residues among smooth integers\\at a squared-logarithmic cutoff}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+Assume the generalized Riemann hypothesis for Dirichlet \(L\)-functions.
+Let \(p\) be an odd prime and put \(y=\eta(\log p)^2\), where
+\(\eta>\mathcal C(1)^{-2}\) and \(\mathcal C(1)\) is the Fourier extremal
+constant of Carneiro, Milinovich, Quesada-Herrera and Ramos. For each fixed
+\(0<a<1\), uniformly for \(p^a\le x\le p\), the proportion of \(y\)-smooth
+integers up to \(x\) that are quadratic residues modulo \(p\) is
+\(1/2+O_{a,\eta}(\exp\{-b_{a,\eta}\log x/\log y\})\) for some
+\(b_{a,\eta}>0\). In particular, \(\eta=0.77\) is admissible. A strict
+margin in the Fourier bound forces a positive proportion of primes of
+each quadratic sign near \(y\). We transfer this information to smooth
+integers using their Euler product at the saddle point for \(x\).
+\end{abstract}
+
+\section{The estimate and its range}
+Write \(P^+(n)\) for the largest prime factor of \(n>1\), with
+\(P^+(1)=1\). Let \(\Psi(x,y)\) count the positive integers \(n\le x\)
+with \(P^+(n)\le y\), and let \(\ch(n)=(n/p)\) be the Legendre symbol.
+All logarithms are natural. We assume Dirichlet GRH, including RH for
+\(\zeta(s)\). Put \(\cstar=\mathcal C(1)^{-2}\) in the normalization of
+\cite[(1.1)]{cmqr}.
+
+\begin{theorem}\label{th:main}
+Fix \(0<a<1\) and \(\eta>\cstar\). There exist \(b_{a,\eta}>0\),
+\(K_{a,\eta}>0\) and \(p_0(a,\eta)\) such that for every prime
+\(p\ge p_0(a,\eta)\), with \(y=\eta(\log p)^2\), and every real
+\(p^a\le x\le p\),
+\begin{equation}\label{eq:main}
+ \left|\sum_{\substack{n\le x\\P^+(n)\le y}}\ch(n)\right|
+ \le K_{a,\eta}\,\Psi(x,y)
+       \exp\!\left(-b_{a,\eta}\frac{\log x}{\log y}\right).
+\end{equation}
+\end{theorem}
+For large \(p\), \(y<p\), so every smooth integer in the sum has sign
+\(+1\) or \(-1\). The two counts are half the sum and half the difference
+of \(\Psi(x,y)\) and the signed sum. The published inequalities
+\(0.7596<\cstar<0.7615\) allow \(y=0.77(\log p)^2\), for instance at
+\(x=\sqrt p\) with \(a=1/2\) \cite[Theorems 1 and 5]{cmqr}.
+The proof requires a strict margin \(\eta>\cstar\) and gives no smaller
+upper bound for the least quadratic nonresidue.
+
+\paragraph{Related estimates.}
+Dong, Zhao and Zhou give a bound for each nonprincipal character modulo
+\(q\) in the same range \(q^a\le x\le q\). Their cutoff is
+\((\log q+(\log x)^2)(\log\log q)^C\) with \(C>6\), and their relative
+error decays as \(\exp(-\gamma\log x\,\log_3 q/\log_2 q)\), where
+\(\log_k\) denotes the \(k\)-fold iterated logarithm and
+\(0<\gamma<(C-6)/4\). For \(q=p\) and \(x=p^\theta\), the ratio of
+their cutoff to ours is
+\((\theta^2+1/\log p)(\log\log p)^C/\eta\), which tends to infinity
+uniformly for \(a\le\theta\le1\) \cite[Theorem 1.4]{dzz}.
+Soundararajan bounds smooth Euler products using a distance that
+compares \(\chi(\ell)\) with \(\ell^{it}\) at primes \(\ell\), weighted
+by \(\ell^{-\alpha}\) at the saddle point. His progression estimates treat
+moduli bounded by a fixed power of \(y\) \cite[\S4, following (4.1)]{sound}.
+Harper's individual-character estimates require conductor \(r\le y^b\)
+in Theorem 3 or \(r\le x^d\) in Proposition 1 for small absolute
+constants \(b,d>0\). Here \(r=p\ge x\) and \(p\) exceeds every fixed
+power of \(y\) \cite{harper}. The arithmetic input that allows this
+conductor range for the quadratic character is the following lemma.
+
+\section{Primes of both quadratic signs}
+\begin{lemma}\label{lem:signs}
+For each fixed \(\eta>\cstar\) there exist \(d,\delta\in(0,1)\)
+depending only on \(\eta\) such that, for every sufficiently large \(p\)
+and each \(\ep=\pm1\),
+\begin{equation}\label{eq:both}
+ \#\{q\ \mathrm{prime}:dy\le q\le y,\ \ch(q)=\ep\}
+ \ \ge\ \delta\, y/\log y .
+\end{equation}
+\end{lemma}
+\emph{Proof.}
+We give the density deduction from the explicit formula of \cite{cmqr}.
+Use the Fourier transform with kernel \(e^{-2\pi itv}\). For a test
+function \(F\) with real \(\widehat F\in C_c^\infty(\mathbb R)\), put
+\[
+ D(F)=\int_{-\infty}^{0}\widehat F(v)e^{\pi v}\,dv
+        -\int_0^\infty|\widehat F(v)|e^{\pi v}\,dv .
+\]
+By \cite[Theorem 4(i) and (4.13)]{cmqr} the infimum of
+\(\|F\|_1/(2\pi D(F))\) over these tests with \(D(F)>0\) is
+\(\sqrt{\cstar}\). Fix one with \(\sqrt\eta D(F)>\|F\|_1/(2\pi)\).
+Take \(\operatorname{supp}\widehat F\subset[-N,N]\),
+\(d=e^{-2\pi N}\), \(\Delta=(\log y)/(2\pi)\), and
+\(\widehat h(t)=(\widehat F(t-\Delta)+\widehat F(-t-\Delta))/2\).
+The explicit formula for the primitive real character \(\ch\) gives
+\begin{equation}\label{eq:ef}
+ \left|\frac1\pi\sum_{n\ge2}
+  \frac{\Lambda(n)\ch(n)}{\sqrt n}\widehat h\!\left(\frac{\log n}{2\pi}\right)
+ \right|
+ \le \frac{\log p}{2\pi}\|F\|_1+o_F(\log p).
+\end{equation}
+Indeed \(\widehat h(0)=0\) for large \(p\). The gamma integral is
+\(O_F(1)\), and the absolute zero majorant from
+\cite[(4.2), (4.9)--(4.11)]{cmqr} is independent of \(\Delta\), for
+either parity of \(\ch\).
+
+In \eqref{eq:ef} multiply the sum by \(-\ep\). Its positive integer
+arguments with nonzero weight lie in \([dy,y/d]\). Proper prime powers
+contribute \(O_F((\log y)^2)\) in absolute value, by counting the powers
+in this interval. For primes \(q\le y\), temporarily set their
+coefficient \(-\ep\ch(q)\) equal to \(+1\). For primes \(q>y\), use
+minus the absolute value of the weight as a lower bound. The prime
+number theorem and the substitution \(q=ye^{2\pi v}\) give
+\(\sqrt y\,D(F)+o_F(\sqrt y)\) for this comparison sum, including the
+factor \(1/\pi\) in \eqref{eq:ef}. Each prime in \([dy,y]\) with
+\(\ch(q)=\ep\) costs at most \(O_F((\log y)/\sqrt y)\) when its true
+coefficient is restored. Since \(\sqrt y=\sqrt\eta\log p\), the strict
+margin is a fixed positive multiple of \(\sqrt y\). This
+proves \eqref{eq:both} for the two signs at the same \(p\).
+\hfill\(\square\)
+
+\section{The saddle point as the endpoint varies}
+Put \(L=\log p\), \(X=\log x\), \(H=\log y\), \(u=X/H\), and
+\(\theta=X/L\in[a,1]\). Write
+\[
+ Z_y(s)=\prod_{q\le y}(1-q^{-s})^{-1},\qquad
+ \sum_{q\le y}\frac{\log q}{q^\alpha-1}=X,\qquad
+ \phi_2=(\log Z_y)''(\alpha),\qquad Z=Z_y(\alpha),
+\]
+where products and sums in \(q\) run over primes. The positive solution
+\(\alpha\) is unique. Uniformly in this interval of \(\theta\),
+\begin{align}
+ \alpha&=\frac12+\frac{\log(2\sqrt\eta/\theta)+o_{a,\eta}(1)}{H},
+ &y^{-\alpha}&=(1+o_{a,\eta}(1))\frac{X}{2y},\label{eq:saddle}\\
+ \phi_2&\sim XH,
+ &\frac{x^\alpha Z}{\Psi(x,y)}&\asymp_{a,\eta}\sqrt{XH}.\label{eq:ht}
+\end{align}
+To see the uniformity, set \(\sigma=1/2+k/H\). For \(k\) in any fixed
+compact interval the prime number theorem and partial summation give
+\[
+ \sum_{q\le y}\frac{\log q}{q^\sigma-1}
+ = (1+o(1))\frac{y^{1-\sigma}}{1-\sigma}
+ = (2e^{-k}+o(1))\sqrt y .
+\]
+The terms past the first prime power cost \(O(H)\) uniformly there,
+since \(q^{-2\sigma}\ll 1/q\). Choose two fixed values of \(k\) for
+which \(2\sqrt\eta e^{-k}\) brackets \([a,1]\). Monotonicity and the
+uniform asymptotic between them give \eqref{eq:saddle}. With an extra
+factor \(\log q\) the prime number theorem gives
+\(\sum_{q\le y}(\log q)^2q^{-\alpha}\sim XH\). The higher powers in
+\(\phi_2\) cost \(O_{a,\eta}(H^2)\).
+Finally the uniform Hildebrand--Tenenbaum saddle-point formula gives
+\(\Psi(x,y)\sim x^\alpha Z/(\alpha\sqrt{2\pi\phi_2})\) in this range,
+where \(u\ge aL/H\to\infty\) \cite[Theorem 1.6]{ht}.
+
+\section{Bounds for the smooth Euler products}
+For \(f=\ch\) or \(f=1\), define
+\[
+ Z_f(s)=\prod_{q\le y}(1-f(q)q^{-s})^{-1},\qquad
+ U_f(t)=|Z_f(\alpha+it)|/Z .
+\]
+In particular \(0\le U_f(t)\le1\). Expanding the logarithm gives
+\begin{equation}\label{eq:loss}
+ -\log U_f(t)\ge
+       \sum_{q\le y}q^{-\alpha}\bigl(1-f(q)\cos(t\log q)\bigr).
+\end{equation}
+Every omitted prime-power term is nonnegative. Choose \(\tau>0\)
+with \(\tau|\log d|\le1/4\), using Lemma~\ref{lem:signs}. For
+\(|t|\le\tau\) and \(q\in[dy,y]\), the cosine in \eqref{eq:loss}
+differs from \(\cos(tH)\) by at most \(1/4\). For \(f=\ch\) one of
+the two sign sets in \eqref{eq:both} therefore incurs loss at least
+\(3/4\) per prime before weighting. By \eqref{eq:saddle},
+\[
+ -\log U_{\ch}(t)\gg_\eta (y/H)y^{-\alpha}\gg_{a,\eta}u
+ \qquad (|t|\le\tau).
+\]
+
+At larger frequencies the real values of \(f\) give
+\(1-f(q)\cos v\ge(1-\cos(2v))/4\). Fix a nonzero nonnegative
+\(g\in C_c^\infty((1/2,1))\), and put
+\(G(s)=\int_0^\infty g(v)v^{s-1}\,dv\). Under RH for \(\zeta\),
+uniformly for \(w\in\mathbb R\),
+\begin{equation}\label{eq:zetatwist}
+ \sum_q(\log q)g(q/y)q^{iw}
+ =y^{1+iw}G(1+iw)
+   +O_g\!\left(\sqrt y\,[\log(2+|w|)+H^2]\right).
+\end{equation}
+For the sum over \(\Lambda(n)\), Mellin inversion shifts
+\(-(\zeta'/\zeta)(s)y^{s+iw}G(s+iw)\) from \(\Re s=2\) to \(-1\).
+The pole at \(1\) gives the displayed main term. The rapid decay of
+\(G\) and the \(O(\log(2+|v|))\) zeros per unit interval at height \(v\)
+bound the sum over zeros by \(O_g(\sqrt y\log(2+|w|))\), counting
+multiplicities. The new line costs \(O_g(y^{-1}\log(2+|w|))\) by the
+functional equation. Removing proper powers costs \(O_g(\sqrt y H^2)\).
+
+Strict triangle inequality for the integral on the support of \(g\)
+and decay at infinity give
+\(\sup_{|w|\ge2\tau}|G(1+iw)|<G(1)\). For
+\(\tau\le |t|\le\exp(L/H)\), subtract the real part of
+\eqref{eq:zetatwist} at \(w=2t\) from its value at \(0\). The error
+is \(o_\eta(y)\) since \(\sqrt y=\sqrt\eta L\). Consequently
+\[
+ \sum_q(\log q)g(q/y)(1-\cos(2t\log q))\gg_{\eta,\tau,g} y .
+\]
+On this support \(q^{-\alpha}/\log q\gg X/(yH)\) by
+\eqref{eq:saddle}. Applying \eqref{eq:loss} and the boundedness of \(g\)
+gives a common constant \(k=k(a,\eta)>0\) such that
+\begin{align}
+ U_{\ch}(t)&\le e^{-ku}
+       &&(|t|\le e^{L/H}),\label{eq:signed}\\
+ U_1(t)&\le e^{-ku}
+       &&(\tau\le |t|\le e^{L/H}).\label{eq:unsigned}
+\end{align}
+
+\section{Recovering the sharp count}
+Let \(S(z)=\sum_{n\le z,\,P^+(n)\le y}\ch(n)\) with \(p,y\) fixed.
+Choose \(0<\kappa<\min(1,k)\), \(T=e^{\kappa u}\) and
+\(\epsilon=T^{-1/2}\). Then \(T\le e^{L/H}\) for every allowed \(x\).
+The averaged Perron kernel gives, with \(s=\alpha+it\),
+\[
+ \frac1{2\epsilon}\int_{-\epsilon}^{\epsilon}S(xe^v)\,dv
+ =\frac1{2\pi}\int_{\mathbb R}
+       \frac{x^s Z_{\ch}(s)}s
+       \frac{\sinh(\epsilon s)}{\epsilon s}\,dt .
+\]
+The Euler series converges absolutely on this line and the averaged
+kernel is integrable. On \(|t|\le T\) use \eqref{eq:signed} and
+\(|\sinh(\epsilon s)/(\epsilon s)|\le e^{\epsilon\alpha}\).
+For \(|t|>T\) use \(|Z_{\ch}(s)|\le Z\) and integrate
+\(O(1/(\epsilon t^2))\). The resulting bound in absolute value is
+\begin{equation}\label{eq:perron}
+ \ll x^\alpha Z\left(e^{-ku}\log(2T)+\frac1{\epsilon T}\right).
+\end{equation}
+
+To pass to the sharp count, place mass \(n^{-\alpha}/Z\) at \(\log n\)
+for each \(y\)-smooth \(n\). This is a probability measure \(\mu\)
+whose Fourier transform (angular frequency) has modulus \(U_1(t)\).
+For every real \(z\),
+\[
+ \mu([z-\epsilon,z+\epsilon])
+ \ll \epsilon\int_{|t|\le1/\epsilon}U_1(t)\,dt
+ \ll_{a,\eta}\epsilon .
+\]
+The first inequality uses a constant multiple of
+\((\sin(v/(2\epsilon))/(v/(2\epsilon)))^2\) to majorize the interval
+indicator in the centered variable \(v\). Its Fourier transform is
+triangular and supported in \([-1/\epsilon,1/\epsilon]\). For the
+second inequality use \(U_1\le1\) up to \(\tau\) and
+\eqref{eq:unsigned} beyond, since
+\(\epsilon^{-1}e^{-ku}=\exp((\kappa/2-k)u)\le1\).
+Thus at most \(O_{a,\eta}(\epsilon x^\alpha Z)\) smooth integers can
+change membership when the cutoff moves from \(x\) to \(xe^v\) with
+\(|v|\le\epsilon\). The argument applies also when \(x=p^a\) or \(x=p\).
+
+In \eqref{eq:perron} both \((\epsilon T)^{-1}\) and \(\epsilon\)
+equal \(e^{-\kappa u/2}\). Dividing by \(\Psi(x,y)\) costs
+\(O_{a,\eta}(\sqrt{XH})\) by \eqref{eq:ht}. Since \(u\ge aL/H\),
+\(\log(\sqrt{XH}\log(2T))=o(u)\) uniformly. Decreasing the positive
+exponent therefore gives \eqref{eq:main} on the whole interval.
+\hfill\(\square\)
+
+\begin{thebibliography}{9}
+\bibitem{cmqr} E.~Carneiro, M.~B.~Milinovich, E.~Quesada-Herrera and
+A.~P.~Ramos, \emph{Fourier optimization, the least quadratic non-residue,
+and the least prime in an arithmetic progression}.
+\href{https://arxiv.org/pdf/2404.08380v2}{arXiv:2404.08380v2}.
+\bibitem{dzz} Z.~Dong, S.~Zhao and G.-L.~Zhou,
+\emph{Smooth approximations to character sums and zeta sums}.
+\href{https://arxiv.org/pdf/2611.11389v1}{arXiv:2611.11389v1}.
+\bibitem{harper} A.~J.~Harper, \emph{Bombieri--Vinogradov and
+Barban--Davenport--Halberstam type theorems for smooth numbers}.
+\href{https://arxiv.org/pdf/1208.5992}{arXiv:1208.5992}.
+\bibitem{ht} A.~Hildebrand and G.~Tenenbaum, \emph{Integers without
+large prime factors}, J.~Th\'eor.\ Nombres Bordeaux \textbf{5} (1993),
+411--484. \href{https://jtnb.centre-mersenne.org/articles/10.5802/jtnb.101/}{doi:10.5802/jtnb.101}.
+\bibitem{sound} K.~Soundararajan, \emph{The distribution of smooth
+numbers in arithmetic progressions}.
+\href{https://arxiv.org/pdf/0707.0299}{arXiv:0707.0299}.
+\end{thebibliography}
+\end{document}

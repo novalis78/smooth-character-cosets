@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\hypersetup{hidelinks,pdftitle={The separated zero pairs in Proposition 4}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\e}{\mathrm e}
+\newcommand{\ii}{\mathrm i}
+\newcommand{\wt}{\mathrm d}
+\newcommand{\ind}{\mathbf 1}
+\newtheorem{proposition}{Proposition}
+\title{The separated zero pairs in Proposition 4}
+\author{Research notes}
+\date{}
+\begin{document}
+\maketitle
+Assume Dirichlet GRH. Write $L=\log p$, $y=cL^2$, $\lambda=\log y$,
+$\chi=(\cdot/p)$ and $w(v)=\e^{-2|v|}$. All limits in $p$ hold with
+$c,T>0$ fixed unless specified. The zeros $\tfrac12+\ii\gamma$ of
+$L(s,\chi)$ are indexed with multiplicities and with both signs of the
+ordinate. Proposition 4 of the accompanying note gives constants
+$T_c,b_c>0$ for which $n_p>y$ implies
+\[
+ F_p(y,T_c)=\int_{\R}\left|\sum_{|\gamma|\le T_c}
+           \e^{\ii(\lambda+v)\gamma}\right|^2 w(v)\,\wt v\ \ge b_cL^2 .
+\]
+To obtain $n_p=o(L^2)$ it suffices to exclude such primes eventually
+for each $c=2^{-j}$, $j\ge1$. No uniformity in $j$ is required.
+
+\section{How far apart must the zeros be?}
+Write $W(d)=4/(4+d^2)$. For $H\ge0$ let $C_H$ and $R_H$ denote the
+parts of the following ordered pair sum with $|d|\le H$ and $|d|>H$,
+respectively, where $d=\gamma-\gamma'$:
+\[
+ F_p(y,T)=\sum_{|\gamma|,|\gamma'|\le T}W(d)\cos(\lambda d).
+ \tag{1}
+\]
+Indeed $\int_{\R}w(v)\exp(\ii vd)\,\wt v=W(d)$ and the imaginary
+parts cancel on reversing the pair.
+
+\begin{proposition}
+Uniformly in $0\le H\le1$ at fixed $T$, the sum of the absolute values
+of the terms in $C_H$ is $O_T(L^2(H+1/\log L))$. In particular,
+$0\le C_{1/\lambda}\ll_{c,T} L^2/\log L$. For an exceptional prime,
+\[
+ R_{1/\lambda}(y,T_c)\ge (b_c-O_{c,T_c}(1/\log L))L^2 .
+ \tag{2}
+\]
+There is also a fixed $\delta_c>0$ such that
+$R_{\delta_c}(y,T_c)\ge b_cL^2/2$ for every sufficiently large
+exceptional prime.
+\end{proposition}
+\begin{proof}
+Equations (3.3)--(3.4) of Carneiro et al.\ \cite{cmqr} give, for any
+interval $I\subset[-T-1,T+1]$, with the full endpoint multiplicities,
+\[
+  \#\{\gamma\in I\}=\frac{L}{2\pi}|I|+O_T(L/\log L).
+  \tag{3}
+\]
+On the positive half-axis subtract their counts at the two endpoints.
+The $t\log t$ and remaining gamma-factor terms are bounded on a compact
+interval, including their limit at zero. One-sided limits handle the
+half-weight convention. At zero, taking the positive endpoint down
+to zero bounds half the central multiplicity by $O_T(L/\log L)$.
+Reflection gives the negative half, and splitting at zero costs at
+most the same error. Thus each of the $O_T(L)$ first entries has
+$O_T(LH+L/\log L)$ partners. This includes all ordered pairs of entries
+at a repeated ordinate. Use $|W\cos|\le1$ and, for the asserted
+nonnegativity, $\cos(\lambda d)\ge\cos 1$ in the indicated band.
+For fixed $\delta_c$, choose the implicit constant times $\delta_c$
+smaller than $b_c/4$ and then let $p$ grow.
+\end{proof}
+The same counting argument holds for bands about any prescribed
+separations. If $E\subset[-2T,2T]$ is a union of $k$ intervals, the
+absolute contribution from $d\in E$ is
+$O_T\big(L^2(|E|+k/\log L)\big)$. For each first ordinate use (3)
+on the translates of those intervals intersected with $[-T,T]$.
+Thus a fixed finite list of spacings, each thickened by $o(1)$, can
+also be removed.
+
+An absolute-value comparison for the hard cutoff, with an explicit
+leading coefficient, is
+\[
+ F_p(y,T)\le D(T)L^2+O_T(L^2/\log L),\qquad
+ D(T)=\frac{8T\arctan T-4\log(1+T^2)}{4\pi^2}.
+ \tag{4}
+\]
+Partial summation twice in (3) gives the integral of $W(t-s)$
+over the square $[-T,T]^2$, divided by $4\pi^2$.
+
+\section{A smooth height cutoff and the signed prime powers}
+Take a real even $K\in C^\infty_c([-a,a])$, $a>0$, and put
+$h(t)=\int K(s)\e^{\ii ts}\,\wt s$. For $v$ in a fixed compact
+interval and all sufficiently large $p$, equation (3.1) of
+\cite{cmqr}, applied to $h(t)\e^{\ii(\lambda+v)t}$, gives
+\begin{align}
+ S_h(v)&:=\sum_\gamma h(\gamma)\e^{\ii(\lambda+v)\gamma}
+       =-P_0(v)+O_K(1),\nonumber\\
+ P_0(v)&=\sum_{n\ge2}a_n(v)\chi(n),\qquad
+ a_n(v)=\frac{\Lambda(n)}{\sqrt n}K\big(\log(n/y)-v\big).
+ \tag{5}
+\end{align}
+Here the conductor term is $\log(p/\pi)K(-\lambda-v)$ and the
+reflected prime term contains $K(-\log n-\lambda-v)$. Both vanish
+on the stated interval. The gamma-factor integral is bounded by a
+constant times $\int |h(t)|\log(2+|t|)\,\wt t$. The test is entire
+of exponential type and rapidly decreasing in horizontal strips,
+as required in the explicit formula.
+
+For the moment take $K\ge0$ nonzero and positive in $(-a,a)$, and
+write $B_K=\int K(s)\e^{s/2}\,\wt s$. Set
+$I=[-3a,2a]$, $I_-=[-3a,-2a]$ and
+$G=\int_I |S_h(v)|^2 w(v)\,\wt v$. The same modified statistic has
+both the following lower and upper bounds. RH for $\zeta$ and
+partial summation give, uniformly on $I$,
+\[
+ M(v):=\sum_n a_n(v)=B_K\sqrt y\,\e^{v/2}+O_K(\log^2 y).
+ \tag{6}
+\]
+For $n_p>y$ and $v\in I_-$ every $n$ in (5) is at most $y\e^{-a}<y$.
+Define $A_J=B_K^2\int_J\e^v w(v)\,\wt v$. Equations (5)--(6) give
+\[
+ A_{I_-}y-O_K(\sqrt y\log^2 y)\ \le G\le\
+ A_Iy+O_K(\sqrt y\log^2 y).
+ \tag{7}
+\]
+The upper bound holds for every prime under GRH. For $n_p>y$ the
+exact signed sum in (5) throughout $I$ is
+\[
+  P_0(v)=M(v)-2\sum_{\substack{n>y\\\chi(n)=-1}}a_n(v).
+  \tag{8}
+\]
+The window lies below $p$ for large $p$. It includes prime powers up
+to $y\e^{3a}$, and the second sum is present wherever the support
+reaches above $y$. A prime power with negative sign has odd exponent.
+In this fixed window any proper prime power has base $<y$ for large
+$p$, so its sign on an exceptional prime is actually $+1$, also for
+powers above $y$. Thus only primes above $y$ can enter the subtraction.
+Without exceptionality proper powers contribute $O_a(\|K\|_\infty)$
+in absolute value: the unweighted $\Lambda$ mass of proper powers up
+to $X$ is $O(\sqrt X)$ by Chebyshev's bound and summation over the
+exponents.
+
+More explicitly, define $J_{mn}=\int_I a_m(v)a_n(v)w(v)\,\wt v$.
+Then (5) gives
+\[
+ G=\sum_{m,n}\chi(mn)J_{mn}+O_K(\sqrt y),\qquad
+ \sum_n J_{nn}=O_K(\log y).
+ \tag{9}
+\]
+The diagonal estimate follows from $\Lambda(n)^2\le\Lambda(n)\log n$
+and Chebyshev in the window $n\asymp_a y$. Equation (9) retains the
+cross terms of both signs. On $I_-$ alone the right side reconstructs
+$A_{I_-}y+O_K(\sqrt y\log^2 y)$ for an exceptional prime. Cancellation
+in the other $v$-windows cannot remove this positive part of the
+integral. Beating (7) from above would already require arithmetic
+that prevents the primes in that first window from all splitting.
+
+\section{Transferring a prime-side bound to the original hard cutoff}
+For any real even $K$ as in (5), define
+$F_h=\int_{\R}|S_h(v)|^2w(v)\,\wt v$. Equations (5)--(6), with
+$|K|$ in the majorant in (6), imply
+\[
+ \limsup_p\frac{\sqrt{F_h}}{L}\le
+ \sqrt{4c/3}\int |K(s)|\e^{s/2}\,\wt s.
+ \tag{10}
+\]
+Indeed the pointwise limsup is at most $\sqrt c\,\e^{v/2}$
+times the integral on the right before taking the weighted norm.
+Absolute continuity and bounded variation suffice for (6) with $|K|$.
+The bound $\sum_\gamma |h(\gamma)|=O_h(L)$, from the unit-interval
+zero count and rapid decay, permits integration of the limsup by
+domination. Finally $\int_{\R}\e^vw(v)\,\wt v=4/3$.
+
+Fix an even, nonnegative Schwartz density $P$ of integral one whose
+angular Fourier transform $\widehat P(u)=\int P(t)\e^{-\ii ut}\,\wt t$
+is smooth and supported in $[-1,1]$. A normalized square of the
+Fourier transform of a real even bump supported in $[-1/2,1/2]$
+suffices. Put $m_1=\int|t|P(t)\,\wt t$ and $P_B(t)=BP(Bt)$.
+For $B\ge1$ fixed, take $h=\ind_{[-T,T]}*P_B$. Its kernel is
+\[
+ K(s)=\frac{\sin(Ts)}{\pi s}\widehat P(s/B),\qquad
+ |K(s)|\le T/\pi,\quad |s|\le B .
+\]
+For $H_T=\ind_{[-T,T]}$, equation (3) and the unit-interval count
+give
+\[
+ \lim_{p\to\infty}\frac{1}{L}\sum_\gamma|H_T(\gamma)-h(\gamma)|
+ =\frac{\|H_T-h\|_1}{2\pi}\le\frac{m_1}{\pi B}.
+\]
+For the equality first truncate at a fixed height. On any compact
+interval the integrand is piecewise continuous and bounded, and the
+tails decrease rapidly. The inequality integrates the symmetric
+difference of an interval and its translate, of measure at most
+twice the displacement. Since $\int w=1$, the same error bounds
+$|\sqrt{F_p(y,T)}-\sqrt{F_h}|/L$ in the limsup. In particular at
+$T=T_c$ this smoothing has lower bound
+$\liminf_{\rm exc}\sqrt{F_h}/L\ge\sqrt{b_c}-m_1/(\pi B)$ along
+any infinite exceptional sequence. One may take $B$ sufficiently
+large for each $c$ to make this positive.
+
+Equations (4) and (10) now bound the signed sum for the original
+cutoff at each prime before taking the limit:
+\[
+ \limsup_p\frac{\sqrt{F_p(cL^2,T)}}{L}\le
+ \min\left\{\sqrt{D(T)},\
+ \inf_{B\ge1}\left[\frac{m_1}{\pi B}
+       +\frac{4T}{\pi\sqrt 3}\sqrt c\,\e^{B/2}\right]\right\}.
+ \tag{11}
+\]
+Here we used $\int_{-B}^B\e^{s/2}\,\wt s\le2\e^{B/2}$.
+For $0<c\le\e^{-2}$ the choice $B=\tfrac12\log(1/c)$ gives
+$O(1/\log(1/c)+T c^{1/4})$ for the left side. This estimate concerns
+each fixed $c$, with the limit in $p$ taken first.
+
+For comparison one may use $T_c\ge1$ and the constant from the proof
+of Proposition 4 in the original note,
+$b_c=c(\int g(v)\e^{v/2}\,\wt v)^2/(4\int |g(v)|^2\e^{2|v|}\,\wt v)$.
+By Cauchy--Schwarz on $(-1,0)$, $b_c\le c(1-\e^{-3})/12<c/12$.
+For $0<c\le1/2$, both entries of the minimum in (11) exceed
+$\sqrt{b_c}$: $D(T_c)\ge D(1)>1/24$ and the exponential term alone
+exceeds $\sqrt{c/12}$. The decrease in the displayed upper bound
+as $c$ decreases at fixed $T$ gives no contradiction at a fixed $j$.
+
+\section{A second arithmetic input at the individual modulus}
+One exact constraint on an actual Legendre symbol is its additive
+autocorrelation. Keep the nonnegative $K,I,I_-$ from (7) and put
+$P_r(v)=\sum_n a_n(v)\chi(n+r)$ for $r\bmod p$. For large $p$ the
+indices in the window are distinct modulo $p$. At each $v$ one has
+\[
+ \sum_{r\bmod p}|P_r(v)|^2
+ =p\sum_n a_n(v)^2-\left(\sum_n a_n(v)\right)^2 .
+ \tag{12}
+\]
+For $m=n$ the complete sum of products of characters is $p-1$.
+For $m\ne n$, the substitution $r\mapsto(r+m)/(r+n)$ maps
+$\mathbb F_p\setminus\{-n\}$ bijectively to
+$\mathbb F_p\setminus\{1\}$. Hence the correlation is $-1$. This
+proves (12) while retaining the signed off-diagonal contribution.
+In particular, if $E_r=\int_I |P_r(v)|^2 w(v)\,\wt v$, then
+\[
+ \sum_{r\bmod p} E_r\ll_K p\log y.
+ \tag{13}
+\]
+This is at the given $p$ and can be applied to the exact contribution
+of the exceptional translates. Indeed if $n_p>y$, then for every
+integer $0\le r\le (1-\e^{-a})y$ and $v\in I_-$, all $n+r$ in
+the sum are at most $y$ and have sign $+1$. Consequently all these
+$\gg_a y$ translates have $E_r\ge (A_{I_-}+o_K(1))y$ by (6).
+Moreover $E_0=G+O_K(\sqrt y)$ by (5). From (7) all these $E_r$
+are at least a fixed positive multiple of $E_0$ for large $p$.
+Thus (13) implies on an exceptional prime
+\[
+ y^2\ll_K p\log y,\qquad E_0\ll_K p\log y/y.
+ \tag{14}
+\]
+At $y=c(\log p)^2$, $p\log y/y^2\to\infty$. Even after propagating
+the original large value to many translates, the complete correlation
+estimate permits it. The direct upper bound $E_0=O_K(y)$ is smaller.
+
+\section{Ranges and the missing inequality}
+Kandhil, Languasco and Moree \cite{klm} use the positive-ordinate
+statistic. Their Theorem 1 assumes $x\le T\le\e^x$ and
+$3\le k\le\exp(x/\log x)$. At $x=cL^2$, $k=p$ satisfies this
+conductor condition eventually, while fixed $T_c$ falls below $x$.
+Their Theorem 2 requires the same height range and
+$k\le\sqrt x/(\log x)^3$, which also excludes $p$. Their additional
+Hypothesis 1 starts at $x^\varepsilon\le T<x$ for fixed
+$\varepsilon>0$ with the conductor range of Theorem 1. It does not
+supply a direct estimate at fixed height.
+
+There is an indirect way to use growing heights. For a band-limited
+height cutoff $h$ from (5), set $C_K=\int|K(s)|\e^{|s|}\,\wt s$. For
+$U\ge2$ and each fixed $N>0$, one has
+\[
+ \sqrt{F_h}\le 2C_K\sqrt{F^+_\chi(y,U)}
+ +O_{K,N}\big(L/\log L+(L+\log(2U))U^{-N}\big).
+ \tag{15}
+\]
+Indeed the positive-ordinate sum truncated at $U$ and weighted by $h$
+is the integral against $K(s)$ of translates by $s$ of the unweighted
+sum. Translation costs at most $\e^{|s|}$ in the $L^2(w)$ norm.
+Add the reflected sum and subtract the duplicated central entries
+using (3). The unit-interval count bounds the discarded Schwartz tail.
+This argument uses no monotonicity of $F^+$ in its height.
+
+In the other direction, choose the nonnegative $K$ of (7). For each
+$c$ there is a fixed $U_c$ such that every sufficiently large
+exceptional prime satisfies, simultaneously for all $U\ge U_c$,
+\[
+  F^+_\chi(y,U)\ \ge\ \frac{A_{I_-}c}{16C_K^2}\,L^2 .
+  \tag{16}
+\]
+Indeed $F_h\ge G$, and $U_c$ can make the normalized tail in (15)
+smaller than a quarter of $\sqrt{A_{I_-}c}$ uniformly in $U\ge U_c$.
+For sufficiently large $p$, (7) and the central-zero error leave
+at least $\tfrac12\sqrt{A_{I_-}c}\,L$ for the leading term in (15).
+
+Applying the proved Theorem 1 at $U=y$ gives only $F_h\ll_{K,c}L^3$
+from (15), above the order $L^2$ in (7). Conversely, an individual
+bound $F^+_\chi(y,U)=o_c(L^2)$ at even one height $U=U(p)\to\infty$
+at this $y$ gives $\sqrt{F_h}/L\to0$ for each fixed $K$. Approximate the
+hard cutoff as in (11) and let $B\to\infty$ after $p\to\infty$ to get
+$F_p(y,T)=o_{c,T}(L^2)$. In particular a bound $O_c(UL)$ at some
+$1\ll U=o(L)$ with $U\to\infty$ would suffice. For instance, their
+additional Hypothesis 1 would allow $U=y^{1/4}$ and would give this
+transfer. Its use at that height would be an extra assumption beyond
+Dirichlet GRH.
+
+For the original cutoff the close pairs cost $O_{c,T}(L^2/\log L)$.
+The fixed-height upper bound (11) still allows the lower bound (2).
+A sufficient missing estimate for each fixed dyadic $c$ is
+\[
+ \limsup_{p\to\infty}
+ \frac{R_{1/\log(cL^2)}(cL^2,T_c)}{L^2}<b_c .
+\]
+A bound restricted to putative exceptional primes with a fixed margin
+below $b_c$ would suffice as well. The estimates here give no improved
+bound for $n_p$.
+
+\begin{thebibliography}{9}
+\bibitem{cmqr} E.~Carneiro, M.~Milinovich, E.~Quesada-Herrera and A.~Ramos,
+\emph{Fourier optimization, the least quadratic non-residue, and the
+least prime in an arithmetic progression},
+\href{https://arxiv.org/html/2404.08380v2#S3}{Section 3}.
+\bibitem{klm} N.~Kandhil, A.~Languasco and P.~Moree,
+\emph{Beyond the Riemann Hypothesis bounds: A pair-correlation approach
+to the least prime in arithmetic progression and the smallest quadratic
+non-residue}, \href{https://arxiv.org/html/2607.14515v1#S1.SS1}{Section 1.1}.
+\end{thebibliography}
+\end{document}

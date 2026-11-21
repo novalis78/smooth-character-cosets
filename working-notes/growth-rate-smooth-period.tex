@@ -1,0 +1,320 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.84in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.42em}
+\setlength{\emergencystretch}{2em}
+\newcommand{\dd}{\,dt}
+\newcommand{\ch}{\chi_p}
+\newcommand{\HT}{\href{https://jtnb.centre-mersenne.org/item/10.5802/jtnb.101.pdf}{Hildebrand--Tenenbaum, Theorem 1.6 and Corollary 1.7}}
+\newcommand{\CM}{\href{https://arxiv.org/pdf/2404.08380v2}{Carneiro--Milinovich--Quesada-Herrera--Ramos, Theorems 1, 2, 4, 5 and the proof of Theorem 6}}
+\newcommand{\DZZ}{\href{https://arxiv.org/pdf/2611.11389v1}{Dong--Zhao--Zhou, Theorem 1.4 and Sections 3--5 (v1)}}
+\begin{document}
+{\Large\bfseries Quadratic character sums over smooth integers at a full period}\\[3pt]
+{\large The control at \(0.77(\log p)^2\) and the missing estimate at \(0.75(\log p)^2\)}
+
+Let \(p\) run through all odd primes, \(\ch=(\cdot/p)\), \(L=\log p\),
+\(\ell=\log L\), \(y=\eta L^2\) with fixed \(\eta>0\), and \(H=\log y\).
+Write \(A(X,z)=\sum_{n\le X,\ P^+(n)\le z}\ch(n)\), \(A_p(y)=A(p,y)\),
+\(\Psi(X,z)=\sum_{n\le X,\ P^+(n)\le z}1\), and \(P^+(1)=1\).
+We assume Dirichlet GRH. All asymptotics are individual-prime estimates.
+Put \(c_*=\mathcal C(1)^{-2}\) in the normalization of Carneiro et al.
+The hand calculation below gives, for every fixed \(\eta>c_*\),
+\begin{equation}
+  |A_p(y)|\ \ll_\eta\ \Psi(p,y)\exp(-b_\eta L/H)
+  \qquad (b_\eta>0).
+\end{equation}
+Their bounds \(0.7596<c_*<0.7615\) put \(0.77\) inside this result.
+At \(0.75\) we isolate the remaining terms by size and frequency. We do
+not obtain a nonresidue below this cutoff. \CM.
+
+\section*{1. The size of one witness}
+For large \(p\), \(y<p\), so all the signs in \(A_p(y)\) are \(\pm1\).
+Thus \(A_p(y)=\Psi(p,y)\) if and only if \(n_p>y\). If \(q\le y\) is a
+nonresidue prime, the pairs \((m,qm)\) for smooth \(m\le p/q\) have
+opposite signs. Each negative member occurs at most twice, giving
+\(\Psi(p,y)-A_p(y)\ge\Psi(p/q,y)\ge M\), where \(M=\Psi(p/y,y)\).
+Using disjoint pairs strengthens this lower bound to
+\begin{equation}
+ \Psi(p,y)-A_p(y)\ \ge\
+ 2\sum_{j\ge1}\{\Psi(p/q^{2j-1},y)-\Psi(p/q^{2j},y)\}
+ \ \ge\ (2-o_\eta(1))M .
+\end{equation}
+Pair each smooth integer of odd \(q\)-adic valuation with its quotient
+by \(q\). The sum counts these disjoint pairs. For the last inequality,
+if \(q\le y/9\) the original pairing already gives
+\(\Psi(9p/y,y)\sim3M\). Otherwise the first difference alone is at least
+\(M-\Psi(81p/y^2,y)=(1-o(1))M\).
+
+For the scale in (2), let \(Z(s)=\prod_{v\le y}(1-v^{-s})^{-1}\), with
+products over primes, and define \(\alpha\) by
+\(\sum_{v\le y}\log v/(v^\alpha-1)=L\). Put \(Z=Z(\alpha)\).
+The saddle-point formula and its local ratio estimate give
+\begin{align}
+ \alpha&=\tfrac12+(\log(2\sqrt\eta)+o_\eta(1))/H,\qquad
+ \frac{M}{\Psi(p,y)}\sim y^{-\alpha}\sim\frac{1}{2\eta L},\label{eq:ratio}\\
+ \log\Psi(p,y)&=\tfrac12 L+
+    \big(1+\log(2\sqrt\eta)+o_\eta(1)\big)L/H .\label{eq:psi}
+\end{align}
+Indeed the PNT gives \(-(\log Z)'(\alpha)\sim y^{1-\alpha}/(1-\alpha)\),
+\(\log Z\sim L/H\), and \(\phi_2=(\log Z)''(\alpha)\sim LH\). The first
+estimate follows by bracketing \(\alpha=1/2+k/H\) for fixed \(k\).
+The saddle formula gives \(p^\alpha Z/\Psi(p,y)\asymp\sqrt{LH}\).
+Uniformly for \(1\le d\le y^K\), fixed \(K\), the local ratio is
+\(\Psi(p/d,y)/\Psi(p,y)=(1+o(1))d^{-\alpha}\). Iterate Corollary 1.7
+in steps of factor at most \(y\). The saddle changes by \(O_K(1/L)\)
+since its derivative in \(\log p\), at fixed \(y\), is \(-1/\phi_2\).
+\HT.
+
+\newpage
+\section*{2. What full-period cancellation removes}
+Grouping by the unique largest prime and retaining its signed cofactor gives
+\begin{equation}
+ 0=\sum_{n\le p}\ch(n)=A_p(y)+
+       \sum_{y<r\le p\ {\rm prime}}\ch(r)A(p/r,r).
+ \label{eq:buchstab}
+\end{equation}
+The cofactor may contain \(r\) again. The term \(r=p\) vanishes. There
+is an independent estimate on a terminal part of this signed sum. For
+\(1<U<\sqrt p\) with \(p/U>y\), write \(R\) for the sum over
+\(y<r\le p/U\). Interchanging the prime and cofactor in the rest gives
+\begin{equation}
+ -A_p(y)-R=\sum_{m\le U}\ch(m)\!
+     \sum_{p/U<r\le p/m\ {\rm prime}}\ch(r)
+       \ \ll\ \sqrt{pU}\,L^2 .
+ \label{eq:tail}
+\end{equation}
+Here \(r>\sqrt p>m\), so the smoothness condition on \(m\) is automatic.
+The GRH bound \(\sum_{r\le t}\ch(r)\ll\sqrt t\log^2(pt)\) at both
+endpoints and \(\sum_{m\le U}m^{-1/2}\ll\sqrt U\) suffice. In particular
+write \(K_\eta=1+\log(2\sqrt\eta)\). If \(K_\eta>0\), take
+\(U=\exp(\beta L/H)\) for any fixed \(0<\beta<2K_\eta\).
+Equations (3)--(4) show the error in (6) is \(o_\eta(M)\) (with \(\beta\)
+fixed). At \(0.75\), \(2K_\eta=2+\log3\), so one can take \(\beta=2\).
+For \(\eta\le e^{-2}/4\) this comparison gives no positive \(\beta\).
+
+Exceptionality at \(0.75\) would now force
+\[
+ R=-\Psi(p,y)+o(M).
+\]
+A uniform
+\(R\ge-\Psi(p,y)+\delta M\), for any fixed \(\delta>0\), would suffice.
+The first remaining prime term already has size \(M\). Let \(r\) be the
+least prime above \(y\), so \(r/y\to1\). Under exceptionality,
+\begin{equation}
+ \ch(r)A(p/r,r)=\sum_{k\ge1}\ch(r)^k\Psi(p/r^k,y)
+              =(\ch(r)+o(1))M .
+\end{equation}
+The first term uses (3)'s local ratio. Those with \(k=2,3\) are \(o(M)\),
+and the rest are at most \((L/\log r)\Psi(p/r^4,y)=o(M)\) in absolute
+value. The unknown sign can go either way in this decomposition. A joint
+estimate could still control \(R\). Removing the first prime term by its
+absolute value alone costs the full one-witness scale.
+
+The same grouping prevents a direct transfer from \(z=0.77L^2\) to
+\(y=0.75L^2\). Its exact cost is
+\(A(p,z)-A(p,y)=\sum_{y<r\le z}\ch(r)A(p/r,r)\), over primes.
+Even a very small \(A(p,z)\) leaves this signed difference.
+The unsigned counts themselves have ratio
+\(\Psi(p,z)/\Psi(p,y)=\exp\{(\tfrac12\log(0.77/0.75)+o(1))L/H\}\)
+by (4).
+
+\textbf{Where the November estimate loses the cutoff.} At \(x=p\) the
+preprint takes \(y=(L+L^2)\ell^C\). On
+\(\sigma_b=1/2+b\log\ell/\ell\), Lemmas 3.1--3.2 give an upper logarithm
+\(L/2+bW+O(L\ell^{2-2b}+\ell)\), \(W=L\log\ell/\ell\).
+The error comes from the log-Euler-product approximation (3.3), with its
+factor \((\log v)^2 v^{1/2-\sigma_b}\). Lemma 4.1 gives a lower logarithm
+\(L/2+(C/4+o(1))W\). Section 5 chooses \(3/2<b<C/4-\gamma\).
+At a fixed multiple of \(L^2\), (4) puts the true surplus at order at
+most \(L/\ell=o(W)\). Even an exact unsigned count cannot pay for the
+contour displacement \(bW\). Setting the ordinary character sum to zero
+does not improve the separate bound on the finite product. \DZZ.
+
+\newpage
+\section*{3. The Fourier input at \(0.77\)}
+For each fixed \(\eta>c_*\) there are constants \(d,\delta\in(0,1)\),
+depending on \(\eta\), such that for each sign \(\varepsilon=\pm1\),
+\begin{equation}
+ \#\{d y\le v\le y:\ v\ {\rm prime},\ \ch(v)=\varepsilon\}
+       \ge\delta\,y/H .
+ \label{eq:both}
+\end{equation}
+We give the quantitative deduction because merely finding one prime of
+each sign is insufficient for (1). Take an admissible fixed test \(F\)
+with \(\widehat F\) real, smooth and supported in \([-N,N]\). Put
+\[
+ D(F)=\int_{-\infty}^0\widehat F(t)e^{\pi t}\,dt
+              -\int_0^\infty|\widehat F(t)|e^{\pi t}\,dt.
+\]
+By the extremal characterization, \(\inf_{D(F)>0}\|F\|_1/(2\pi D(F))
+=\sqrt{c_*}\). Choose \(F\) with
+\(\sqrt\eta D(F)>\|F\|_1/(2\pi)\), let \(\Delta=H/(2\pi)\) and
+\(\widehat h(t)=(\widehat F(t-\Delta)+\widehat F(-t-\Delta))/2\).
+The explicit formula, the zero count and the gamma estimate in the proof
+of Theorem 6 give
+\[
+ \left|\pi^{-1}\sum_n\Lambda(n)\ch(n)n^{-1/2}
+                 \widehat h(\log n/(2\pi))\right|
+ \le L\|F\|_1/(2\pi)+o_F(L).
+\]
+Here \(\widehat h(0)=0\). Both signs of this inequality follow from the
+absolute zero majorant. The supported positive integers have
+\(d y\le n\le y/d\) for \(d=e^{-2\pi N}\). Proper prime powers
+contribute \(O_F(\log^2 y)\).
+
+For either \(\varepsilon\), use prime coefficient \(-\varepsilon\ch(v)\).
+Putting \(+1\) below \(y\), and minus the absolute value of the weight
+above \(y\), gives \(\sqrt y D(F)+o_F(\sqrt y)\) by the PNT and the
+change of variable \(v=y e^{2\pi t}\). Restoring each coefficient below
+\(y\) with \(\ch(v)=\varepsilon\) costs at most \(O_F(H/\sqrt y)\).
+The strict margin in the choice of \(F\) proves (8). At \(\eta=0.75\),
+the lower bound \(c_*>0.7596\) prevents this choice for every admissible
+test. This is the specific arithmetic input lost on moving the cutoff.
+\CM.
+
+\textbf{A direct count check on the sign input.} Match distinct positive
+primes in (8) with distinct negative primes to form at least
+\(\lfloor\delta y/H\rfloor\) disjoint prime pairs. For each pair \((r,q)\)
+and smooth \(m\le p/y\), exactly one of \(rm,qm\) has negative sign.
+A given negative integer can occur at most \(L/\log(dy)\) times since
+each occurrence uses a different prime divisor at least \(d y\).
+Thus
+\[
+ \Psi(p,y)-A_p(y)\ \ge\
+ 2\lfloor\delta y/H\rfloor\,M\,\log(dy)/L \gg_\eta\Psi(p,y).
+\]
+Interchanging the sign being counted gives the same lower bound for
+\(\Psi(p,y)+A_p(y)\). This gives a fixed fractional gap already.
+The next two steps show how the same prime counts give nearly equal
+numbers of the two signs.
+
+\newpage
+\section*{4. Uniform damping away from frequency zero}
+For \(f=\ch\) or \(f=1\) put
+\[
+ F_y(s;f)=\prod_{v\le y}(1-f(v)v^{-s})^{-1},\qquad
+ U_f(t)=|F_y(\alpha+it;f)|/Z .
+\]
+The Euler expansion for the logarithm gives
+\[
+ -\log U_f(t)\ \ge\ \sum_{v\le y}
+       \frac{1-f(v)\cos(t\log v)}{v^\alpha}.
+\]
+All prime-power losses omitted here are nonnegative. For \(\eta>c_*\)
+choose \(\tau>0\) with \(\tau|\log d|\le1/4\), using \(d\) from (8).
+For \(|t|\le\tau\), \(\cos(t\log v)\) differs from \(\cos(t\log y)\)
+by at most \(1/4\) on \([dy,y]\). Whichever sign the latter cosine has,
+one of the two sets in (8) has loss at least \(3/4\) per prime before
+the weight \(v^{-\alpha}\). Hence \(U_{\ch}(t)\le e^{-c_\eta L/H}\)
+on this whole interval.
+
+For \emph{every} fixed \(\eta>0\), including \(0.75\), use
+\(1-f(v)\cos z\ge 1-|\cos z|\ge(1-\cos(2z))/4\).
+Fix a nonzero nonnegative smooth \(g\) compactly supported in \((1/2,1)\)
+and write \(G(s)=\int_0^\infty g(u)u^{s-1}\,du\). Under RH for \(\zeta\),
+\begin{equation}
+ \sum_{v\ {\rm prime}}(\log v)g(v/y)v^{iu}
+ =y^{1+iu}G(1+iu)+O_g\big(\sqrt y[\log(2+|u|)+\log^2 y]\big).
+ \label{eq:twist}
+\end{equation}
+Indeed Mellin inversion for the von Mangoldt sum shifts
+\(-(\zeta'/\zeta)(s)y^{s+iu}G(s+iu)\) to \(\Re s=-1\).
+The zeros contribute \(O_g(\sqrt y\log(2+|u|))\) by rapid decay and
+\(O(\log(2+|v_0|))\) zeros per unit interval at height \(v_0\).
+The new vertical integral is \(O_g(y^{-1}\log(2+|u|))\) by the functional
+equation. Removing proper powers costs \(O_g(\sqrt y\log^2 y)\).
+\href{https://people.maths.ox.ac.uk/greenbj/papers/primenumbers.pdf}{Green, chapter 7, smoothed explicit formula}.
+
+For any fixed \(\tau>0\),
+\(\sup_{|u|\ge2\tau}|G(1+iu)|<G(1)\) by strict triangle inequality
+and decay. Near zero, \(G(1)-|G(1+iu)|\gg_g u^2\) by the positive
+variance of \(\log v\) under the normalized measure \(g(v)\,dv\).
+Subtract the real part of (9) at \(u=2t\) from its value at \(0\).
+For \(\tau\le |t|\le\exp(L/H)\) the error is \(o_\eta(y)\).
+For \(1/H\le|t|\le\tau\) it is \(o_\eta(y/H^2)\).
+Since \(g\) is bounded and \(v^{-\alpha}/\log v\gg_\eta 1/(LH)\)
+on its support after scaling by \(y\), this proves, for both \(f\),
+\begin{align}
+ U_f(t)&\le e^{-c_{\eta,\tau}L/H}
+           &&(\tau\le |t|\le e^{L/H}),\label{eq:high}\\
+ U_f(t)&\le e^{-c_{\eta,\tau}L/H^3}
+           &&(1/H\le |t|\le\tau).\label{eq:middle}
+\end{align}
+For (11) the lower bound for \(G(1)-|G(1+iu)|\) on compact ranges uses
+strictness away from zero as well. Estimate (10) uses only the reality
+of the prime signs and RH for \(\zeta\). Under (8) the stronger rate
+\(e^{-c_\eta L/H}\) holds for \(f=\ch\) down to \(t=0\).
+
+\newpage
+\section*{5. Returning to the sharp endpoint}
+Choose \(T=\exp(aL/H)\) with \(0<a<1\) sufficiently small compared with
+the constant in (10), and put \(\epsilon=T^{-1/2}\). The cutoff average
+\[
+ \frac1{2\epsilon}\int_{-\epsilon}^{\epsilon}
+       \sum_{\substack{n\le pe^v\\P^+(n)\le y}}f(n)\,dv
+ =\frac1{2\pi}\int_{\mathbb R}
+   \frac{p^sF_y(s;f)}s\,\frac{\sinh(\epsilon s)}{\epsilon s}\,dt,
+ \qquad s=\alpha+it ,
+\]
+follows by integrating Perron's kernel. The smoothed kernel is absolutely
+integrable and the finite Euler product has an absolutely convergent
+Dirichlet series on this line. The integral for \(|t|>T\) costs
+\(O(p^\alpha Z/(\epsilon T))\).
+
+To remove the averaging, use the probability measure on points \(\log n\)
+with mass \(n^{-\alpha}/Z\) at each \(y\)-smooth \(n\). Its Fourier
+transform in absolute value is \(U_1(t)\). Its mass within \(\epsilon\)
+of any point is
+\[
+ \ll\epsilon\int_{|t|\le1/\epsilon}U_1(t)\dd\ll_{\eta,\tau}\epsilon .
+\]
+For the first inequality majorize the interval indicator by a constant
+times \((\sin(v/(2\epsilon))/(v/(2\epsilon)))^2\) in the centered log
+variable \(v\), then use its triangular Fourier transform. The second
+inequality uses \(U_1\le1\) up to fixed \(\tau\) and (10) afterwards,
+with \(a\) chosen as above. Thus the difference between the averaged and
+sharp sums is \(O_{\eta,\tau}(\epsilon p^\alpha Z)\), for either sign
+choice, uniformly at the endpoint.
+
+For \(\eta>c_*\) apply the strong bound for \(U_{\ch}(t)\) on
+\([-T,T]\). The remaining kernel has integral in absolute value
+\(O(\log(2T))\) after removing \(F_y\) and \(p^\alpha\).
+The tail and smoothing errors are exponentially small as well.
+Since \(p^\alpha Z/\Psi(p,y)\asymp\sqrt{LH}\), reducing the positive
+constant in the exponent absorbs the polynomial factors. This proves (1).
+
+For any fixed \(\eta>0\), (10)--(11) instead yield the low-frequency
+formula, with \(f=\ch\) or \(1\),
+\begin{equation}
+ \sum_{n\le p,\ P^+(n)\le y} f(n)=
+ \frac{p^\alpha}{2\pi}\int_{-1/H}^{1/H}
+       \frac{F_y(\alpha+it;f)p^{it}}{\alpha+it}\dd
+ +O_\eta\!\left(\Psi(p,y)e^{-c_\eta L/H^3}\right).
+\end{equation}
+On this short interval the smoothing factor is \(1+O(\epsilon^2)\).
+The error is \(o(M)\). At \(0.75\), subtracting the two copies of (12)
+therefore places the entire one-witness question in the displayed
+integral. If every small prime is a residue the two products there
+coincide identically, including at \(t=0\).
+
+One can bound the central integral at any fixed \(\eta\) in terms of the
+actual negative prime mass \(D_p=\sum_{v\le y,\ \ch(v)=-1}v^{-\alpha}\).
+On \(|t|\le1/H\), the first-power loss is at least
+\(2\cos(1)D_p+c_\eta LHt^2\). Separate \(1-\cos(t\log v)\) from the
+additional \(2\cos(t\log v)\) at negative primes, and sum the former
+over \([y/2,y]\) by the PNT. Gaussian integration in (12) yields
+\[
+ \frac{|A_p(y)|}{\Psi(p,y)}
+ \ll_\eta e^{-2\cos(1)D_p}+e^{-c_\eta L/H^3}.
+\]
+At \(0.75\) this estimate still allows \(D_p=0\).
+
+\textbf{Consequence for \(n_p\).} At \(0.77\), (1) puts each sign on
+\((1/2+o(1))\Psi(p,y)\) smooth integers. At \(0.75\), (6) controls the
+largest-prime tail and (12) controls the outer frequencies beyond the
+precision in (2). Neither provides a strict gap for the remaining signed
+sum. The growth-rate bound on \(n_p\) is unchanged. These are hand
+derivations. Priority for (1) has not been checked.
+\end{document}

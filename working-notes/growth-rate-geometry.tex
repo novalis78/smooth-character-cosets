@@ -1,0 +1,110 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\newcommand{\src}[2]{\href{https://github.com/Deicyde/riemann-hypothesis/blob/e7c8972c701d3396947808ab20cc16dc14623d33/src/#1.lean}{#2}}
+\newcommand{\rd}{\operatorname{rd}}
+\newcommand{\ch}{\chi_p}
+\newcommand{\DD}{\mathcal D}
+\newcommand{\La}{\mathcal L_a}
+\begin{document}
+{\Large\bfseries The geometric comparison at the least-nonresidue scale}\\[3pt]
+{\large The quadratic class can be reversed in the selection lemma. The geometric count imposes a conductor restriction.}\\[4pt]
+{\small Working note, continuing \texttt{alpoge-quadratic-twists.tex}.}
+
+\section*{1. The inequality a geometric argument would have to prove}
+Fix $c>0$, $X=c(\log p)^2$, and let $\ch=(\cdot/p)$ for an odd prime $p>X$. All estimates for characters assume Dirichlet GRH, including RH for $\zeta$. Write $g_1,g_\xi$ for the centered sums in the supplied note. For primitive nonprincipal $\xi$,
+\[
+ g_\xi(x)=\sum_{n\le x}\Lambda(n)\xi(n)(x/n-1)+x(L'/L)(1,\xi).
+\]
+For $g_1$ the centering is $-x\log x+(1+\gamma)x$. Set $G_{p,\pm}(x)=g_1(x)\pm g_{\ch}(x)/7$. The positive sign is the cyclic quadratic level in the source. Let $W(t)=1$ for $0<t\le 1/2$, $W(t)=t^{-1}-1$ for $1/2<t\le1$, and $W(t)=0$ for $t>1$. With $S=\sum_{n\le X}\Lambda(n)W(n/X)$ and $S_-=\sum_{n\le X,\,\ch(n)=-1}\Lambda(n)W(n/X)$, direct subtraction yields
+\[
+ \DD G_{p,+}(X)=\tfrac87 S-X\log 2-\tfrac27 S_-
+ =\tfrac{\log 2}{7}X-\tfrac27 S_-+O(\sqrt X\log^2(2X)).
+\]
+Here $\DD f(X)=f(X)-2f(X/2)$. The error follows by partial summation from RH since $W$ has bounded variation and integral $\log 2$. At an exceptional prime $n_p>X$ the term $S_-$ vanishes. For unrestricted primes the displayed identity gives an upper bound with coefficient $(\log2)/7+o(1)$, uniformly in $p$.
+
+There is a way to use \emph{two one-sided estimates}. Since $g_1(x)=O(\sqrt x\log^2(2x))$ (see Section 2),
+\[
+ G_{p,+}(X)+2G_{p,-}(X/2)
+ =\DD G_{p,+}(X)+4g_1(X/2).
+\]
+Thus upper bounds $B_+(X)$ and $B_-(X/2)$ may be added. Their sum needs to save a fixed positive multiple of $X$ below $(\log 2)X/7$ on putative exceptional primes, for every fixed dyadic $c$. They may use different fields. If both bounds have the form $\kappa_c x$, it suffices that $\kappa_c<(\log 2)/14$. Reversing the sign at the level of the finite selection lemma is justified in Section 4. The bounds themselves remain open. \src{Formalism/SharpRestriction/RamificationFrobenius/TotientGaloisClasses/ExplicitFormulaErrorOfHostConditions}{Level weights and quadratic specialization}.
+
+\newpage
+\section*{2. Which analytic conductor restriction can be removed}
+For fixed $B,K,\epsilon>0$ and $x\to\infty$, the following bound is uniform over primitive characters of conductor $M$ with $\log(2M)\le Kx^B$:
+\[
+ \sup_{y\ge \exp(x^{\epsilon/3})/3}\frac{|g_\xi(y)|}{y}
+ \ll_{B,K,\epsilon} \exp(-x^{\epsilon/3}/3).
+ \tag{1}
+\]
+Indeed write $A_\xi(t)=\sum_{n\le t}\Lambda(n)\xi(n)$. For nonprincipal $\xi$, partial summation and convergence at $s=1$ give the exact identity
+\[
+  g_\xi(y)=-y\int_y^\infty A_\xi(t)\,\frac{dt}{t^2}.
+\]
+For $g_1$ replace $A_\xi(t)$ by $\psi(t)-t$ in this identity. The constant follows from the Laurent expansion of $-\zeta'/\zeta$ at $1$, which gives $\int_1^\infty(\psi(t)-t)t^{-2}dt=-1-\gamma$. The uniform GRH prime number theorem now gives $|g_\xi(y)|\ll\sqrt y\log^2(2My)$ in both cases. Writing $s=\log y$, the ratio is $\ll e^{-s/2}(Kx^B+s)^2$. The latter expression decreases on $s\ge x^{\epsilon/3}-\log 3$ for large $x$. This proves (1). \href{https://people.math.harvard.edu/~elkies/M229.18/pnt_q.pdf}{Elkies, primes in arithmetic progressions and the explicit formula}.
+
+The source's \texttt{ThinOK} asks for $e^{-c_6x^{\epsilon/8}}$ in this range. Equation (1) gives it for every fixed $c_6>0$. It applies at both $x=X,X/2$ to the twists in the ZIP, and to all characters of a candidate conductor $N\mid 2^{e+2}pqd$ with $e=O(\log X)$ and the stated $q,d$. In this case $\log(2N)=O_c(\sqrt X)$. No host existence assumption is needed for the analytic estimate. \src{Development/AbelianVarietyTheory/Definitions/GlobalTwisting/ThinScalesIffHostBound}{Definition of the thin range}.
+
+\textbf{Keeping the same auxiliary quadratic fields.}
+If $n_p>X$, then for $\eta=(\cdot/q),(\cdot/d)$ or their product the prime-power terms of $g_{\ch\eta}$ and $g_\eta$ agree at both cutoffs. Their difference is linear in $x$, so $\DD(g_{\ch\eta}-g_\eta)(X)=0$ exactly. The host kernel also asks that $(-d/p)=1$. This can be included in the ZIP's choice of $d$. In its average over primes $d\in[D,2D]$ in a fixed class modulo $M_0=16q\prod_{3\le\ell\le z,\ \ell\ {\rm prime}}\ell$, insert $(1+\ch(-1)\ch(d))/2$. Here $z=X^{\epsilon/5}$, $D=\exp(3z(\log X)^2/4)$, and $X^5<q<d<p$ eventually. GRH and orthogonality modulo $M_0$ give relative error
+\[
+ \ll \varphi(M_0)D^{-1/2}\log^4(2DM_0pX^{10})=O_{A,c,\epsilon}(X^{-A})
+\]
+for the additional oscillating mean and each off-diagonal in the ZIP. For an off-diagonal the extra prime factors $X<\ell,h\le X^5$ are distinct and coprime to $pM_0$. Thus the twisted characters being averaged are nonprincipal. The retained proportion is $1/2+o(1)$, diagonal squares are unchanged after renormalization, and the ZIP's three bounds persist. This supplies the local condition for the original prime, with $p$ fixed throughout the average. \src{Development/AutomorphicArithmetic/CharacterBoxes/KerChiAny}{Quadratic host kernel and its splitting condition}.
+
+\newpage
+\section*{3. The signed count before taking bounds}
+Any abelian host $E$ carrying $\ch$ contains $K_p=\mathbb Q(\sqrt{(-1)^{(p-1)/2}p})$. Its quadratic discriminant has absolute value $p$. By the relative discriminant formula,
+\[
+ r=\log\rd(E)=\frac{\log|\Delta_E|}{[E:\mathbb Q]}
+ \ \ge\ \tfrac12\log p .
+\]
+In the compositum specified by the quadratic host kernel the other generators come from the $2$-power tower and the quadratic characters of $q,d$. These are unramified at $p$, so the tame ramification index at $p$ is two. Its local contribution to $r$ is exactly $\tfrac12\log p$. Only the lower bound will be needed.
+
+The notation below follows \texttt{Count5}. Put $L_x=x^\epsilon$, $b=e^{L_x}$, $v=\rd(E)/2$, $a=xb$, $\La=\log(a\rd(E))$, and $\ell_g=\log(g_0g_1)\ge0$ for the auxiliary level primes. For each count $T$ and its array of place weights $w_{j\rho}\ge1$, form the signed difference
+\[
+ R_x=\sum_{j=1}^{m}\frac{1}{f}\sum_{\rho=1}^{f}\log(w_{j\rho}v/\pi)
+                  +m\ell_g-\log T .
+\]
+The two one-sided requirements in \texttt{Count5} are
+\[
+ R_x\le C(1+m^2/k)\La,\qquad \log T\le C m L_x. \tag{2}
+\]
+These refer to the \emph{same} count at a given cutoff. Retain just the second one. The sign of the surviving root discriminant in $R_x$ is positive, and
+\[
+ R_x \ge m\{r-\log(2\pi)-C x^\epsilon\}. \tag{3}
+\]
+Combining (2) and (3), with $h=C(1+m^2/k)$, gives the necessary inequality
+\[
+ (m-h)r\le m\{\log(2\pi)+Cx^\epsilon\}+h(\log x+x^\epsilon).
+\]
+The ranks satisfy $m\asymp x^{1/2-\epsilon/16}$ and $k\asymp x^{9/2+10\epsilon}$, so $h=O_C(1)$ and $m\to\infty$. The two requirements force $r\ll_C x^\epsilon$ for each fixed $0<\epsilon<1/52$ and all sufficiently large $x$. At $x=X$ or $X/2$, $x^\epsilon=o(\log p)$. This is incompatible with $r\ge\frac12\log p$ for every fixed $C$. More precisely, retaining the upper bound on $\log T$ gives $R_x-h\La\ge(\tfrac12-o(1))m\log p$ there. This is the amount by which the lower count requirement fails.
+
+This calculation retains the sign in the underlying count. In the exact single-scale main-term identity the explicit $m(\sum_t a_t)\log v$ in the period term cancels against its counterpart in the modeled count. Replacing the modeled count by $\log T$ leaves the discrepancy above. The subsequent upper estimate uses the allowance $(\sum_t a_t)C(1+m^2/k)\La$. No signed dyadic discriminant contribution to $G_{p,+}$ follows by subtracting two such allowances. \src{Formalism/SizeWindowBrackets/QuotientSlopeBoundsWith}{Count5 and its error term}, \src{Formalism/RankGapBounds/RankGapProofs/WeightedMeanData}{signed main-term identity}, \src{Formalism/SharpRestriction/GlobalSchurBounds/QuadraticLogDerivCongr}{place weights and size bound}, \src{Formalism/LocalRingCardinality/DataHost}{root discriminant and $v$}, \src{Formalism/SharpRestriction/GlobalSchurBounds/TieGlobal}{identification of the level factor}.
+
+\newpage
+\section*{4. Changing the field, the cutoff, or the quadratic class}
+\textbf{The same field at both cutoffs.}
+The full host satisfies $[E:\mathbb Q]=4n$ and $x^{2+8\epsilon}\le n\le 2x^{2+8\epsilon}$. At $X/2$ the upper endpoint is $2^{-1-8\epsilon}X^{2+8\epsilon}$, below the lower endpoint at $X$. Common $q,d$ are possible. The same full host cannot satisfy these two rank windows at the same fixed $\epsilon$. A ratio $1<\lambda\le 2^{1/(2+8\epsilon)}$ removes this particular real-interval obstruction for $n$. Equation (3) still applies at $X$ and at $X/\lambda$. \src{Development/AbelianVarietyTheory/Definitions/GlobalTwisting/PairRowIffQdRows}{Rank and prime windows}, \src{Formalism/SharpRestriction/GlobalSchurBounds/ConclusionR7abs}{field degree}.
+
+\textbf{An independent obstruction at one cutoff.}
+With $N=Q_Sqd$ the level primes must satisfy $g_i\equiv1\pmod N$ and $g_i\le2(kb)^8$. Since $p\mid Q_S$,
+\[
+ \log p<\log g_i\le8x^\epsilon+(36+80\epsilon)\log x+9\log 2.
+\]
+The upper bound is $o(\log p)$ at either cutoff. This obstruction also holds for a single host with either quadratic bias. Complete splitting alone would weaken the arithmetic condition: the construction uses a generator $\pi$ congruent to $1$ modulo $N$ with $\pi\bar\pi=g_i$, which already forces the displayed congruence. \src{Development/AutomorphicArithmetic/ShortNorms/hostOfFieldOf}{construction of the level primes}.
+
+\textbf{Selecting the opposite coset.}
+In the geometric selection lemma \texttt{topsGroup}, let $A_0\subset A$ have index two, let $s\notin A_0$, and let $b(h,t)$ be the prescribed representative satisfying $t=b(h,t)+ih$ for some $i\ge0$. Apply the existing lemma with $b_s(h,t)=b(h,t+s)-s$, which satisfies the same hypothesis. If $U$ is the set obtained, use $T=U+s$ with the original representatives. For every $u\in U$ and every index $i$ in the orbit,
+\[
+ b_s(h,u)+ih\in U\quad\Longleftrightarrow\quad b(h,u+s)+ih\in T .
+\]
+Thus each orbit has the identical marked index set used in the lemma, and the weighted count of bad orbits agrees term by term. The cardinality bounds persist. The shares $4/7,3/7$ exchange places, up to the original $x^{-1+\epsilon}$ error per coset. For the nontrivial character of $A/A_0$, the resulting average is $-1/7+O(x^{-1+\epsilon})$. This proves the reversed finite selection with its orbit estimate. The stated host theorem uses the positive share condition, and neither selection provides (2) at this conductor. \src{Development/AutomorphicArithmetic/ThickFrames/topsGroup}{selection with arbitrary orbit representatives}, \src{Development/AutomorphicArithmetic/PrimitiveCosets/TopsSum}{Fourier coefficient}, \src{Development/AutomorphicArithmetic/ShortNorms/hostOfFieldOf}{use of the selected set}.
+
+\textbf{Outcome.}
+Reversing the selection allows a precise two-upper-bound criterion on page 1. The signed count on page 3 and the prime congruence give independent obstructions to instantiating the existing construction. A proof using this criterion still needs a comparison with total upper bound below $X\log(2)/7$ by a fixed margin depending on $c$. The growth-rate bound on $n_p$ is unchanged. These deductions were checked by hand against the linked Lean source.
+\end{document}

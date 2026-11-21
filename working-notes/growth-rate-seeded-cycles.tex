@@ -1,0 +1,235 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.42em}
+\setlength{\emergencystretch}{2em}
+\newcommand{\ch}{\chi_p}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\src}{\href{https://www.kurims.kyoto-u.ac.jp/EMIS/journals/AMUC/_vol-71/_no_2/_mollin/mollin.pdf}{Mollin--Cheng--Goddard, Theorems 2.1--2.2 and Remark 2.1}}
+\newcommand{\cmqr}{\href{https://arxiv.org/pdf/2404.08380}{Carneiro--Milinovich--Quesada-Herrera--Ramos, proof of Theorem 6}}
+\begin{document}
+{\Large\bfseries Which nonresidue primes occur in prescribed ideal cycles?}\\[2pt]
+{\large A fixed-prime estimate for \(p\equiv23\pmod{24}\)}
+
+Put \(L=\log p\), \(B=\eta L^2\) with fixed \(\eta>0\), and \(\ch(n)=(n/p)\).
+We take \(p\) large enough that \(5\le B<\sqrt p\) and \(2\sqrt p<p\).
+We seek a nonresidue at most \(B\) for every sufficiently large \(p\).
+First test all primes \(s\le B\) with \(s\equiv1\bmod4\).
+An inert \(s\) is itself a witness by reciprocity. In the remaining case
+all these primes split in \(K=\Q(\sqrt p)\). For example, the first test
+already detects 41 at \(p=2{,}080{,}679\), since \(p\equiv11\bmod41\)
+and \(11^{20}\equiv-1\bmod41\).
+
+\section*{1. The exact average over the prescribed starts}
+The full ring of integers is \(O=\Z[\sqrt p]\). Its discriminant is \(4p\).
+Each reduced primitive ideal has a unique description
+\(I=(Q,r+\sqrt p)\) with \(Q\mid p-r^2\), \(\sqrt p-Q<r<\sqrt p\),
+and \(Q<r+\sqrt p\). Its norm is \(Q<2\sqrt p\). Every primitive ideal of
+norm \(<\sqrt p\) is reduced. A complete period consists of all the reduced
+ideals of its \emph{ordinary} ideal class. In particular, each of the two
+roots mod \(s\) gives the prescribed reduced starting ideal. \src.
+
+From a state \((r,Q)\) the next state \((a,Q')\) is
+\[
+ a=\left\lfloor(r+\sqrt p)/Q\right\rfloor Q-r,\qquad Q'=(p-a^2)/Q.
+\]
+Thus \(\ch(Q')=-\ch(Q)\), since \(a^2\equiv-QQ'\bmod p\).
+Every odd prime \(q\mid Q'\) splits in \(K\), and
+\(\ch(q)=(-1/q)\). Hence a first neighbor of any start contains a prime
+\(q\equiv3\bmod4\) to odd exponent. Two is a residue.
+
+Let \(G=\operatorname{Cl}(O)\), \(h=|G|\), and \(w_C\) count the prescribed
+starts in \(C\). Let \(S=\{C:w_C>0\}\), \(T=\{q\le B:q\text{ prime},
+\ q\equiv3\bmod4,\ (p/q)=1\}\), and define
+\[
+ \nu_C=\sum_{\substack{I\ {\rm reduced}\\ [I]=C}}\sum_{q\in T}
+             {\bf1}_{q\mid NI}.
+\]
+For \(w=\sum_Cw_C\), the requested mean of the numbers of incidences is exactly
+\begin{equation}
+ J_p(B)=\frac1w\sum_{C\in G}w_C\nu_C .
+\end{equation}
+An incidence counts a pair consisting of an entry and a prime divisor, once
+regardless of the exponent. For \(q\in T\) both prime ideals of norm \(q\)
+occur in the cycles of their own classes, since \(q<\sqrt p\). Composite norms in other classes
+can also be divisible by \(q\). Therefore full class coverage would detect
+all of \(T\), but even full coverage needs \(T\ne\varnothing\). In the
+remaining case this local existence statement is precisely \(n_p\le B\).
+
+\newpage
+\section*{2. A first-step count without an assumed small nonresidue}
+Let \(W_1(x)\) be the set of distinct primes \(q\equiv3\bmod4\), \(q\le x\),
+dividing a first neighbor of some prescribed start. The following bound uses
+only elementary arithmetic at the given \(p\):
+\begin{equation}
+ \sum_{q\in W_1(2\sqrt p)}\left\lceil B/q\right\rceil
+       \log(2B\sqrt p/q)\ \ge\
+ \vartheta_1(B),\qquad
+ \vartheta_1(B)=\sum_{\substack{s\le B\ {\rm prime}\\ s\equiv1\bmod4}}\log s .
+\end{equation}
+In particular one has the disjunction
+\begin{equation}
+ W_1(B)\ne\varnothing\qquad\text{or}\qquad
+ \#\{q\in W_1(2\sqrt p):q>B\}
+ \ \ge\ \frac{\vartheta_1(B)}{\log(2\sqrt p)}
+ = (1+o_\eta(1))\frac{B}{\log p}.
+\end{equation}
+The second alternative supplies order \(\eta\log p\) \emph{distinct}
+nonresidue primes. The upper endpoint for their sizes is \(2\sqrt p\).
+
+To prove this, group the starts by the integer \(a\) in the next state.
+For fixed \(s\), this \(a\) is the representative of the opposite root
+in \((\sqrt p-s,\sqrt p)\), so each of the two possible \(a\)'s occurs once.
+For an occupied \(a\), let \(D_a\) be the product of the distinct starting
+primes giving that \(a\). Then \(D_a\mid p-a^2\),
+\(\ch(D_a)=1\), and
+\[
+ \sum_a\log D_a=2\vartheta_1(B),\qquad
+ \ch\big((p-a^2)/D_a\big)=-1 .
+\]
+Choose a nonresidue prime divisor \(q_a\) of that quotient. It divides
+the first neighbor for every start with this \(a\), hence lies in
+\(W_1(2\sqrt p)\). Moreover
+\(q_aD_a\le p-a^2<2B\sqrt p\). For each fixed \(q\), all \(a\)'s so
+assigned are in two residue classes modulo \(q\) in an interval of length
+\(B\). There are at most \(2\lceil B/q\rceil\) of them. Summing the
+resulting bounds for \(\log D_a\) proves (2). If all assigned primes exceed
+\(B\), each occurs at most twice and costs at most \(\log(2\sqrt p)\) per
+occurrence. This gives (3), using the PNT in the fixed progression \(1\bmod4\).
+
+The same argument gives the computable size bound
+\[
+ \min W_1(2\sqrt p)\le \min_{a:D_a>1}(p-a^2)/D_a.
+\]
+A sufficiently large product \(D_a\) at one \(a\) would bring the right side
+below \(B\). The sum of its logarithms fixes only the total mass.
+The supply of large primes allows the second alternative in (3).
+Dirichlet GRH gives \(\asymp\sqrt p/\log p\) split primes \(3\bmod4\)
+in \((\sqrt p,2\sqrt p)\), versus \(\asymp_\eta\log p\) required by (3).
+Indeed the progression and splitting indicators use only the four
+characters \(1,\chi_{-4},\ch,\chi_{-4}\ch\). At \(x\asymp\sqrt p\)
+their GRH PNT errors \(O(\sqrt x\log^2(px))\) are \(o(x)\).
+
+\newpage
+\section*{3. When the selected cycles capture every local candidate}
+For \(q\in T\), choose either prime ideal \(\mathfrak q\) above \(q\),
+put \(g=[\mathfrak q]\), and take any integer \(k\ge0\) with
+\(Bq^k<\sqrt p\). If two of the sets
+\[
+ S,\quad gS,\quad\ldots,\quad g^k S
+\]
+intersect (at distinct indices), then \(q\) occurs in a prescribed cycle.
+Indeed the intersection gives \(g^d C=C'\) with \(C,C'\in S\) and
+\(1\le d\le k\). Choose a starting prime ideal \(\mathfrak s\) in \(C\).
+The ideal \(\mathfrak s\mathfrak q^d\) in \(C'\) is primitive, since
+\(s\ne q\) and the conjugate of neither prime ideal divides the product.
+Its norm \(s q^d<\sqrt p\) makes it reduced. It must occur in the cycle
+of each start in \(C'\).
+
+Let \(k_B\) be the greatest integer \(k\ge0\) with \(B^{k+1}<\sqrt p\).
+Writing \(W(B)\) for the distinct target primes in the full prescribed
+cycles, we have the fixed-prime bounds
+\begin{equation}
+ |T|\,{\bf1}_{(k_B+1)|S|>h}\ \le\ |W(B)|\ \le\ |T|.
+\end{equation}
+The pigeonhole principle forces an intersection for each \(q\in T\).
+For an individual \(q\) one may replace \(k_B\) by the larger admissible
+\(k\) using its own size, and apply the same proof within any coset of
+\(\langle g\rangle\) that meets \(S\). At \(B=\eta L^2\),
+\[
+ k_B+1\sim \frac{L}{4\log L}.
+\]
+Thus a fraction slightly greater than \(4\log L/L\) of the ordinary
+classes suffices for complete detection, even if most classes are missed.
+The number of starting roots alone gives no such lower bound on \(|S|/h\).
+
+\textbf{Two individual checks.} For \(p=5711\) and \(B=0.26 L^2\),
+the start \((71,5)\) gives \(5,47,26,67,10,95,\ldots\) and
+\(95=5\cdot19\). The six starts from \(s=5,13,17\) occupy four of the
+five ordinary classes. The sum in (1) before dividing by six is 10.
+For a second direct check, the start \((72,17)\) has first neighbor 95.
+
+For \(p=28{,}559\), \(B=0.11L^2=11.5788\ldots\), the only nonresidue
+prime below \(B\) is 11 and the only starting prime is 5. Its two cycles
+have the denominator lists
+\[
+ (5,67,10,199,137,134),\qquad(5,134,137,199,10,67).
+\]
+Both miss 11, as does the principal cycle with norms \(1,335,2,335\)
+in cyclic order. Across all 15 ordinary classes there are 18 reduced
+ideals with norm divisible by 11. The uniform class mean is \(18/15\).
+The prescribed mean is zero. This finite example tests a coverage
+inference and places no restriction on an eventual threshold for \(p\).
+The accompanying Python check enumerates the reduced states and their exact
+cycles at these two primes.
+
+\newpage
+\section*{4. What Dirichlet GRH supplies at the logarithmic scale}
+Write \(c_*=\mathcal C(1)^{-2}<0.7615\) in the notation of Carneiro et
+al. Their Theorem 1 guarantees a local nonresidue for fixed \(\eta>c_*\).
+In the all-split case it is a member of \(T\). Under the coverage
+condition (4), a prescribed cycle therefore succeeds at this scale.
+There is also an all-prime guarantee for the direct test alone:
+\begin{equation}
+ \limsup_{\substack{p\to\infty\\p\equiv23\ (24)}}\
+ \frac{\min\{s:\ s\text{ prime},\ s\equiv1\bmod4,\ \ch(s)=-1\}}{L^2}
+ \ \le\ 4c_* <3.046.
+\end{equation}
+This is a specialization of the explicit-formula argument. The factor four
+comes from restricting the prime sum to one of the two odd classes and then
+squaring. Here are the details, including the dependence on the test.
+\cmqr.
+
+Fix \(F\) in their test class with \(\widehat F\) real and smooth of compact
+support. Put \(x=\eta L^2,\ \Delta=\log(x)/(2\pi)\), and
+\[
+ D(F)=\int_{-\infty}^0\widehat F(t)e^{\pi t}\,dt
+       -\int_0^\infty|\widehat F(t)|e^{\pi t}\,dt,\qquad
+ \widehat h(t)=\tfrac12\{\widehat F(t-\Delta)+\widehat F(-t-\Delta)\}.
+\]
+For \(\xi=\ch,\ch\chi_{-4}\) of respective conductors \(f=p,4p\),
+their explicit formula and zero sum bound give
+\[
+ \frac1\pi\sum_n\frac{\Lambda(n)\xi(n)}{\sqrt n}\,
+       \widehat h\left(\frac{\log n}{2\pi}\right)
+ \le\frac{\log f}{2\pi}\|F\|_1+o_F(L).
+\]
+Here \(\widehat h(0)=0\) eventually and each gamma integral is \(O_F(1)\).
+Average the two formulas.
+At odd primes the coefficient is \(\ch(s)\) on \(1\bmod4\) and zero on
+\(3\bmod4\). The contribution from 2 and all higher prime powers is
+\(O_F(\log^2 x)=o(L)\), since \(n\asymp_F x\) on the positive-frequency
+support.
+
+If the direct test misses at \(x\), insert \(+1\) on the selected primes
+below \(x\) and bound the signed term from below by minus the absolute
+value of its weight above \(x\). Partial summation with the PNT modulo 4
+gives
+\[
+ \tfrac12\sqrt x\,D(F)+o_{F,\eta}(L)
+ \ \le\ \frac{L}{2\pi}\|F\|_1+o_F(L).
+\]
+Indeed on setting \(n=xe^{2\pi t}\), the unrestricted prime measure
+\(\pi^{-1}dn\,n^{-1/2}\widehat h(\log n/(2\pi))\) becomes
+\(\sqrt x\,\widehat F(t)e^{\pi t}dt\). The progression contributes density
+\(1/2\). The conductor bound above uses
+\((\log p+\log(4p))/2=L+O(1)\). Infimizing
+\(\|F\|_1/(2\pi D(F))\) over tests with \(D(F)>0\) gives
+\(\mathcal C(1)^{-1}\) by their Theorem 4.
+This proves (5). With all primes in place of \(1\bmod4\), the density factor
+is one and the same calculation gives the local threshold \(c_*\).
+In either calculation, a prime with the wrong sign below \(x\) can reduce
+the lower bound by at most \(O_F(\log x/\sqrt x)\). Thus for a fixed
+\(\eta\) strictly above the respective threshold there are
+\(\gg_\eta x/\log x\) local witnesses, using a fixed test with strict margin.
+
+\textbf{Consequence.} In the all-split case (4) transfers this last bound
+to the cycles if the class coverage condition holds and \(\eta>c_*\).
+At arbitrary small fixed \(\eta\), the missing inequality is
+\(\sum_C w_C\nu_C>0\). Even with complete class coverage it would require
+a split \(3\bmod4\) prime below \(\eta L^2\). Neither (2) nor (4) forces
+one there. The pass gives no improvement to the growth rate of \(n_p\).
+\end{document}

@@ -1,0 +1,244 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.85in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,urlcolor=blue]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{1.5em}
+\setlength{\parskip}{.4em}
+\newcommand{\base}{https://github.com/Deicyde/riemann-hypothesis/blob/e7c8972c701d3396947808ab20cc16dc14623d33/src/}
+\newcommand{\pin}[3]{\href{\base#1.lean\##2}{#3}}
+\newcommand{\landdir}{Development/AutomorphicArithmetic/DedekindLFunctions/LandauTheorems/}
+\newcommand{\schur}{Formalism/SharpRestriction/GlobalSchurBounds/}
+\newcommand{\sz}{Formalism/SizeWindowBrackets/}
+\newcommand{\mean}{\mathbb E}
+\newcommand{\gap}{\operatorname{gapA}}
+\newcommand{\rd}{\operatorname{rd}}
+\newcommand{\Sig}{\operatorname{SigA}}
+\newcommand{\Ask}{\operatorname{ASK}}
+\newcommand{\Main}{\operatorname{MAIN}}
+\newcommand{\De}{\operatorname{De}}
+\begin{document}
+{\Large\bfseries The signed mean in the quadratic nonresidue problem}\\[3pt]
+{\large A conductor term in the lattice count and the cancellation it requires}
+
+Fix an odd prime $p$, $L=\log p$, $c=2^{-j}$, $x=cL^2$, and $0<\epsilon<1/52$ fixed.
+Write $g_1,g_{\chi}$ for the centered sums in the addendum, $\chi=(\cdot/p)$, and
+$H_p(c)=(g_1(x)-g_{\chi}(x)/7)/x$.
+All assertions about character sums below assume Dirichlet GRH.
+First let $p\to\infty$ for each fixed $j$. The desired result is $n_p=o(L^2)$.
+
+\section*{1. What the average actually computes}
+Let $t_0=|TT|$, $\delta_2=|T_2|/|H|$, $A=\sum_{t\in TT}a_t$ and
+\[
+ D_x=t_0mb\delta_2 x/2,\qquad
+ \mathcal M=\frac{1}{|A_0|}\sum_{u\in A_0}\gap(u).
+\]
+Take $t_0,m,b,\delta_2>0$. The source's signed row, with $w_{ui}=w(u,i,\cdot)$, is
+$\gap(u)=\sum_{t,i}[\Ask(a_t,t,w_{ui})-\Re\Main(a_t,w_{ui})]$.
+Each $u$ has weight $1/|A_0|$. If geometric rows are given on a larger type $U_0$
+with map $\mathrm{tr}:U_0\to H$, choose one preimage for each $u\in A_0$.
+The source guarantees coverage when its host hypotheses hold. It imposes no equal-fiber condition.
+\pin{Development/AutomorphicArithmetic/PrimitiveCosets/CoreAtH}{L29-L41}{CoreAtH 29--41}.
+\pin{Development/AutomorphicArithmetic/DedekindLFunctions/SplitInertia}{L26-L52}{Character weights, sizes and gapA}.
+
+With the local size, thin-range, cost and character hypotheses used in the proof of
+\texttt{ch\_core}, and the negative selection, its signed consequence is
+\begin{equation}
+ H_p(c)\ \le\ \frac{\mathcal M}{D_x}+\frac{\Sig(x)}{x}
+                 +4x^{-1/2+\epsilon}+\frac{4}{\delta_2 x^2}.
+ \label{eq:core}
+\end{equation}
+Here $\Sig(x)=\sum_{\psi\in\Psi(A_0)\setminus K}|g_\psi(x)|$ and $K=\{1,\chi\}$ in the quadratic specialization. Indeed the row comparison at lines 304--317 bounds the sum of thick terms by $\gap(u)+2t_0mb/x$.
+Line 318 inserts a common upper bound. Sum the preceding inequality instead.
+Orthogonality at lines 326--332 gives $t_0mb(\delta_2/2)Y\le\mathcal M+2t_0mb/x$ for $Y= g_1(x)-g_\chi(x)/7-\Sig(x)-4x^{1/2+\epsilon}$. Division gives (\ref{eq:core}).
+\pin{\landdir ChCore}{L302-L338}{ChCore 302--338}.
+\pin{\landdir ChCore}{L419-L441}{ChCore 419--441}.
+
+There is a two-sided version before the auxiliary characters are bounded. Put $y_t=a_t/b$ and $e_1(t)=((1,0),t)$. With the same size and cost hypotheses,
+\begin{equation}
+ \left|\frac{\mathcal M}{D_x}
+ -\frac{1}{t_0 x}\sum_{t\in TT}\Re\sum_{\psi\in\Psi(A_0)}
+           \psi(e_1(t))g_\psi(y_t)\right|\le\frac{4}{\delta_2 x^2}.
+ \label{eq:proj}
+\end{equation}
+The proof bounds the complex norm of $\De-\mathrm{Th}$ before taking one side of the real part. The row identity and the orthogonality sum for $\mathrm{Th}$ are exact.
+Thus the quadratic character survives the entire average: its restriction to $A_0$ is trivial.
+\pin{\landdir ChCore}{L28-L71}{Character projection}.
+\pin{\landdir ChCore}{L105-L151}{Two-sided error before taking real parts}.
+
+\newpage
+\section*{2. The prime side at a single cutoff}
+For completeness let $F_\ell$ denote Frobenius, $I_d$ inertia at $d$, and $f=|\Phi|$. Define $B(a,t,w;g,n)=(a/n-w(\mathrm{partner}(t,g)))_+$.
+The individual row summand in $\mathcal M$ is exactly
+\begin{align*}
+ &\sum_{\substack{\ell\le N\\\mathrm{IsInert}(\ell)}}2\log\ell
+   \sum_{\substack{1\le i\le N\\ iF_\ell\notin\Phi}} B(a,t,w;iF_\ell,\ell^i)
+ +\log d\sum_{i=1}^N\sum_{\substack{g\in iF_d+ I_d\\g\notin\Phi}}B(a,t,w;g,d^i)\\
+ &\hspace{4mm} -a(\log a-1-\gamma+\Re\ell(\mathrm{chC}))
+     +\frac af\sum_{\rho\in\Phi}\log w(\rho).
+\end{align*}
+Here $a=a_t$, $w=w_{u i'}$, and $\ell(\mathrm{chC})$ is the host centering constant.
+The inert sum takes odd primes other than $q,d$ with $F_\ell\notin\Phi$. This explains why the raw mean has zero explicit coefficient for $\log\rd(E)$ and for $\log(g_0g_1)$. All field dependence here passes through the Frobenius and inertia data, centering, and the weights.
+The equality giving the projection back to prime sums is
+\[
+ (\Ask:\mathbb C)-\Main=\De
+ =\frac1f\!\sum_{g+\mathrm{topPl}(t)\notin\Phi}\ \sum_\psi
+    \overline{\psi(g)}\,w(\mathrm{partner}(t,g))
+             g_\psi\!\left(a/w(\mathrm{partner}(t,g))\right).
+\]
+It is a finite character identity, preceding any zero estimate.
+\pin{\sz FirstPrimeNeSecondPrime}{L65-L101}{Raw definitions 65--101}.
+\pin{\landdir ChBalance}{L200-L261}{Proof of the balance identity}.
+
+\textbf{Error control at a moving conductor.}
+The large-$x$ threshold of \texttt{ch\_core} depends on its bound $K_o$ for the retained logarithmic derivatives. In the quadratic host $|\Psi(A_0)|=4[H:A_0]=8$.
+All eight conductors divide $2^{e+2}pqd$ with the dyadic factor polynomial in $x$ and $\log(qd)=O(x^{\epsilon/5}\log^2 x)$. For nonprincipal primitive $\xi$ of conductor $Q$, truncate $-L'/L(1,\xi)$ at $V=(\log(3Q))^6$. GRH and partial summation give error $O(\log^2(2QV)/\sqrt V)$ and the absolute finite sum is $O(\log V)$. Hence $K_o=O_c(\log x)$, with the same bound for the six other derivatives. The numerical condition $|M|A_1\le x^{1/4}$ in lines 355--359 holds eventually with bounded character and selection constants. Alternatively the movement by $|y_t-x|\le1$ costs $O_c(\log x)$ per character and the negative share error $O(x^{-1+\epsilon})$ costs $O_c(x^{\epsilon}\log x)$ before division by $x$. These estimates apply in absolute value.
+\pin{\landdir ChCore}{L154-L179}{Movement of the cutoff}.
+\pin{\landdir ChCore}{L202-L212}{Individual character assumptions}.
+\pin{\landdir ChCore}{L342-L359}{Dependence of the threshold}.
+
+On a putative exceptional sequence one can use the three $q,d$ twists selected in the supplied quadratic-twists derivation, with its additional splitting condition from the preceding geometry note. For each of $\nu=\psi_q,\psi_d,\psi_q\psi_d$, the small conductor gives $g_\nu(x)/x=o_c(1)$ by the smoothed GRH estimate on page 6.
+The selected logarithmic derivatives give $|g_{\chi\nu}(x)-g_\nu(x)|\ll_c\sqrt{x\log x}$ when $n_p>x$. These are the six discarded terms. Consequently, on this sequence the prime projection in (\ref{eq:proj}) is $H_p(c)+o_c(1)$. The size window requires $\delta_2\ge x^{-\epsilon}$. More generally if $\delta_2 x^2\to\infty$, (\ref{eq:proj}) gives $\mathcal M/D_x=H_p(c)+o_c(1)$ for any realization with the stated analytic data. This applies at the level of character sums without producing the required lattice rows. \pin{\sz SChain}{L50-L59}{Cost and density windows}.
+
+\newpage
+\section*{3. The determinant before the count inequality}
+We now unpack the geometric part conditionally on its defining identifications. For each $u$ fix a geometric lift and one word $z$ in its fiber. Every formula on this page holds word by word. One may also average words using any probability weights within each fiber. The field, ranks and level primes can be common across the lifts, as in the source. If a level is varied, average its logarithm in the formulas below. Write
+\[
+ R=\log\rd(E),\; V_0=R-\log(2\pi),\;
+ s=\log(g_0g_1),\; W_u=f^{-1}\sum_{i,\rho}\log w_{ui\rho},
+ \quad h=\frac{m(m-1)}{2k}.
+\]
+The determinant scale is $\log X_{uz}=(fk)^{-1}\log(D^*/d^*_{uz})$, with numerator base volume times row level indices and formal degrees, and denominator rank-$k$ mass times column level indices and dimensions. Put $r=k+m-1$ and set
+\begin{align*}
+ E_L&=(fk)^{-1}\sum_{M=k+1}^{r}\log L_{\eta,E}(M),&
+ E_g&=k^{-1}\sum_{i=0}^1\sum_{M=k+1}^{r}\log(1-g_i^{-M}),\\
+ P_{uz}&=(fk)^{-1}\sum_{\rho}\log\!
+     \frac{d_{\sigma,\rho}\,\mathrm{facProd}(r)}
+          {\mathrm{vand}(\mathrm{uCol}_{uz,\rho})}.&&
+\end{align*}
+Dividing the source identity by $fk$ gives
+\[
+ \log X_{uz}=(m-1+h)V_0-\frac{m-1}{2k}R+(m+h)s+E_L+E_g+P_{uz}.
+\]
+This identity uses the mass ratio, base-volume identity and index formulas. With the identifications of $D^*,d^*$ and the integer count window,
+$\log T_{uz}=\log X_{uz}-2\log\Gamma_{uz}/(fk)+\tau_{uz}$ where
+$0\le\tau_{uz}\le\log(1+1/(fk))$.
+These implications are upstream of either \texttt{Count5} bound.
+\pin{\schur GeneralLinearActions/GapAtLeast}{L82-L99}{Definitions of the two determinants}.
+\pin{\schur TheoremThreeOfExplicitAndCompact}{L126-L140}{Exact mass formula}.
+\pin{\schur LinkMin}{L48-L60}{Hypotheses}, \pin{\schur LinkMin}{L143-L147}{telescoping proof}.
+\pin{\schur JointsL}{L59-L83}{Window and its rounding error}.
+
+Thus for the signed count part $R^*_{uz}=W_u+mV_0+ms-\log T_{uz}$ the identity is
+\begin{equation}
+ \begin{split}
+ R^*_{uz}={}&\underbrace{\left(1-\frac{(m-1)^2}{2k}\right)}_{\alpha}R
+ -(1-h)\log(2\pi)-hs+(W_u-P_{uz})\\
+ &-E_L-E_g+2\log\Gamma_{uz}/(fk)-\tau_{uz}.
+ \end{split}\label{eq:count}
+\end{equation}
+The coefficient of each $\log g_i$ is $-h$. Both $m$-fold level contributions cancel before averaging. The coefficient of $R$ is $\alpha$, common to every $u,z$. For a host carrying $\chi$, $R\ge L/2$ by the relative discriminant formula for its quadratic subfield. In the indicated compositum the tame $p$-part is exactly $L/2$. The other contributions are $O(\log(2^{e+2}qd))=o_c(L)$ by conductor--discriminant. The subgroup average preserves each common term with multiplicity one. In the unnormalized mean (\ref{eq:count}) is multiplied by $A$.
+\pin{Formalism/LocalRingCardinality/DataHost}{L140-L145}{Root-discriminant normalization}.
+
+\textbf{Independent estimate inside the determinant.}
+The Euler product at $M\ge k+1$ gives $|\log L_{\eta,E}(M)|\le f\log\zeta(M)$; use $\log\zeta(M)\ll2^{-M}$ for $M\ge2$. Also $0\le-\log(1-g_i^{-M})\le2g_i^{-M}$. Thus $|E_L|+|E_g|\ll 2^{-k}/k$ uniformly in both the field and the two primes, and $-E_g\ge0$. Neither term can absorb a positive multiple of $L$. The window correction $-\tau$ is nonpositive and of size at most $1/(fk)$. The $\Gamma$ term is positive. Under the size-data tie it equals $2C_\Gamma m^5x^\epsilon/k$, which is $o(1)$ for bounded $C_\Gamma$ at these ranks. No bound on an unconstructed family's $C_\Gamma$ is assumed.
+\pin{\schur ThickPlacesCorollaryOfAnyTranslate}{L46-L55}{Field-uniform Euler product}.
+\pin{\schur Chosen}{L12-L15}{Scale of $\Gamma$}. \pin{\schur TopDensityNGeSixteen}{L78-L83}{Tie to the word}.
+
+\newpage
+\section*{4. Recombining the signed lattice terms}
+It matters that $R^*_{uz}$ is one summand of the discrepancy. The remaining terms can be kept with their original signs. In the source's slope notation write $Q_u=\sum_{t,i}\Ask(a_t,t,w_{ui})$,
+$\mathrm{Ee}_{uz}=\sum_i\mathrm{EeJ}_{uzi}$ and
+\[
+ S=\sum_t m\{a_t(\log a_t-1)-a_t\log\Omega\},\qquad
+ \log\Omega=\gamma -V_0-\Re\ell(\mathrm{chC}).
+\]
+Then $\sum_{t,i}\Re\Main=S-A(W_u+mV_0)$. Restore the left sides of the division, quotient-slope and local-level estimates:
+\begin{align*}
+ d_{\rm div}&=\mu_{CC}+h_{uz}-\mathrm{Fo}_u-(S-A\log T_{uz}),\\
+ d_Q&=\mu_M+\mathrm{Ga}_u+\mathrm{Fo}_u-\mathrm{Ee}_{uz}-\mu_N,\qquad
+ e_E=\sum_i(\mathrm{EeJ}_{uzi}-As),\\
+ J_{uz}&=(Q_u-\mathrm{Ga}_u)+d_Q+d_{\rm div}
+             +(\mu_N-h_{uz}-\mu_{CC})-\mu_M+e_E .
+\end{align*}
+Here $h_{uz}$ denotes the geometric height, distinct from the rank coefficient $h$. The terms $\mathrm{EeJ}$ are the finite-place sums of local sizes in the linked definition. Straight cancellation gives $\gap(u)=A R^*_{uz}+J_{uz}$. In fact the slopes $\mu_M,\mu_N,\mu_{CC}$ each occur once with each sign. This includes the $+\log\rd(K)-\log2$ in the normalization of each ordinary slope. Put $S_0=S-mAV_0$. Then, exactly,
+\[
+ J_{uz}/A=(Q_u-S_0)/A-mV_0+\log T_{uz}-ms.
+\]
+Inserting the mass formula gives $-\alpha R$ and $+hs$ here. Thus the explicit discriminant and level coefficients in the \emph{full} mean are both zero, word by word. What remains is $\gap(u)/A=(Q_u-S_0)/A+W_u$, precisely the prime expression on page 2. \pin{Formalism/HarderNarasimhan/StatementPl}{L25-L32}{Covolume} and \pin{Formalism/HarderNarasimhan/StatementPl}{L64-L68}{slope normalization}.
+\pin{Formalism/RankGapBounds/MeanBoundSecondForm}{L84-L125}{Division, period and main term}.
+\pin{Formalism/RankGapBounds/MeanBoundSecondForm}{L139-L150}{Slope and loss inputs}.
+\pin{Formalism/RankGapBounds/RankGapProofs/WeightedMeanData}{L170-L216}{Main-term algebra}.
+\pin{\schur QuadraticLogDerivCongr}{L478-L497}{Geometric realizations}.
+\pin{\schur QuadraticLogDerivCongr}{L594-L624}{Local-level error before taking absolute values}.
+
+In particular define the signed combination
+\[
+ Z=\mean_{u}\left[\frac{J_{uz}}A+W_u-P_{uz}+\frac{2\log\Gamma_{uz}}{fk}
+                          -\tau_{uz}-E_L-E_g-hs\right].
+\]
+For common $R,m,k$, the full mean satisfies
+\begin{equation}
+ \frac{\mathcal M}{A}=\alpha R-(1-h)\log(2\pi)+Z. \label{eq:full}
+\end{equation}
+$W-P$ has a conditional upper bound $1/k+1+7x^\epsilon$ from the local degree and weight lower bounds in \texttt{LinkMin}, lines 234--262, after division by $fk$. Its premises include the local place inequalities; we have no realization establishing all of them here. Even this upper bound allows zero, hence supplies no negative multiple of $L$. The division and slope residuals in $Z$ have no signed mean estimate at this conductor from the identified inputs. Treating $Z$ as small would also conflict with the size of the raw mean. \pin{\schur LinkMin}{L234-L262}{Place determinant and weight comparison}.
+
+With $m\asymp x^{1/2-\epsilon/16}$, $k\asymp x^{9/2+10\epsilon}$,
+$A/D_x=2(1+O(1/x))/(m\delta_2)$. Consequently the uncancelled positive term in the \emph{count component}, after normalization, is at least $(1-o(1))L/(m\delta_2)$. Here $L/(m\delta_2)\asymp 2^{j/2}x^{\epsilon/16}/\delta_2$. For fixed $j$ it diverges. If $s=O(L)$, $hs=o(L)$; to offset $R\sim L/2$ through the level logarithms alone requires $s\ge (1-o(1))kL/[m(m-1)]$ asymptotically. Varying $s$ cannot by itself change the raw mean at fixed arithmetic data and weights. Under the actual size cap, $g_i\le2(kb)^8$ while $4g_i\ge dN_{\rm cond}^2$, $p\mid N_{\rm cond}$, so there is no such host for any sufficiently large $p$ at fixed $j$. No existence assumption replacing this cap is used here. \pin{Development/AutomorphicArithmetic/ShortNorms/levelData}{L36-L42}{Cap and norm condition}. \pin{Development/AbelianVarietyTheory/Definitions/GlobalTwisting/PairRowIffQdRows}{L28-L32}{Rank windows}.
+
+\newpage
+\section*{5. An independent place calculation}
+The place determinant has a word-independent part that can be evaluated beyond an Euler-product bound. The source defines $\dim V(U)=\mathrm{vand}(U)/\mathrm{facProd}(k)$ and $\mathrm{facProd}(k)=\prod_{i=0}^{k-1}i!$. Hence
+\[
+ P_{uz}=F_{k,m}+\frac1{fk}\sum_\rho\log\frac{d_{\sigma,\rho}}{\dim V(\mathrm{uCol}_{uz,\rho})},
+ \qquad F_{k,m}=\frac1k\sum_{i=k}^{k+m-2}\log(i!).
+\]
+There are exactly $m-1$ factorials. Write $\log((k+a)!)=\log(k!)+\sum_{b=1}^a\log(k+b)$ and use $0\le a\le m-2\le k$. Stirling's formula gives, uniformly in these ranks,
+\[
+ F_{k,m}=(m-1)(\log k-1)+O(m^2\log(2k)/k).
+\]
+This is an actual favorable term $-F_{k,m}$ per word in (\ref{eq:count}); it is common to the $f$ places and occurs once after their normalization. For fixed $j$, $F_{k,m}/L\ll 2^{-j/2}x^{-\epsilon/16}\log x\to0$. After division by $D_x/A$ its magnitude is asymptotic to $2\log k/\delta_2$. It therefore matters for the targeted bounded-in-$p$ remainder, but can absorb only a vanishing fraction of the positive count contribution $\alpha R$. The ratio of formal degrees to column dimensions is still signed when combined with $W_u$. In particular the whole quantity $P_{uz}$ cannot be replaced by $F_{k,m}$.
+\pin{\schur GeneralLinearActions/GapAtLeast}{L24-L31}{Place determinant definitions}.
+\pin{\schur GlobalRankLatticeProofs/LogFactorialProductDifference}{L62-L85}{Factorial-product split}.
+
+The two local places attached to $g_0,g_1$ have an additional small \emph{positive} contribution $-E_g$. The bound on page 3 is independent even of the upper size cap on $g_i$. In contrast, the estimate in \texttt{data\_EComp5} transfers a hypothesis on the finite-place degrees. Its triangle inequality bounds $|e_E|$ by $C m B_0$ if the per-lift comparison is supplied. That transfer does not compute the needed signed covariance of those degrees with the division and slope errors. Algebraically $e_E$'s $-mAs$ cancels against $+mAs$ in the modeled count and its $+\mathrm{Ee}$ cancels against $-\mathrm{Ee}$ in $d_Q$. This is another way to see why changing just the levels leaves the raw mean fixed.
+\pin{\schur QuadraticLogDerivCongr}{L594-L624}{Individual and summed local degrees}.
+
+\section*{6. Size of the missing estimate}
+Put $e_x=\Sig(x)/x+4x^{-1/2+\epsilon}+4/(\delta_2x^2)$. The sufficient signed inequality for the example in the question, with an $o_j(1)$ allowed after normalization, is
+\begin{equation}
+ Z\ \le\ -\alpha R+(1-h)\log(2\pi)
+       +\frac{D_x}{A}\left(\frac{j\log2}{8}+C-e_x+o_j(1)\right).
+ \label{eq:need}
+\end{equation}
+In units per $A$, the allowed upper remainder above $-\alpha R+(1-h)\log(2\pi)$ is $O((1+j)m\delta_2)$ even on dropping $e_x\ge0$. This is $o_j(L)$ for fixed $j$. There are two different accuracies here. On a hypothetical exceptional sequence, with the row and auxiliary identifications on page 2, the prime projection already forces cancellation of the leading $R$ down to a bounded multiple (depending on $j$) of $m\delta_2$. The unresolved issue is to bound the remainder independently, tightly enough to save $(j\log2/56-O(1))D_x/A$ in (\ref{eq:need}) against the exceptional prediction. No comparison established here has that strength.
+
+\newpage
+\section*{7. An upper bound available for every prime} Let $B(c)=\limsup_{p\to\infty}H_p(c)$. The anchor in the supplied addendum can be given an explicit constant. For primitive real $\chi$ of conductor $p$, put $a=(1-\chi(-1))/2$ and let $\rho$ run through its nontrivial zeros with multiplicity. The real logarithmic derivative of the completed function at $1$ gives, on GRH,
+\[
+ \sum_\rho\frac1{|\rho|^2}
+ =\log(p/\pi)+\frac{\Gamma'}{\Gamma}((1+a)/2)
+                  +2(L'/L)(1,\chi)=L+O(\log\log(3p)).
+\]
+Indeed $2\Re(1/(1-\rho))=1/|\rho|^2$. Lemma 2.3 of Lamzouri, Li and Soundararajan (or the contour with kernel $y^s/[s(s-1)]$) gives
+\[
+ \frac{|g_\chi(y)|}{y}\le
+    \frac{L+O(\log\log(3p))}{\sqrt y}
+       +O\!\left(\frac{\log(2py)}{y}\right),\qquad y\ge2.
+\]
+The residues at zero and the parity terms enter the last error. Thus $B(a_0)\le1/(7\sqrt{a_0})$ at any fixed $a_0>0$, since $g_1(y)/y=o(1)$.
+\href{https://arxiv.org/pdf/1309.3595}{Lamzouri, Li and Soundararajan, eqs. (2.3)--(2.4) and Lemma 2.3}.
+
+Write $\Psi_-(t)=\sum_{n\le t,\,\chi(n)=-1}\Lambda(n)$. Differentiation of $g_\chi(t)/t$, followed by integration and the ordinary prime number theorem, gives for fixed $0<c\le a_0$,
+\[
+ H_p(c)=H_p(a_0)+\tfrac17\log(a_0/c)
+   -\tfrac27\int_{cL^2}^{a_0 L^2}\frac{\Psi_-(t)}{t^2}\,dt+o_{c,a_0}(1).
+\]
+All endpoints lie below $p$ eventually. Taking $a_0=1/4$ minimizes $a_0^{-1/2}+\log a_0$. Dropping the nonpositive term yields, for every $j\ge2$,
+\[
+ \boxed{\displaystyle B(2^{-j})\le\frac{j\log2+2-\log4}{7}.}
+\]
+With $a_0=1$ and a bounded two-sided anchor, improving the slope to $1/8$ is equivalent up to an absolute additive constant to $\liminf_{p\to\infty}\int_{2^{-j}L^2}^{L^2}\Psi_-(t)t^{-2}\,dt\ge j\log2/16-O(1)$ along the chosen $j$. On exceptional primes with $n_p>\eta L^2$ that integral is $O_\eta(1)$. The available bound changes the intercept and leaves the staircase slope intact. The bound on $n_p$ has not improved.
+
+\textbf{Verification.} The accompanying \texttt{SignedMean.lean} checks the abstract finite average, the coefficients in (\ref{eq:count}), and both lattice recombinations by Lean. The match to the pinned definitions, the analytic estimates, and the implications at varying $p$ are hand derivations. There is no construction here of geometric rows satisfying the missing estimate.
+\end{document}
