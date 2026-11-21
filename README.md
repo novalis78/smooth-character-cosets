@@ -3,7 +3,7 @@
 Lennart Lopin (Euler's Identity LLC, ORCID [0009-0001-2751-2060](https://orcid.org/0009-0001-2751-2060))
 
 Preprint: [`paper/smooth-character-cosets.pdf`](paper/smooth-character-cosets.pdf) (source in the same folder).
-Archived version: Zenodo DOI to follow.
+Archived version: [doi:10.5281/zenodo.24421920](https://doi.org/10.5281/zenodo.24421920)
 
 ## Result
 
@@ -58,7 +58,8 @@ The scripts in `working-notes/` need only the Python standard library
 
 - Mathematical review of the preprint: done (Claude, 2026-11-21).
 - Independent proof checks (`review/proof-checks/`): certificates rerun and reproduced on 2026-11-21.
-- Line-by-line check of the cited theorem and equation numbers: in progress.
+- Citation check of all eleven cited results: done, all confirmed (`review/citation-check.md`).
+- Lean files in `review/proof-checks/lean`: recompiled with Mathlib v4.24.0 (`-DwarningAsError=true`), 9 declarations, standard axioms only.
 - Priority questions to A. J. Harper and Z. Dong: to be sent with the archived link.
 
 ## Provenance and licence

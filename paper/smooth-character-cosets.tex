@@ -12,7 +12,7 @@
 \newcommand{\re}{\operatorname{Re}}
 \title{Smooth integers in multiplicative cosets\\at a squared-logarithmic cutoff}
 \author{Lennart Lopin\\ {\normalsize Euler's Identity LLC}\\ {\normalsize ORCID: \href{https://orcid.org/0009-0001-2751-2060}{0009-0001-2751-2060}}}
-\date{November 21, 2026}
+\date{November 21, 2026\\ {\small \href{https://doi.org/10.5281/zenodo.24421920}{doi:10.5281/zenodo.24421920}}}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -102,7 +102,11 @@ ordinary character sums by their smooth restrictions. Their Theorem~2
 proves \(S(x,\chi)-S_y(x,\chi)\ll\Psi(x,y)/(\log\log q)^2\) under
 RH for \(L(s,\chi)\) when \(1\le x\le q\) and
 \(y\ge(\log q)^2(\log x)^2(\log\log q)^{12}\)
-\cite[Conjecture 1 and Theorem 2]{gs}.
+\cite[Conjecture 1 and Theorem 2]{gs}. The same theorem gives
+\(S(x,\chi)\ll\Psi(x,(\log q)^2(\log\log q)^{20})\) under RH for
+\(L(s,\chi)\). At prime modulus, Proposition~\ref{prop:ordinary} below
+replaces this cutoff by \(\eta(\log p)^2\) for every fixed
+\(\eta>2/e^2\), with an additional factor \(e^{-b_2u}\).
 
 Dong--Zhao--Zhou \cite[Theorem 1.4, v1]{dzz} assume RH for
 \(L(s,\chi)\) and cover all nonprincipal characters of arbitrary
@@ -175,8 +179,9 @@ Set \(d=e^{-2\pi N}\), \(\Delta=H/(2\pi)>N\), and form their test
 On the real axis \(h_0(z)=\re(e^{2\pi i\Delta z}F(z))\), since
 \(\widehat F\) is real. Thus \(|h_t(z)|\le |F(z-t)|\) and
 \(\widehat h_t(v)=e^{-2\pi itv}\widehat h_0(v)\).
-The analytic continuation required in \cite[(3.1)]{cmqr} exists for each
-test by Fourier inversion on compact support. We now track the dependence
+The analyticity in a strip and the decay required for \cite[(3.1)]{cmqr}
+hold for each test by the Paley--Wiener theorem, since \(\widehat h_t\)
+is smooth with compact support, as in \cite[\S4.1]{cmqr}. We now track the dependence
 on the translation on the real axis.
 
 For ordinates of \(L(s,\chi)\), counted with multiplicity, we claim
@@ -198,7 +203,8 @@ By \cite[(3.3)--(3.4)]{cmqr}, subtracting
 \]
 on both half-lines, with an absolute implied constant. The bound on the
 argument in (3.4) holds under RH for the individual primitive character
-\cite[Theorem 5 and Example 8]{ccm}. Conjugation supplies the same
+\cite[Theorem 5 and Example 8]{ccm}; that theorem is stated for \(t>0\),
+and the term \(S(0,\chi)\) in (3.3) follows by letting \(t\to0^+\). Conjugation supplies the same
 hypothesis for \(\bar\chi\). Half values at
 jumps have no effect on integration by parts. Integrate
 \(|F(v-t)|\) against \(dM+dR_\chi\).
@@ -303,7 +309,8 @@ constant, by
 Dropping \(|\chi(n)|\le1\) gives exactly the positive sum bounded in
 the proof of that lemma. The \(O(1)\) also allows the full weight at
 an integer endpoint. The lemma is unconditional and requires
-\(x\ge y\ge C,\ T\ge2,\ 0<\alpha\le1\), which hold uniformly here by
+\(x\ge y\ge C,\ T\ge2\) and an abscissa \(\sigma\in(0,1]\), which we take
+equal to the saddle point \(\alpha\); these hold uniformly here by
 \eqref{eq:saddle}. By \eqref{eq:Us} the integral in \eqref{eq:perron}
 is \(O(x^\alpha Z e^{-k_1u}\log(2T))\). On dividing by \(\Psi(x,y)\),
 \eqref{eq:psi} therefore bounds the absolute ratio by
@@ -408,8 +415,9 @@ preparation of this note, and produced Lean~4 proofs of the coset counting
 identity and of the remark after Theorem~\ref{th:main}, together with
 rational certificates for the numerical thresholds. Anthropic's Claude
 checked the arguments and the cited statements before deposit. These
-checks are in the companion repository. The author is responsible for any
-errors.
+checks are in the companion repository
+\url{https://github.com/novalis78/smooth-character-cosets}.
+The author is responsible for any errors.
 
 \small
 \begin{thebibliography}{99}

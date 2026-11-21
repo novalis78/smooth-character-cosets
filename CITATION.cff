@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the archived preprint."
+title: "Smooth integers in multiplicative cosets at a squared-logarithmic cutoff"
+type: software
+version: "v1.0"
+date-released: "2026-11-21"
+doi: "10.5281/zenodo.24421920"
+license: CC-BY-4.0
+repository-code: "https://github.com/novalis78/smooth-character-cosets"
+authors:
+  - family-names: Lopin
+    given-names: Lennart
+    orcid: "https://orcid.org/0009-0001-2751-2060"
+    affiliation: "Euler's Identity LLC"
