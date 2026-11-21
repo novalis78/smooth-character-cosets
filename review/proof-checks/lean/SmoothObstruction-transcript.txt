@@ -1,0 +1,22 @@
+Verification of SmoothObstruction.lean
+
+Lean (version 4.24.0, x86_64-unknown-linux-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)
+Source SHA-256: 7e7ba09d86e81b95598bdb2fafe3f1cfb493015ccc7397e53881b857cb83b47d
+Command actually run:
+  /tmp/smooth-lean-launch/run -DwarningAsError=true /workspace/scratch/4b64ecfcfea0/lean-audit-work/SmoothObstruction.lean
+The run wrapper sets LEAN_PATH to the lib/lean trees under
+  /workspace/scratch/4b64ecfcfea0/twoshift-build-5u3vsdq4
+and executes the official Lean 4.24.0 binary.
+Exit status: 0
+
+'SmoothObstruction.oneOnSmooth' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothObstruction.exactSmoothSum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothObstruction.strictCancellationDetectsPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Reproduction in a Lean 4.24.0 mathlib project:
+  lake env lean -DwarningAsError=true SmoothObstruction.lean
+The corresponding public mathlib tag v4.24.0 points to
+f897ebcf72cd16f89ab4577d0c826cd14afaafc7.
+The local precompiled cache does not record its git revision. Direct imports:
+a7bdfc5d570db34cbd2f1f49f51b0372599f1e55acce9d68585feb8a851f4ec6  Mathlib.Data.Nat.Prime.Basic.olean
+67e94e40b68d94ef19729df1ed114eb51a871c7ca6a76aa46194b5f9cfd93994  Mathlib.Analysis.Complex.Norm.olean

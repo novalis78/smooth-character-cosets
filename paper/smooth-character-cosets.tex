@@ -250,7 +250,7 @@ the loss term. Thus \eqref{eq:distance} holds, for example with
 For \(f=1,\chi\) let \(Z_f(s)=\prod_{\ell\le y}(1-f(\ell)\ell^{-s})^{-1}\).
 Let \(\alpha>0\) be the unique solution of
 \(\sum_{\ell\le y}\log\ell/(\ell^\alpha-1)=X\), and put
-\(Z=Z_1(\alpha)\), \(\theta=X/L\). Uniformly for \(a\le\theta\le1\),
+\(Z=Z_1(\alpha)\), \(\theta=X/L\). For every fixed \(\eta>0\), uniformly for \(a\le\theta\le1\),
 \begin{align}
  \alpha&=\tfrac12+
       \{\log(2\sqrt\eta/\theta)+o_{a,\eta}(1)\}/H,
@@ -352,7 +352,14 @@ The hypothesis \((1-\sigma)^2\log\log Q(t)\ge1\) holds for large \(p\)
 Average \(S(xe^{hW},\chi)\) over a standard normal \(W\), with
 \(h=x^{-1/2}\). Its distance from \(S(x,\chi)\) is
 \(O(1+x\,\mathbb E|e^{hW}-1|)=O(\sqrt x)\).
-Averaging Perron's kernel on \(\re s=2\) inserts \(e^{s^2/(2x)}\).
+Writing \(\Phi\) for the standard normal distribution function, the identity
+\[
+ \frac{1}{2\pi i}\int_{\re s=2} e^{sv+h^2s^2/2}\,\frac{ds}{s}
+ =\Phi(v/h)
+\]
+follows by differentiating in \(v\), using Gaussian Fourier inversion,
+and taking \(v\to-\infty\) for the integration constant. With
+\(v=\log(x/n)\) it gives the averaged Perron kernel at every endpoint.
 Shift the integral to \(\re s=\sigma\). Partial summation from the
 periodic bound \(|S(z,\chi)|\le p\) gives
 \(|L(s,\chi)/s|\le p/\re s\) throughout this strip, justifying the
@@ -397,8 +404,12 @@ least quadratic nonresidue open.
 
 \paragraph{Acknowledgements.}
 OpenAI Codex assisted with the literature search, the derivations and the
-preparation of this note. Anthropic's Claude checked the arguments and the
-cited statements before deposit. The author is responsible for any errors.
+preparation of this note, and produced Lean~4 proofs of the coset counting
+identity and of the remark after Theorem~\ref{th:main}, together with
+rational certificates for the numerical thresholds. Anthropic's Claude
+checked the arguments and the cited statements before deposit. These
+checks are in the companion repository. The author is responsible for any
+errors.
 
 \small
 \begin{thebibliography}{99}

@@ -1,0 +1,36 @@
+Verification of SmoothCosetChecks.lean
+
+Lean (version 4.24.0, x86_64-unknown-linux-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)
+Source SHA-256: fb6d80af3b2fb884203a449645928822abc8f80a079017fc40738a0afcc54283
+Command actually run:
+  /tmp/smooth-lean-launch/run -DwarningAsError=true /workspace/scratch/4b64ecfcfea0/lean-audit-work/SmoothCosetChecks.lean
+The small run wrapper sets LEAN_PATH to the lib/lean trees under
+  /workspace/scratch/4b64ecfcfea0/twoshift-build-5u3vsdq4
+and executes the official Lean 4.24.0 binary.
+Exit status: 0
+
+'SmoothCosetChecks.strictMarginLoss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothCosetChecks.logEulerLoss' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothCosetChecks.rootFilter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothCosetChecks.filterCount' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothCosetChecks.cosetDiscrepancy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'SmoothCosetChecks.signedDeficit' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+Reproduction with a Lean 4.24.0 mathlib project:
+  lake env lean -DwarningAsError=true SmoothCosetChecks.lean
+The corresponding public mathlib tag v4.24.0 points to
+f897ebcf72cd16f89ab4577d0c826cd14afaafc7.
+The local, precompiled mathlib cache has no Git metadata. The precise
+binary digests of the directly imported mathlib modules used here are:
+e2431a18f5aa0b09f06fe69b92f0ac367ebe1783035e9e3cdb54c293d5680465  Mathlib.Algebra.Ring.GeomSum.olean
+67e94e40b68d94ef19729df1ed114eb51a871c7ca6a76aa46194b5f9cfd93994  Mathlib.Analysis.Complex.Norm.olean
+26799c19a2039c9028b0918247e583bb131c72123f19c0bcd2791a0049ea4859  Mathlib.Analysis.SpecialFunctions.Log.Basic.olean
+2a2bea5f573f67fc75cca3ecdd4d9075427d61ee64e1f8ab9260cae201025005  Mathlib.Tactic.Linarith.olean
+0044ed578e1a89d70c41e0319a8e05e2a467432d32d6bb170fbdf13262808806  Mathlib.Tactic.Positivity.olean
+
+Scope: The six theorems in this file check finite identities and inequalities.
+The real signed-weight lemmas take a comparison bound as an explicit input.
+The coset-discrepancy theorem takes Fourier coefficient bounds as inputs.
+The Euler logarithm bound is a scalar inequality. The translated explicit
+formula, quantitative conductor-uniform errors, saddle point analysis,
+truncation, and final character-sum theorem remain outside this check.

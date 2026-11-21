@@ -40,6 +40,7 @@ Lagarias–Soundararajan and Harper.
 | `predecessor/` | `smooth-quadratic-equidistribution`: the quadratic-residue case under full Dirichlet GRH, which the preprint generalizes. |
 | `working-notes/` | Exploratory notes, 20–21 November 2026, on whether n_p = o((log p)²) under GRH (the "growth-rate" question). They are unreviewed working drafts and may contain errors. The scripts reproduce the fixed-prime examples in `growth-rate-continued-fractions` and `growth-rate-seeded-cycles`. `SignedMean.lean` holds scalar identities used in `growth-rate-signed-mean`. |
 | `review/` | Pre-publication checks. `zbmath-forward-citations.xlsx` screens zbMATH forward citations of all works cited in the preprint (retrieved 2026-11-21). |
+| `review/proof-checks/` | Independent verification bundle (see its `README.md`): Lean 4 proofs of the coset counting identity and of the remark after Theorem 1, an exact rational certificate for C(1)⁻² < 0.76822 (covers the 0.77 example), the 36-coefficient Arb certificate for C(1)⁻² < 0.760777412, rational enclosures for the 2/e² threshold of Proposition 1, a hand audit of Proposition 1, and a second proof of the passage to the literal count n ≤ x. `SHA256SUMS` covers every file. |
 
 The first commit imports the working copy unchanged. Later commits record every edit
 made for deposit.
@@ -56,6 +57,7 @@ The scripts in `working-notes/` need only the Python standard library
 ## Status
 
 - Mathematical review of the preprint: done (Claude, 2026-11-21).
+- Independent proof checks (`review/proof-checks/`): certificates rerun and reproduced on 2026-11-21.
 - Line-by-line check of the cited theorem and equation numbers: in progress.
 - Priority questions to A. J. Harper and Z. Dong: to be sent with the archived link.
 

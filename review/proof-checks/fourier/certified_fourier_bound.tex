@@ -1,0 +1,184 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1.04in,top=0.83in,bottom=0.85in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,xcolor}
+\usepackage[colorlinks=true,urlcolor=accent,linkcolor=accent,hypertexnames=false]{hyperref}
+\definecolor{accent}{RGB}{32,79,91}
+\hypersetup{pdftitle={A certified Fourier bound for the least quadratic nonresidue}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 0.5pt minus 0.5pt}
+\raggedbottom
+\setlength{\abovedisplayskip}{6pt plus 1pt}
+\setlength{\belowdisplayskip}{6pt plus 1pt}
+\setlength{\abovedisplayshortskip}{4pt plus 1pt}
+\setlength{\belowdisplayshortskip}{4pt plus 1pt}
+\newcommand{\head}[1]{\par\vspace{5pt}{\large\sffamily\bfseries\color{accent}#1}\par\nobreak}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Fhat}{\widehat F}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\running}[1]{{\small\sffamily\color{accent}#1}\par\vspace{1pt}\hrule\vspace{9pt}}
+\begin{document}
+{\small\sffamily\color{accent}Working draft \(\mathbin{\bullet}\) November 20, 2026}\par
+\vspace{3pt}
+{\LARGE\bfseries A certified Fourier bound for the\\[2pt]
+least quadratic nonresidue\par}
+\vspace{4pt}
+An explicit test function with 36 rational coefficients gives
+\[
+                         \boxed{\,\mathcal C(1)^{-2}<0.760777412\,}
+\]
+for the Fourier extremal constant of Carneiro, Milinovich, Quesada-Herrera, and Ramos~[1].
+Their published upper bound is \(0.7615\). The numerical inequality above is
+unconditional. Under GRH for Dirichlet \(L\)-functions it also bounds the
+asymptotic coefficients for the least quadratic nonresidue and the least prime
+quadratic residue modulo a prime.
+\head{1\quad The extremal quotient}
+Use \(\Fhat(t)=\int_{\R}F(x)e^{-2\pi ixt}\,dx\). For nonzero \(F\in L^1(\R)\)
+with real-valued Fourier transform, write
+\begin{equation}
+ J(F)=\frac{2\pi}{\norm F_1}\left(\int_{-\infty}^0 e^{\pi t}\Fhat(t)\,dt
+               -\int_0^\infty e^{\pi t}|\Fhat(t)|\,dt\right).
+ \tag{1}
+\end{equation}
+The supremum of \(J(F)\) over this class is \(\mathcal C(1)\) by [1, (1.1)].
+Any witness with \(J(F)>0\) gives \(\mathcal C(1)^{-2}\le J(F)^{-2}\).
+
+\head{2\quad A single-shift test function}
+Set \(a=3/10\) and \(c=4/5\). Let \(R(z)=\sum_{j=0}^{35}r_jz^j\), with the exact
+coefficients on page~3. Define \(d_k\) and \(P\) by
+\[
+ R(2w-1)=\sum_{k=1}^{36}d_k w^{k-1},
+ \qquad P(u)=\sum_{k=1}^{36}d_k\,\frac{u^k}{k!}.
+\]
+Take \(\Fhat(t)=\mathbf 1_{\{u\ge0\}}e^{-u}P(u)\), where \(u=(c-\pi t)/a\).
+This transform is real, continuous at the cutoff because \(P(0)=0\), and
+integrable. Its two weighted integrals in (1) converge absolutely. Substitution
+into the inverse Fourier integral gives
+\[
+ F(x)=\frac a\pi e^{2icx}\sum_{k=1}^{36}
+      \frac{d_k}{k!}\int_0^\infty e^{-(1+2iax)u}u^k\,du
+     =\frac a\pi e^{2icx}\sum_{k=1}^{36}\frac{d_k}{(1+2iax)^{k+1}}.
+\]
+Thus \(F(x)=O((1+|x|)^{-2})\). Fourier inversion recovers the prescribed
+continuous transform, and \(R\ne0\) ensures \(F\ne0\). This proves admissibility.
+
+To compute the norm, use evenness of \(|F|\) and put
+\(\theta=\arctan(2ax)\) for \(x\ge0\).
+Writing \(w=(1+i\tan\theta)^{-1}=\cos\theta\,e^{-i\theta}\) gives
+\(2w-1=e^{-2i\theta}\). The factor \(w^2\) in the sum for \(F\) has modulus
+\(\cos^2\theta\), which cancels the \(\sec^2\theta\) in \(2a\,dx\). Hence
+\begin{equation}
+ \norm F_1=\frac{D}{\pi},\qquad
+ D=\int_0^{\pi/2}|R(e^{-2i\theta})|\,d\theta. \tag{2}
+\end{equation}
+\newpage
+\running{A certified Fourier bound}
+\head{3\quad Evaluation of the signed numerator}
+Put \(h=1+a=13/10\) and \(m=c/a=8/3\). In (1), \(t<0\) corresponds
+to \(u>m\), while \(0<t<c/\pi\) corresponds to \(0<u<m\). Using (2) and
+\(e^{\pi t}=e^{c-au}\) yields \(J(F)=N/D\), where
+\begin{equation}
+ N=2\pi a e^c\left(\int_m^\infty e^{-hu}P(u)\,du-
+                    \int_0^m e^{-hu}|P(u)|\,du\right). \tag{3}
+\end{equation}
+For \(v\ge0\) the signed tail has the exact expression
+\[
+ T(v)=\int_v^\infty e^{-hu}P(u)\,du
+     =e^{-hv}\sum_{j=0}^{36}\frac{v^j}{j!}
+                    \sum_{k=j}^{36}\frac{d_k}{h^{k-j+1}},
+ \qquad d_0=0,
+\]
+by repeated integration by parts. Exact rational real-root isolation of \(P\)
+on \([0,m]\) gives the simple root at zero and two simple interior roots.
+Their locations, rounded out for display, are
+\[
+ 0.31184795095143<v_1<0.31184795095144,\qquad
+ 1.05793812431641<v_2<1.05793812431642.
+\]
+The verifier isolates each to an interval of width at most \(10^{-30}\)
+and includes both endpoints in the subsequent ball arithmetic. Put \(v_0=0\),
+\(v_3=m\). On every open interval \((v_j,v_{j+1})\), \(P\) has constant sign.
+Consequently the second integral in (3) is exactly
+\(\sum_{j=0}^{2}|T(v_j)-T(v_{j+1})|\).
+
+\head{4\quad A one-sided integration error}
+Let \(f(\theta)=R(e^{-2i\theta})\), \(L=\pi/2\), \(n=32768\), \(b=L/n\).
+Differentiating the trigonometric polynomial twice gives
+\(\sup|f''|\le K=4\sum_{j=0}^{35} j^2|r_j|=126726777/50000\).
+On a panel \([s,s+b]\), let \(\ell\) interpolate \(f\) linearly at the
+endpoints. At \(s+t\) its error satisfies
+\[
+ |f(s+t)-\ell(s+t)|\le K\,t(b-t)/2\qquad (0\le t\le b).
+\]
+Indeed the interpolation error is an integral of \(f''\) against the signed
+Dirichlet Green kernel. Its absolute kernel is
+\(\min(t,y)(b-\max(t,y))/b\) at \(0\le y\le b\), whose integral in \(y\) is
+\(t(b-t)/2\). Convexity also gives
+\(\int_s^{s+b}|\ell|\le b(|f(s)|+|f(s+b)|)/2\). Summing both bounds gives
+\begin{equation}
+ D\le B_n+\frac{KLb^2}{12},\qquad
+ B_n=b\left(\frac{|f(0)|+|f(L)|}{2}+\sum_{j=1}^{n-1}|f(jb)|\right).
+ \tag{4}
+\end{equation}
+This estimate remains valid at zeros of \(f\), since it bounds the interpolation
+error of the complex polynomial before taking its modulus.
+
+\newpage
+\running{A certified Fourier bound}
+\head{5\quad Exact coefficients and numerical certificate}
+The entries \(q_j\) in the table are integers. Set \(r_j=q_j/10^6\). Thus
+the index \(j\) gives the power of \(z\) in \(R(z)\).
+
+\begin{center}
+\setlength{\tabcolsep}{10pt}\renewcommand{\arraystretch}{1.13}
+\begin{tabular}{@{}rr@{\qquad}rr@{\qquad}rr@{\qquad}rr@{}}
+\toprule
+\(j\)&\(q_j\)&\(j\)&\(q_j\)&\(j\)&\(q_j\)&\(j\)&\(q_j\)\\
+\midrule
+0 & 1000000 &  9 & 510409 & 18 & 6332    & 27 & \(-1653\)\\
+1 & 4815715 & 10 & 258500 & 19 & 5339    & 28 & 1541\\
+2 & 8710552 & 11 & 235574 & 20 & \(-4625\) & 29 & \(-1050\)\\
+3 & 7617483 & 12 & 72629  & 21 & 6832    & 30 & 1019\\
+4 & 4487466 & 13 & 71024  & 22 & \(-4287\) & 31 & \(-464\)\\
+5 & 3434816 & 14 & 46027  & 23 & 2822    & 32 & 1320\\
+6 & 2345152 & 15 & 3286   & 24 & \(-479\)  & 33 & 215\\
+7 & 1189056 & 16 & 28100  & 25 & \(-732\)  & 34 & 2070\\
+8 & 938349  & 17 & \(-2855\) & 26 & 1601 & 35 & 5064\\
+\bottomrule
+\end{tabular}
+\end{center}
+The script \texttt{verify\_single\_shift\_36\_arb.py} forms the rational polynomials
+and isolates the roots with SymPy. It encloses all remaining real and complex
+operations with 200-bit Arb balls through \texttt{python-flint}. The following
+inequalities have been rounded outward.
+\[
+\begin{aligned}
+ N &>16.68808877572884,\\
+ B_n &<14.55577666588763,\\
+ KLb^2/12 &<0.000000762389490,\\
+ D &<14.55577742827712.
+\end{aligned}
+\]
+Combining (1)--(4) gives
+\[
+ \mathcal C(1)^{-2}\le (D/N)^2
+ \le \left((B_n+KLb^2/12)/N\right)^2<0.760777411894<0.760777412.
+\]
+A second verifier uses Cauchy--Schwarz on 2048 panels, integrating
+\(|f|^2\) on each panel as a finite trigonometric sum. Applied to the same
+rational polynomial, this second denominator estimate gives \(\mathcal C(1)^{-2}<0.760778\).
+
+\head{Arithmetic consequence}
+Assume GRH for Dirichlet \(L\)-functions. For each odd prime \(p\), let \(n_p\)
+be its least positive quadratic nonresidue and \(r_p\) its least prime quadratic
+residue. By Theorems 1 and 2 of [1], both
+\(\limsup_{p\to\infty}n_p/(\log p)^2\) and
+\(\limsup_{p\to\infty}r_p/(\log p)^2\) are at most \(\mathcal C(1)^{-2}\).
+The displayed certificate therefore bounds each limsup strictly by \(0.760777412\).
+
+\head{Reference}
+{\small [1] E.~Carneiro, M.\,B.~Milinovich, E.~Quesada-Herrera, and A.\,P.~Ramos,
+\emph{Fourier optimization, the least quadratic non-residue, and the least prime
+in an arithmetic progression}, Mathematics of Computation.
+\href{https://doi.org/10.1090/mcom/4154}{doi:10.1090/mcom/4154}\enspace
+\href{https://arxiv.org/abs/2404.08380}{arXiv:2404.08380}.}
+\end{document}
