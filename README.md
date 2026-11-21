@@ -60,7 +60,7 @@ The scripts in `working-notes/` need only the Python standard library
 - Independent proof checks (`review/proof-checks/`): certificates rerun and reproduced on 2026-11-21.
 - Citation check of all eleven cited results: done, all confirmed (`review/citation-check.md`).
 - Lean files in `review/proof-checks/lean`: recompiled with Mathlib v4.24.0 (`-DwarningAsError=true`), 9 declarations, standard axioms only.
-- Priority questions to A. J. Harper and Z. Dong: to be sent with the archived link.
+- Priority questions sent to A. J. Harper and Z. Dong on 2026-11-21 with the archived link (both accepted by the recipient servers).
 
 ## Provenance and licence
 
