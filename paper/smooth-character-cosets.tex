@@ -11,7 +11,7 @@
 \newcommand{\cstar}{c_*}
 \newcommand{\re}{\operatorname{Re}}
 \title{Smooth integers in multiplicative cosets\\at a squared-logarithmic cutoff}
-\author{Lennart Lopin}
+\author{Lennart Lopin\\ {\normalsize Euler's Identity LLC}\\ {\normalsize ORCID: \href{https://orcid.org/0009-0001-2751-2060}{0009-0001-2751-2060}}}
 \date{November 21, 2026}
 \begin{document}
 \maketitle
@@ -52,7 +52,18 @@ and \(p_0\), depending only on \(a,\eta\), such that, for every prime
 \end{theorem}
 In particular the difference of the two sums satisfies the same bound.
 The published bounds \(0.7596<\cstar<0.7615\) allow the cutoff \(0.77\)
-\cite[Theorems 1 and 5]{cmqr}.
+\cite[Theorems 1 and 5]{cmqr}, and the certified bound
+\(\cstar<0.760777412\) of \cite{lopin} allows every \(\eta\ge0.7608\).
+
+The cutoff is tied to the least quadratic nonresidue \(n_p\). If
+\(\chi\) is the quadratic character and every prime up to \(y\) is a
+quadratic residue, then \(S_y(x,\chi)=\Psi(x,y)\). Hence, for primes
+\(p\) whose quadratic character satisfies \(\mathrm{RH}(\chi)\),
+Theorem~\ref{th:main} gives \(n_p\le\eta(\log p)^2\) once \(p\) is large.
+Equidistribution at a smaller cutoff would therefore force a smaller
+nonresidue, and admissibility of some \(\eta<\cstar\) would improve
+\cite[Theorem 1]{cmqr}. The argument does not show that \(\cstar\) is
+the best possible threshold.
 
 \begin{corollary}\label{cor:cosets}
 Let \(B\le\mathbb F_p^\times\) have index \(m\) and suppose
@@ -384,6 +395,11 @@ the smooth-sum estimate give Theorem~\ref{th:main} with
 in Lemma~\ref{lem:distance}, leaving the growth-rate question for the
 least quadratic nonresidue open.
 
+\paragraph{Acknowledgements.}
+OpenAI Codex assisted with the literature search, the derivations and the
+preparation of this note. Anthropic's Claude checked the arguments and the
+cited statements before deposit. The author is responsible for any errors.
+
 \small
 \begin{thebibliography}{99}
 \raggedright
@@ -394,7 +410,8 @@ least quadratic nonresidue open.
 \href{https://arxiv.org/pdf/1503.00955}{arXiv:1503.00955}.
 \bibitem{cmqr} E.~Carneiro, M.~B.~Milinovich, E.~Quesada-Herrera and
 A.~P.~Ramos, \emph{Fourier optimization, the least quadratic non-residue,
-and the least prime in an arithmetic progression}.
+and the least prime in an arithmetic progression}, Math.\ Comp.,
+\href{https://doi.org/10.1090/mcom/4154}{doi:10.1090/mcom/4154};
 \href{https://arxiv.org/pdf/2404.08380v2}{arXiv:2404.08380v2}.
 \bibitem{chirre} A.~Chirre, \emph{A note on entire \(L\)-functions}.
 \href{https://arxiv.org/pdf/1805.01119}{arXiv:1805.01119}.
@@ -417,6 +434,9 @@ Barban--Davenport--Halberstam type theorems for smooth numbers}.
 \bibitem{ht} A.~Hildebrand and G.~Tenenbaum, \emph{Integers without
 large prime factors}, J.~Th\'eor.\ Nombres Bordeaux \textbf{5} (1993),
 411--484. \href{https://doi.org/10.5802/jtnb.101}{doi:10.5802/jtnb.101}.
+\bibitem{lopin} L.~Lopin, \emph{Certified Fourier bounds for the least
+quadratic nonresidue}, Zenodo, 2026.
+\href{https://doi.org/10.5281/zenodo.24408857}{doi:10.5281/zenodo.24408857}.
 \bibitem{ls} J.~C.~Lagarias and K.~Soundararajan, \emph{Counting smooth
 solutions to the equation \(A+B=C\)}, Proc.\ London Math.\ Soc.\ (3)
 \textbf{104} (2012), 770--798.
