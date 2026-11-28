@@ -4,6 +4,7 @@ Lennart Lopin (Euler's Identity LLC, ORCID [0009-0001-2751-2060](https://orcid.o
 
 Preprint: [`paper/smooth-character-cosets.pdf`](paper/smooth-character-cosets.pdf) (source in the same folder).
 Archived version: [doi:10.5281/zenodo.24421920](https://doi.org/10.5281/zenodo.24421920)
+Where the least-nonresidue problem stands: [isitsolved.com/least-quadratic-nonresidue](https://isitsolved.com/least-quadratic-nonresidue)
 
 ## Result
 
